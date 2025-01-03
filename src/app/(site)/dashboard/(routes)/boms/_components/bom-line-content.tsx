@@ -37,7 +37,6 @@ function BomLineContent({bom}: Props) {
   }))
 
   useEffect(() => {
-    console.log(session)
     let access = useRoleAccess(session, bom?.countryCode, 'CatalogManager').hasAccess && rowSelection?.length !== 0
     setIsEditor(access)
   }, [session, rowSelection]);
@@ -77,12 +76,7 @@ function BomLineContent({bom}: Props) {
             </div>
           }
           {showRemoveDialog && (
-            <RemoveFromBomDialog
-            bom={bom}
-            rowIds={rowSelection || undefined}
-              open={showRemoveDialog}
-              onClose={() => setShowRemoveDialog(false)}
-            />
+            <RemoveFromBomDialog bom={bom} rowIds={rowSelection || undefined} open={showRemoveDialog} onClose={() => setShowRemoveDialog(false)} />
           )}
         </CardContent>
       </Card>

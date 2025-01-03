@@ -11,7 +11,7 @@ export interface DataTableProps<TData, TValue> {
   onRowSelectStateChange: (value: any) => void,
 }
 
-export function BomLineTable<TData, TValue>({
+export function ItemsTable<TData, TValue>({
   columns,
   data,
   onRowSelectStateChange
@@ -80,4 +80,4 @@ export function BomLineTable<TData, TValue>({
   );
 }
 
-export default BomLineTable
+export default ItemsTable

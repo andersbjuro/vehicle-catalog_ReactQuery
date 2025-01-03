@@ -3,8 +3,8 @@ import { Provider } from '@auth/core/providers';
 import { tenantLinks } from '@/config/tenants';
 import type { NextAuthConfig } from 'next-auth';
 
-const clientId = 'catalog' // process.env.AUTH_CLIENT_ID as string;
-const clientSecret = 'ItsMySecret' // = process.env.AUTH_CLIENT_SECRET as string;
+const clientId = process.env.AUTH_CLIENT_ID as string;
+const clientSecret = process.env.AUTH_CLIENT_SECRET as string;
 const providers: Provider[] = [];
 
 async function refreshAccessToken(token: JWT) {

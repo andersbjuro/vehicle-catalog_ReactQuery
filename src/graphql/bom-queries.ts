@@ -1,6 +1,5 @@
 import { gql } from "graphql-request";
 
-
 export const BOM_QUERY = gql`
 query GetBoms($filter: BomFilterInput!) {
   boms(first: 100, order: { modified: DESC, name: ASC }, where: $filter) {

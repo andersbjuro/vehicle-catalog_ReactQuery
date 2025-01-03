@@ -17,7 +17,7 @@ const BomForm = ({bom}: Props) => {
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle><span className=" text-primary">{bom?.name}</span></CardTitle>
-            <BackButton title="Stäng" variant="secondary" className="w-20" />
+            <BackButton url="/dashboard/boms" title="Stäng" variant="secondary" className="w-20" />
           </div>
         </CardHeader>
         <CardContent>

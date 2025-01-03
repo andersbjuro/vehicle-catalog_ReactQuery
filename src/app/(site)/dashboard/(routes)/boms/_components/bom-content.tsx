@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react'
 import BomForm from './bom-form';
 import BomLineContent from './bom-line-content';
+import ItemsContent from './items-content';
 
 export default function BomContent() {
   const [country, setCountry] = useState(0);
@@ -13,7 +14,7 @@ export default function BomContent() {
   const { id } = params;
 
   useEffect(() => {
-    setCountry(Number(localStorage.getItem('user-country-code')?.toLowerCase() as string))
+    setCountry(Number(localStorage.getItem('user-country-code') as string))
     refetch
   }, []);
 
@@ -30,18 +31,14 @@ export default function BomContent() {
 
   return (
     <div className="flex flex-col w-full">
-    <div className="w-1/2">
-      <BomForm bom={data?.bomById}  />
-    </div>
+      <div className="w-1/2">
+        <BomForm bom={data?.bomById} />
+      </div>
 
-    <div className="flex flex-row flex-1 gap-3 mt-2">
-      <div className="flex flex-col w-1/2">
-        <BomLineContent bom={data?.bomById}/>
-      </div>
-      <div className="flex flex-col w-1/2">
-        {/* <ItemsComponent type="bom" /> */}
+      <div className="grid grid-cols-2 gap-2 mt-2">
+        <BomLineContent bom={data?.bomById} />
+        <ItemsContent bom={data?.bomById} />
       </div>
     </div>
-  </div>
   )
 }
