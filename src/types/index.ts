@@ -1,5 +1,10 @@
 import { Icons } from "@/components/icons";
 
+export type ClientSetting = {
+  languageCode: number,
+  pageSize: number,
+}
+
 export type TenantLinkType = {
   id: string;
   name: string;
