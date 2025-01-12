@@ -2,14 +2,14 @@
 
 import { cookies } from 'next/headers'
 
-// Server action to update the currency cookie
-export const setCurrencyOnServer = async (newCurrency: string) => {
+// Server action to update the countryCode cookie
+export const setCountryOnServer = async (newCode: string) => {
     'use server'
     const cookiesStore = await cookies()
-    cookiesStore.set('currency', newCurrency)
+    cookiesStore.set('user-country-code', newCode)
 
     return {
         success: true,
-        message: 'Currency updated successfully',
+        message: 'CountryCode updated successfully',
     }
 }

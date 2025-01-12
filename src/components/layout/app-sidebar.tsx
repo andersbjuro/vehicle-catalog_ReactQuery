@@ -5,14 +5,11 @@ import { NavMain } from "@/components/layout/nav-main"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail, } from "@/components/ui/sidebar"
 
 import { UserAccountNav } from "./user-account-nav"
-//import { useSetAtom } from "jotai"
 import { useEffect } from "react"
-//import { countryCode } from "@/atoms/userAtoms"
 import { useCurrentSession } from "@/hooks/use-current-session"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { user } = useCurrentSession()
-  //const setCountryCode = useSetAtom(countryCode)
   const items = [
     {
       title: 'Bomstrukturer',

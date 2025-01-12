@@ -8,6 +8,7 @@ import { ThemeProvider } from "next-themes";
 import { Toaster } from "sonner";
 import ClientProviders from "@/components/client-providers";
 import { cookies } from "next/headers";
+import data from "@/lib/data";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,8 +31,9 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const lngCodeCookie = (await cookies()).get('languageCode')
-  const language = lngCodeCookie ? lngCodeCookie.value : '752'
+  const setting = data.setting
+  const countryCodeCookie = (await cookies()).get('user-country-code')
+  const contryCode = countryCodeCookie ? countryCodeCookie.value : '752'
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body
@@ -41,7 +43,7 @@ export default async function RootLayout({
           geistMono.variable,
         )}
       >
-        <ClientProviders setting={{ pageSize: 100, languageCode: Number(language) }}>
+        <ClientProviders setting={{ ...setting, countryCode: Number(contryCode) }}>
           {children}
         </ClientProviders>
         {/* <SessionProvider >

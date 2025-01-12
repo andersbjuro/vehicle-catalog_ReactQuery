@@ -1,17 +1,17 @@
 
 import { ClientSetting } from '@/types'
+import data from '@/lib/data'
 import { create } from 'zustand'
 
 interface SettingState {
     setting: ClientSetting
     setSetting: (newSetting: ClientSetting) => void
-    setlanguageCode: (code: number) => void
+    setCountryCode: (code: number) => void
 }
 
 const useSettingStore = create<SettingState>((set, get) => ({
     setting: {
-        languageCode: 752,
-        pageSize: 100,
+        ...data.setting,
     } as ClientSetting,
     setSetting: (newSetting: ClientSetting) => {
         set({
@@ -20,8 +20,8 @@ const useSettingStore = create<SettingState>((set, get) => ({
             },
         })
     },
-    setlanguageCode: async (languageCode: number) => {
-        set({ setting: { ...get().setting, languageCode } })
+    setCountryCode: async (countryCode: number) => {
+        set({ setting: { ...get().setting, countryCode } })
     },
 }))
 

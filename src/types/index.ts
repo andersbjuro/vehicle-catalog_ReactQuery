@@ -1,8 +1,18 @@
 import { Icons } from "@/components/icons";
 
+export type Country = {
+  code: number,
+  text: string,
+}
+
 export type ClientSetting = {
-  languageCode: number,
+  countryCode: number,
   pageSize: number,
+  availableCountries: Country[]
+}
+
+export type Data = {
+  setting: ClientSetting
 }
 
 export type TenantLinkType = {
