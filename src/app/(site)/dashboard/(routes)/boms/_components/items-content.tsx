@@ -1,7 +1,5 @@
 "use client"
 
-import { useSearchParams } from "next/navigation";
-
 import { Heading } from "@/components/heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -12,12 +10,14 @@ import AddToBomDialog from "./add-to-bom-dialog";
 import { Bom } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { onGetItems } from "@/actions/item";
-import { createOeItemsFilter } from "@/graphql/filters";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import ItemsTable from "@/components/items/items-table";
 import { columns } from "@/components/items/items-table-columns";
 import useRoleAccess from "@/hooks/useRoleAccess";
 import { useSession } from "next-auth/react";
+import useSettingStore from "@/hooks/use-setting-store";
+import ItemsFilterBar from "./items-filter-bar";
+import useItemsFilterStore from "@/hooks/use-itemsfilter-store";
 
 interface Props {
   bom: Bom,
@@ -25,32 +25,25 @@ interface Props {
 
 export default function ItemsContent({ bom }: Props) {
   const session = useSession()
-  const searchParams = useSearchParams();
-  //const params = new URLSearchParams(searchParams);
-  const [country, setCountry] = useState(0);
+  const { filter } = useItemsFilterStore()
+  const { setting: {countryCode } } = useSettingStore()
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [rowSelection, setRowSelection] = useState([]);
   const [isEditor, setIsEditor] = useState(false);
-
-  useEffect(() => {
-    setCountry(Number(localStorage.getItem('user-country-code') as string))
-    refetch
-  }, []);
 
   useEffect(() => {
     let access = useRoleAccess(session, bom?.countryCode, 'CatalogManager').hasAccess && rowSelection?.length !== 0
     setIsEditor(access)
   }, [session, rowSelection]);
 
-  const filter = {
-    filter: createOeItemsFilter({ searchValue: searchParams.get('q') || '', brandId: Number(searchParams.get('brand')), productGroupId: Number(searchParams.get('pg')) }),
-    countryCode: country
+  const parameter = {
+    filter: filter,
+    countryCode: countryCode
   }
 
-  const { data, refetch } = useQuery({
-    queryKey: ['items', filter],
-    queryFn: async () => { return onGetItems(filter) },
-    enabled: country > 0
+  const { data } = useQuery({
+    queryKey: ['items', parameter],
+    queryFn: async () => { return onGetItems(parameter) }
   })
 
   return (
@@ -62,7 +55,7 @@ export default function ItemsContent({ bom }: Props) {
           </CardTitle>
           <div>
             <div className='flex w-full gap-2'>
-              {/* <SearchBar /> */}
+              <ItemsFilterBar />
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>

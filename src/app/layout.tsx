@@ -34,6 +34,7 @@ export default async function RootLayout({
   const setting = data.setting
   const countryCodeCookie = (await cookies()).get('user-country-code')
   const contryCode = countryCodeCookie ? countryCodeCookie.value : '752'
+
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body

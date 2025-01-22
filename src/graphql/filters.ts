@@ -19,11 +19,12 @@ export const createBomFilter = (filter: any) => {
 export const createOeItemsFilter = (filter: any) => {
   let _filter = "{"
 
-  if (filter.searchValue !== '')
+  if (filter.searchValue ) {
     _filter = ` { "or": [ {"oeName": { "contains": "${filter.searchValue}"}}, {"oeItemId": { "startsWith": "${filter.searchValue}"} } ] `;
+  }
 
   if (filter.brandId > 0) {
-    if (filter.searchValue !== '')
+    if (filter.searchValue)
       _filter = _filter + ', '
     _filter =
       _filter +
@@ -31,5 +32,6 @@ export const createOeItemsFilter = (filter: any) => {
   }
 
   _filter = _filter + " }";
+
   return JSON.parse(_filter);
 };

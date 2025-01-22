@@ -14,7 +14,7 @@ export default function UserCountrySelector() {
   const selected = availableCountries.find(({ code }) => code === Number(countryCode));
 
   const handleCountryCodeChange = async (newCode: string) => {
-    await setCountryOnServer(newCode)
+     const a = await setCountryOnServer(newCode)
     setCountryCode(Number(newCode))
   }
 
@@ -34,9 +34,9 @@ export default function UserCountrySelector() {
           value={countryCode.toString()}
           onValueChange={handleCountryCodeChange}
         >
-          {availableCountries.map((l) => (
-            <DropdownMenuRadioItem key={l.text} value={l.code.toString()}>
-              {l.text}
+          {availableCountries.map((c) => (
+            <DropdownMenuRadioItem key={c.text} value={c.code.toString()}>
+              {c.text}
             </DropdownMenuRadioItem>
           ))}
         </DropdownMenuRadioGroup>

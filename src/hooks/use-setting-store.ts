@@ -1,4 +1,3 @@
-
 import { ClientSetting } from '@/types'
 import data from '@/lib/data'
 import { create } from 'zustand'

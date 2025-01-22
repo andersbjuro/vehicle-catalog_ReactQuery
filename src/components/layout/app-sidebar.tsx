@@ -5,7 +5,6 @@ import { NavMain } from "@/components/layout/nav-main"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail, } from "@/components/ui/sidebar"
 
 import { UserAccountNav } from "./user-account-nav"
-import { useEffect } from "react"
 import { useCurrentSession } from "@/hooks/use-current-session"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -43,15 +42,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     );
     return filter;
   };
-
-  useEffect(() => {
-    const country = localStorage.getItem('user-country-code')?.toLowerCase() as string
-    if (country === undefined) {
-      localStorage.setItem("user-country-code", '752')
-      // setCountryCode(752)
-    }
-
-  }, []);
 
   return (
     <Sidebar collapsible="icon" variant="inset">
