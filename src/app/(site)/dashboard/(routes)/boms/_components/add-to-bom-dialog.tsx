@@ -1,37 +1,44 @@
 
 import { toast } from "sonner"
-import {Dialog,DialogContent,DialogFooter,DialogHeader,DialogTitle} from "@/components/ui/dialog";
-import {Select,SelectContent,SelectGroup,SelectItem,SelectLabel,SelectTrigger,SelectValue} from "@/components/ui/select"
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Bom } from "@/types";
+import useItemsFilterStore from "@/hooks/use-itemsfilter-store";
+import { useMutation, useQueryClient  } from "@tanstack/react-query";
+import { addItemsToBom } from "@/actions/item";
 
 interface Props {
   bom: Bom,
-  rowIds: any,
   open: boolean;
   onClose: () => void;
 }
 
 export default function AddToBomDialog({
   bom,
-  rowIds,
   open,
   onClose,
 }: Props) {
-
+  const { rowSelection } = useItemsFilterStore()
   const [option, setOption] = useState('0');
-  // const bom = useAtomValue(bomAtom);
-  // const rowIds = useAtomValue(selectedRowIds);
-  // const { mutate: addItemsToBom, isError: bomError, isPending } = useAtomValue(addToBom);
+  const queryClient = useQueryClient()
 
-  // const addItems = async () => {
-  //   addItemsToBom({ bomId: bom?.id!, items: rowIds, option: option })
-  //   onClose()
-  //   if (!bomError)
-  //     toast.success("Artiklar tillaggda till bomlistan")
-  // }
+  const mutation = useMutation({
+    mutationFn: () => {
+      return addItemsToBom(bom.id, rowSelection, option)
+    },
+    onSuccess:  () => {
+      queryClient.invalidateQueries({ queryKey: ["bom", bom.id.toString()] })
+      toast.success("Artiklar tillaggda till bomlistan")
+    },
+  })
+
+  const addItems = async () => {
+    await mutation.mutateAsync()
+    onClose()
+  }
 
   function handleOpenChange(open: boolean) {
     if (!open) {
@@ -62,7 +69,8 @@ export default function AddToBomDialog({
         <DialogFooter>
           <Button
             variant="default"
-
+            onClick={async () => await addItems()}
+            disabled={option === '' || mutation.isPending}
           >
             Updatera
           </Button>

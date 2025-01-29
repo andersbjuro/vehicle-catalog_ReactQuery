@@ -5,11 +5,13 @@ interface ItemsFilterStoreInterface {
     query: string,
     brandId: number,
     productGroupId: number,
-    filter: any
+    filter: any,
+    rowSelection: any,
     setQuery: (queryProp: string) => void
     setBrand: (brandProp: number) => void
     setProductGroup: (productGroupProp: number) => void
     resetFilter: () => void
+    setRowSelection: (rowSelectionProp: any) => void
 }
 
 const useItemsFilterStore = create<ItemsFilterStoreInterface>((set, get) => ({
@@ -17,7 +19,7 @@ const useItemsFilterStore = create<ItemsFilterStoreInterface>((set, get) => ({
     brandId: 0,
     productGroupId: 0,
     filter: createOeItemsFilter({ searchTerm: "", brandId: 0, productGroupId: 0 }),
-
+    rowSelection: [],
     setQuery: (queryProp: string) => {
         set({ query: queryProp, filter: createOeItemsFilter({ searchValue: queryProp, brandId: get().brandId, productGroupId: get().productGroupId }) })
     },
@@ -29,6 +31,9 @@ const useItemsFilterStore = create<ItemsFilterStoreInterface>((set, get) => ({
     },
     resetFilter: () => {
         set({ query: "", brandId: 0, productGroupId: 0, filter: createOeItemsFilter({ searchTerm: "", brandId: 0, productGroupId: 0 }) })
+    },
+    setRowSelection: (rowSelectionProp: any) => {
+        set({ rowSelection: rowSelectionProp })
     }
 }))
 

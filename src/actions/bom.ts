@@ -16,13 +16,13 @@ export const onGetBrands = async () => {
 export const onGetBoms = async (variables: any) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
-  const res = await fetcher<Bom[], any>(BOM_QUERY, variables, { Authorization: token, next: { revalidate: 30 } })
+  const res = await fetcher<Bom[], any>(BOM_QUERY, variables, { Authorization: token, next: { revalidate: 60 } })
   return await res
 }
 
 export const onGetBom = async (variables: any) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
-  const res = await fetcher<Bom, any>(BOMBYID_QUERY, variables, { Authorization: token, next: { revalidate: 30 } })
-  return await res
+  const res = await fetcher<Bom, any>(BOMBYID_QUERY, variables, { Authorization: token, next: { revalidate: 60, tags: ['bom'] } })
+  return await res.bomById
 }

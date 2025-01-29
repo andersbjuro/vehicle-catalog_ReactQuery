@@ -25,10 +25,10 @@ interface Props {
 
 export default function ItemsContent({ bom }: Props) {
   const session = useSession()
-  const { filter } = useItemsFilterStore()
-  const { setting: {countryCode } } = useSettingStore()
+  const { filter, rowSelection, setRowSelection } = useItemsFilterStore()
+  const { setting: { countryCode } } = useSettingStore()
   const [showAddDialog, setShowAddDialog] = useState(false);
-  const [rowSelection, setRowSelection] = useState([]);
+  //const [rowSelection, setRowSelection] = useState([]);
   const [isEditor, setIsEditor] = useState(false);
 
   useEffect(() => {
@@ -36,11 +36,7 @@ export default function ItemsContent({ bom }: Props) {
     setIsEditor(access)
   }, [session, rowSelection]);
 
-  const parameter = {
-    filter: filter,
-    countryCode: countryCode
-  }
-
+  const parameter = { filter: filter, countryCode: countryCode }
   const { data } = useQuery({
     queryKey: ['items', parameter],
     queryFn: async () => { return onGetItems(parameter) }
@@ -86,7 +82,7 @@ export default function ItemsContent({ bom }: Props) {
             </div>
           }
           {showAddDialog && (
-            <AddToBomDialog bom={bom} rowIds={rowSelection} open={showAddDialog} onClose={() => setShowAddDialog(false)} />
+            <AddToBomDialog bom={bom} open={showAddDialog} onClose={() => setShowAddDialog(false)} />
           )}
         </CardContent>
       </Card>
