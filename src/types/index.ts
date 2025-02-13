@@ -41,6 +41,12 @@ export type OeRef = {
   countryCode: Number
 }
 
+export type FlattOeItem = {
+  oeItemId: string
+  oeName: string
+  itemId: string
+}
+
 export type OeItem = {
   oeItemId: string
   oeName: string
@@ -57,6 +63,7 @@ export type FlattBomLine = {
   oeName: string
   itemId: string
 }
+
 export type BomLine = {
   bomId: number
   oeItemId: string

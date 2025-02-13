@@ -28,7 +28,6 @@ export default function ItemsContent({ bom }: Props) {
   const { filter, rowSelection, setRowSelection } = useItemsFilterStore()
   const { setting: { countryCode } } = useSettingStore()
   const [showAddDialog, setShowAddDialog] = useState(false);
-  //const [rowSelection, setRowSelection] = useState([]);
   const [isEditor, setIsEditor] = useState(false);
 
   useEffect(() => {
@@ -47,7 +46,7 @@ export default function ItemsContent({ bom }: Props) {
       <Card className="mt-2">
         <CardHeader className="flex flex-col sm:flex-row items-start justify-between gap-2">
           <CardTitle>
-            <Heading title="Artiklar" description={data?.oeItems.totalCount} />
+            <Heading title="Artiklar" description={data?.totalCount} />
           </CardTitle>
           <div>
             <div className='flex w-full gap-2'>
@@ -74,10 +73,10 @@ export default function ItemsContent({ bom }: Props) {
           </div>
         </CardHeader>
         <CardContent>
-          {data && data.oeItems &&
+          {data && data.flatteOeItems &&
             <div className="flex h-[calc(100vh-350px)]">
               <ScrollArea type="scroll" className="w-1 flex-1 overflow-y-auto">
-                <ItemsTable columns={columns} data={data.oeItems.nodes} onRowSelectStateChange={setRowSelection} />
+                <ItemsTable columns={columns} data={data.flatteOeItems} onRowSelectStateChange={setRowSelection} />
               </ScrollArea>
             </div>
           }

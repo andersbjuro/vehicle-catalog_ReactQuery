@@ -9,6 +9,8 @@ type RequestInit = {
     headers: (HeadersInit & UpdateOptions) | UpdateOptions;
 };
 
+const APIURL = process.env.NEXT_PUBLIC_GRAPHQL_URL;
+
 export const updater = async <TVariables>(
     query: string,
     variables?: TVariables,
@@ -16,7 +18,7 @@ export const updater = async <TVariables>(
 ) => {
 
     const { next, cache, ...restOptions } = options || {};
-    const response = await fetch("https://gw.dev.forba.se/gateway/graphql/", {
+    const response = await fetch(APIURL!, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

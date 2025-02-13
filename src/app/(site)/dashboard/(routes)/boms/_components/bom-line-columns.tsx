@@ -38,12 +38,11 @@ export const columns: ColumnDef<FlattBomLine>[] = [
     ),
   },
   {
-    accessorFn: row => row.itemId,
-    header: "ItemId",
-
+    accessorKey: "itemId",
+    header: ({ column }) => <SortableHeader column={column} title="ItemId" />,
   },
   {
-    accessorFn: row => row.oeName,
-    header: "OeName",
+    accessorKey: "oeName",
+    header: ({ column }) => <SortableHeader column={column} title="OeName" />,
   },
 ];

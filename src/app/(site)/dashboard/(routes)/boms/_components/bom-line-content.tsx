@@ -76,7 +76,7 @@ function BomLineContent({bom}: Props) {
             </div>
           }
           {showRemoveDialog && (
-            <RemoveFromBomDialog bom={bom} rowIds={rowSelection || undefined} open={showRemoveDialog} onClose={() => setShowRemoveDialog(false)} />
+            <RemoveFromBomDialog bom={bom} rowIds={rowSelection || undefined} open={showRemoveDialog} onClose={() => setShowRemoveDialog(false) } />
           )}
         </CardContent>
       </Card>

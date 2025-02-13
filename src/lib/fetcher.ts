@@ -9,6 +9,8 @@ type RequestInit = {
     headers: (HeadersInit & FetchOptions) | FetchOptions;
 };
 
+const APIURL = process.env.NEXT_PUBLIC_GRAPHQL_URL;
+
 export const fetcher = async <TData, TVariables>(
     query: string,
     variables?: TVariables,
@@ -16,7 +18,7 @@ export const fetcher = async <TData, TVariables>(
 ) => {
 
     const { next, cache, ...restOptions } = options || {};
-    const res = await fetch("https://gw.dev.forba.se/gateway/graphql/", {
+    const res = await fetch(APIURL!, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

@@ -5,6 +5,8 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useState } from "react";
 import { Bom } from "@/types";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { removeItemsFromBom } from "@/actions/item";
 
 interface Props {
   bom: Bom,
@@ -14,17 +16,21 @@ interface Props {
 }
 
 export default function RemoveFromBomDialog({bom,  rowIds, open, onClose}: Props) {
-
   const [option, setOption] = useState('0');
-  //const rowIds = useAtomValue(selectedBomLinesRowIds);
-  //const bom = useAtomValue(bomAtom);
-  //const { mutate: removeItemsFromBom, isError, isPending } = useAtomValue(removeFromBom);
+  const queryClient = useQueryClient()
 
+  const mutation = useMutation({
+    mutationFn: () => {
+      return removeItemsFromBom(bom.id, rowIds, option)
+    },
+    onSuccess:  () => {
+      queryClient.invalidateQueries({ queryKey: ["bom", bom.id.toString()] })
+      toast.success("Artiklar borttagna till bomlistan")
+    },
+  })
   const removeItems = async () => {
-    //   removeItemsFromBom({ bomId: bom?.id!, items: rowIds, option: option })
-    //   onClose()
-    //   if (!isError)
-    //     toast.success("Artiklar borttagna från bomlistan")
+    await mutation.mutateAsync()
+    onClose()
   }
 
   function handleOpenChange(open: boolean) {
@@ -57,7 +63,7 @@ export default function RemoveFromBomDialog({bom,  rowIds, open, onClose}: Props
           <Button
             variant="default"
             onClick={async () => await removeItems()}
-            // disabled={option === '' || isPending}
+            disabled={option === '' || mutation.isPending}
           >
             Updatera
           </Button>

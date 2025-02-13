@@ -1,14 +1,14 @@
 "use client"
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { OeItem } from "@/types";
+import { FlattOeItem, OeItem } from "@/types";
 import { ColumnDef } from "@tanstack/react-table"
 import {SortableHeader} from "@/components/datatable/sortable-header";
 
 
 //import { CellAction } from "./cell-action"
 
-export const columns: ColumnDef<OeItem>[] = [
+export const columns: ColumnDef<FlattOeItem>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -41,11 +41,11 @@ export const columns: ColumnDef<OeItem>[] = [
     ),
   },
   {
-    accessorFn: row => row.oeRefs[0]?.itemId,
-    header: "ItemId",
+    accessorKey: "itemId",
+    header: ({ column }) => <SortableHeader column={column} title="ItemId" />,
   },
   {
     accessorKey: "oeName",
-    header: ({ column }) => <SortableHeader column={column} title="Name" />,
+    header: ({ column }) => <SortableHeader column={column} title="OeName" />,
   },
 ];
