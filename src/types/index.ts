@@ -58,7 +58,14 @@ export type OeItem = {
   oeRefs: OeRef[]
 }
 
+export type BomDetailFilter = {
+  id: number
+  countryCode: number
+}
+
 export type FlattBomLine = {
+  bomId: number
+  bomCountryCode: number
   oeItemId: string
   oeName: string
   itemId: string

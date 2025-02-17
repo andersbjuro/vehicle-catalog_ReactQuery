@@ -5,9 +5,6 @@ import { FlattOeItem, OeItem } from "@/types";
 import { ColumnDef } from "@tanstack/react-table"
 import {SortableHeader} from "@/components/datatable/sortable-header";
 
-
-//import { CellAction } from "./cell-action"
-
 export const columns: ColumnDef<FlattOeItem>[] = [
   {
     id: "select",

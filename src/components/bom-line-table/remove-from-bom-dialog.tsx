@@ -1,46 +1,51 @@
 
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useState } from "react";
-import { Bom } from "@/types";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { removeItemsFromBom } from "@/actions/item";
+import { Trash2 } from "lucide-react";
+import useRoleAccess from "@/hooks/useRoleAccess";
+import { useSession } from "next-auth/react";
+import useBomStore from "@/hooks/use-bom-store";
 
 interface Props {
-  bom: Bom,
   rowIds: any,
-  open: boolean;
-  onClose: () => void;
+  callbackAction?: () => void
 }
 
-export default function RemoveFromBomDialog({bom,  rowIds, open, onClose}: Props) {
+export default function RemoveFromBomDialog({ rowIds, callbackAction }: Props) {
+  const session = useSession()
+  const { filter } = useBomStore()
+  let access = useRoleAccess(session, filter.countryCode, 'CatalogManager').hasAccess && rowIds.length !== 0
+  const [open, setOpen] = useState(false)
   const [option, setOption] = useState('0');
   const queryClient = useQueryClient()
 
   const mutation = useMutation({
     mutationFn: () => {
-      return removeItemsFromBom(bom.id, rowIds, option)
+      return removeItemsFromBom(rowIds, option)
     },
-    onSuccess:  () => {
-      queryClient.invalidateQueries({ queryKey: ["bom", bom.id.toString()] })
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["bom", filter.id.toString()] })
       toast.success("Artiklar borttagna till bomlistan")
     },
   })
   const removeItems = async () => {
     await mutation.mutateAsync()
-    onClose()
-  }
-
-  function handleOpenChange(open: boolean) {
-    if (!open) {
-      onClose();
-    }
+    setOpen(false)
+    if (callbackAction) callbackAction()
   }
 
   return (
-    <Dialog open={open} onOpenChange={handleOpenChange}>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button size='icon' variant='destructive' disabled={!access}>
+          <Trash2 className="size-4" />
+        </Button>
+      </DialogTrigger>
       <DialogContent>
         <DialogHeader >
           <DialogTitle>Ta bort valda artiklar ur bomlistan</DialogTitle>
@@ -69,7 +74,7 @@ export default function RemoveFromBomDialog({bom,  rowIds, open, onClose}: Props
           </Button>
           <Button
             variant="outline"
-            onClick={onClose}
+            onClick={() => setOpen(false)}
           >
             Avbryt
           </Button>

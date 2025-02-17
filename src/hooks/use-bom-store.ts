@@ -1,21 +1,17 @@
+import { BomDetailFilter } from '@/types'
 import { create } from 'zustand'
 
 interface BomStoreInterface {
-    filter: any,
-    rowSelection: any,
-    setFilter: (fileterProp: any) => void
-    setRowSelection: (rowSelectionProp: any) => void
+    filter: BomDetailFilter,
+    setFilter: (fileterProp: BomDetailFilter) => void
 }
 
-const useBomStore = create<BomStoreInterface>((set, get) => ({
-    filter: {},
-    rowSelection: [],
-    setFilter: (filterProp:any) => {
+const useBomStore = create<BomStoreInterface>((set) => ({
+    filter: {id: 0, countryCode: 0},
+    rowSelection: {},
+    setFilter: (filterProp: BomDetailFilter) => {
         set({ filter: filterProp })
     },
-    setRowSelection: (rowSelectionProp: any) => {
-        set({ rowSelection: rowSelectionProp })
-    }
 }))
 
 export default useBomStore

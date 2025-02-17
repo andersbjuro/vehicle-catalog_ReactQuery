@@ -41,7 +41,6 @@ export default function ItemsFilterBar() {
         <Button
           variant="default"
           size="default"
-          className="mb-2"
         >
           <ListFilter className="mr-2 size-4" />
           Filter

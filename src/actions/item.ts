@@ -43,13 +43,13 @@ export const addItemsToBom = async (bomId: number, items: any[], option: string)
   return response
 };
 
-export const removeItemsFromBom = async (bomId: number, items: any[], option: string) => {
+export const removeItemsFromBom = async (items: any[], option: string) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
   let input: any[] = []
   items.forEach(item => {
-    input.push({ bomId: bomId, oeItemId: item.oeItemId, option: option })
+    input.push({ bomId: item.bomId, oeItemId: item.oeItemId, option: option })
   });
 
   const response = await updater<any>(REMOVEITEMSFROMBOM_MUTATION, { input: input },{ Authorization: token});

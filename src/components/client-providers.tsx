@@ -1,11 +1,13 @@
 'use client'
-import React from 'react'
+
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { ThemeProvider } from "next-themes";
 import { ClientSetting } from '@/types'
 import { SessionProvider } from "next-auth/react";
 import ReactQueryProvider from '@/providers/ReactQueryProvider'
 import { Toaster } from "sonner";
 import AppInitializer from './app-initializer'
+
 export default function ClientProviders({
     setting,
     children,
@@ -23,7 +25,9 @@ export default function ClientProviders({
                     disableTransitionOnChange
                 >
                     <Toaster />
-                    <ReactQueryProvider>{children}</ReactQueryProvider>
+                    <NuqsAdapter>
+                        <ReactQueryProvider>{children}</ReactQueryProvider>
+                    </NuqsAdapter>
                 </ThemeProvider>
             </AppInitializer>
         </SessionProvider>
