@@ -16,7 +16,7 @@ export default function BomList() {
   const router = useRouter();
 
   const filter = {
-    filter: createBomFilter({ searchValue: filters.query || '', brandId: filters.brand, productGroupId: filters.productGroup })
+    filter: createBomFilter({ query: filters.query, brand: filters.brand!, productGroup: filters.productGroup! })
   }
 
   const { data, isLoading } = useBoms(filter)
@@ -29,13 +29,13 @@ export default function BomList() {
     } else {
       total = "visar " + 100 + " av " + t;
     }
-    return total
+    return total.toString()
   }
 
   return (
     <div className="flex flex-col w-full">
       <div className="flex justify-between">
-        <Heading title="Bomstrukturer" description={showTotal().toString()} />
+        <Heading title="Bomstrukturer" description={showTotal()} />
         <div className="flex gap-2">
           <BomFilter />
           <Button className="w-20" onClick={() => router.push(`/dashboard/boms/create`)}>

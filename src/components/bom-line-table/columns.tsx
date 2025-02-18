@@ -4,6 +4,7 @@ import {SortableHeader} from "@/components/datatable/sortable-header";
 import { Checkbox } from "@/components/ui/checkbox";
 import { FlattBomLine } from "@/types";
 import { ColumnDef } from "@tanstack/react-table"
+import Link from "next/link";
 
 export const columns: ColumnDef<FlattBomLine>[] = [
   {
@@ -33,7 +34,7 @@ export const columns: ColumnDef<FlattBomLine>[] = [
     header: ({ column }) => <SortableHeader column={column} title="OeItemId" />,
     cell: ({ row }) => (
       <div className="ml-4 font-medium">
-        {row.original.oeItemId}
+        <Link href={`/dashboard/items/${row.original.oeItemId}/edit`}><span className="underline">{row.original.oeItemId}</span></Link>
       </div>
     ),
   },

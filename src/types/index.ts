@@ -90,3 +90,32 @@ export type Bom = {
   created: Date
   lines: BomLine[]
 };
+
+export type BomFilterTypes = {
+  query: string
+  brand: number;
+  productGroup: number;
+};
+
+export type SearchValueType = {
+  id: number
+  name: string
+}
+
+export type SearchValue = {
+  id: number
+  value: string
+  valueType: number
+  noOfItems: number
+  countryCode: number
+  modified: Date
+  created: Date
+  searchValueType: SearchValueType
+}
+
+export type Catalog = {
+  oeItemId: string
+  oeName: string
+  itemId: string
+  bomTableId: number
+}

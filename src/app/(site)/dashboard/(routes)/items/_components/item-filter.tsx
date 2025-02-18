@@ -3,15 +3,15 @@
 import { ListFilter, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useBrands } from "@/hooks/useBrands";
-import useBomsFilter from "@/hooks/use-boms-filter";
 import FilterSelect from "@/components/filter-select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import useItemsFilter from "@/hooks/use-items-filter";
 
-export default function BomFilter() {
+export default function ItemFilter() {
   const [open, setOpen] = useState(false);
-  const { filters, updateFilter, clearFilter, clearFilters } = useBomsFilter();
+  const { filters, updateFilter, clearFilter, clearFilters } = useItemsFilter();
   const { data } = useBrands()
   const pGroups = data?.brands.filter((x: { id: any; }) => x.id == filters.brand)[0]?.productGroups.map(((x: any) => x.productGroup))
 

@@ -2,29 +2,24 @@
 
 import { ListFilter, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useBrands } from "@/hooks/useBrands";
-import useBomsFilter from "@/hooks/use-boms-filter";
 import FilterSelect from "@/components/filter-select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import useCatalogFilter from "@/hooks/use-catalog-filter";
+import { useValueTypes } from "@/hooks/useValueType";
 
-export default function BomFilter() {
+export default function SearchValueFilter() {
   const [open, setOpen] = useState(false);
-  const { filters, updateFilter, clearFilter, clearFilters } = useBomsFilter();
-  const { data } = useBrands()
-  const pGroups = data?.brands.filter((x: { id: any; }) => x.id == filters.brand)[0]?.productGroups.map(((x: any) => x.productGroup))
+  const { filters, updateFilter, clearFilters } = useCatalogFilter();
+  const { data } = useValueTypes()
 
   const handleSearch = (formData: FormData) => {
     const term = formData.get("query")?.toString() as string
     updateFilter("query", term)
   }
   const brandChange = ((value: string) => {
-    updateFilter("brand", Number(value))
-    clearFilter("productGroup")
-  })
-  const pGrouphange = ((value: string) => {
-    updateFilter("productGroup", Number(value))
+    updateFilter("valueType", Number(value))
   })
 
   return (
@@ -52,10 +47,7 @@ export default function BomFilter() {
               />
             </div>
             <div className="w-full">
-              <FilterSelect options={data?.brands} value={filters.brand?.toString() || ""} onChange={(value) => brandChange(value)} defaultValue={filters.brand?.toString() || undefined} placeholder="Varumärke" />
-            </div>
-            <div className="w-full">
-              <FilterSelect options={pGroups} value={filters.productGroup?.toString() || ""} onChange={(value) => pGrouphange(value)} defaultValue={filters.productGroup?.toString() || undefined} placeholder="Produktgrupp" />
+              <FilterSelect options={data?.searchValueTypes} value={filters.valueType?.toString() || ""} onChange={(value) => brandChange(value)} defaultValue={filters.valueType?.toString() || undefined} placeholder="Katalogtyp" />
             </div>
             <div className='w-full'>
               <Button className='w-full' onClick={clearFilters}>Återställ</Button>

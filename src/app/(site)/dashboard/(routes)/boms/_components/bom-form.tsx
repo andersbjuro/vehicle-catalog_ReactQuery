@@ -1,6 +1,5 @@
 "use client"
 
-import { BackButton } from "@/components/back-button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatDateTime } from "@/lib/utils";
 import { Bom } from "@/types";
@@ -17,7 +16,6 @@ const BomForm = ({bom}: Props) => {
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle><span className=" text-primary">{bom?.name}</span></CardTitle>
-            <BackButton url="/dashboard/boms" title="Stäng" variant="secondary" className="w-20" />
           </div>
         </CardHeader>
         <CardContent>
