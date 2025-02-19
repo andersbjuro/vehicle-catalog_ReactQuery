@@ -17,11 +17,11 @@ export const onGetItems = async (variables: any) => {
 
   data.oeItems.nodes?.forEach((item: any) => {
     if (item.oeRefs.length === 0) {
-      flatteOeItems.push({oeItemId: item.oeItemId,oeName: item.oeName,itemId: ''})
+      flatteOeItems.push({oeItemId: item.oeItemId,oeName: item.oeName,itemId: '', itemName: ''})
     }
     else {
       item.oeRefs.forEach((ref: any) => {
-        flatteOeItems.push({oeItemId: item.oeItemId,oeName: item.oeName,itemId: ref.itemId})
+        flatteOeItems.push({oeItemId: item.oeItemId,oeName: item.oeName,itemId: ref.itemId, itemName: ref.itemName})
       })
     }
   })

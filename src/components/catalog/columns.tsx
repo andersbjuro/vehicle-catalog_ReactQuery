@@ -1,12 +1,11 @@
 "use client"
 
-import { Checkbox } from "@/components/ui/checkbox";
-import { FlattOeItem, OeItem } from "@/types";
-import { ColumnDef } from "@tanstack/react-table"
 import {SortableHeader} from "@/components/datatable/sortable-header";
-import Link from "next/link";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Catalog } from "@/types";
+import { ColumnDef } from "@tanstack/react-table"
 
-export const columns: ColumnDef<FlattOeItem>[] = [
+export const columns: ColumnDef<Catalog>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -34,7 +33,7 @@ export const columns: ColumnDef<FlattOeItem>[] = [
     header: ({ column }) => <SortableHeader column={column} title="OeItemId" />,
     cell: ({ row }) => (
       <div className="ml-4 font-medium">
-        <Link href={`/dashboard/items/${row.original.oeItemId}/edit`}><span className="underline">{row.original.oeItemId}</span></Link>
+        {row.original.oeItemId}
       </div>
     ),
   },
@@ -42,12 +41,19 @@ export const columns: ColumnDef<FlattOeItem>[] = [
     accessorKey: "itemId",
     header: ({ column }) => <SortableHeader column={column} title="ItemId" />,
   },
+
   {
     accessorKey: "oeName",
-    header: ({ column }) => <SortableHeader column={column} title="OeName" />,
+    header: ({ column }) => <SortableHeader column={column} title="Name" />,
   },
+
   {
-    accessorKey: "itemName",
-    header: ({ column }) => <SortableHeader column={column} title="ItemName" />,
+    accessorKey: "bomTableId",
+    header: ({ column }) => <div style={{ textAlign: "right" }}><SortableHeader column={column} title="BomId" /></div>,
+    cell: ({ row }) => (
+      <div className="text-right mr-5">
+        {row.original.bomTableId}
+      </div>
+    ),
   },
 ];

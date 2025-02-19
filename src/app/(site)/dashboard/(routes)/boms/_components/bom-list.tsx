@@ -44,7 +44,7 @@ export default function BomList() {
         </div>
       </div>
       {!isLoading ? (
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 mt-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 mt-4">
           {data && data.boms ? (
             data.boms.nodes.map((bom: Bom) => (
               <BomCard key={bom.id}

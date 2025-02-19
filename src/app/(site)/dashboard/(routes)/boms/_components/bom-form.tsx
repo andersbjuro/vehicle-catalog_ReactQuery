@@ -9,7 +9,6 @@ interface Props {
 }
 
 const BomForm = ({bom}: Props) => {
-
   return (
     <div>
       <Card>

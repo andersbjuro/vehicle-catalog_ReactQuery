@@ -46,4 +46,8 @@ export const columns: ColumnDef<FlattBomLine>[] = [
     accessorKey: "oeName",
     header: ({ column }) => <SortableHeader column={column} title="OeName" />,
   },
+  {
+    accessorKey: "itemName",
+    header: ({ column }) => <SortableHeader column={column} title="ItemName" />,
+  },
 ];

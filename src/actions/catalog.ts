@@ -23,3 +23,20 @@ export const onGetSearchValues = async (variables: any) => {
   const totalCount = data?.searchValues.totalCount
   return { searchValues, totalCount };
 };
+
+export const getSearchValueById = async (variables: any) => {
+  const session = await auth();
+  const token = `Bearer ${session?.accessToken}`
+
+  const data = await fetcher<SearchValue, any>(SEARCHVALUEBYID_QUERY, variables, { Authorization: token, next: { revalidate: 300 } })
+  return  await data.searchValueById
+};
+
+export const getCatalog = async (variables: any) => {
+  const session = await auth();
+  const token = `Bearer ${session?.accessToken}`
+
+  const data = await fetcher<SearchValue, any>(CATALOG_QUERY, variables, { Authorization: token, next: { revalidate: 300 } })
+  const catalog = data?.catalogAdmin
+  return catalog;
+};

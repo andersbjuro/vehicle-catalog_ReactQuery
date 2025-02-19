@@ -51,6 +51,7 @@ query ($id: Int!, $countryCode: Int!) {
         oeName
         oeRefs( where:  { or: [{countryCode: {eq: $countryCode}}, {itemId: { eq: ""}}]}) {
           itemId
+          itemName
           countryCode
         }
       }

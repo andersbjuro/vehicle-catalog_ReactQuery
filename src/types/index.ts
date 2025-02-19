@@ -45,6 +45,7 @@ export type FlattOeItem = {
   oeItemId: string
   oeName: string
   itemId: string
+  itemName: string
 }
 
 export type OeItem = {
@@ -69,6 +70,7 @@ export type FlattBomLine = {
   oeItemId: string
   oeName: string
   itemId: string
+  itemName: string
 }
 
 export type BomLine = {

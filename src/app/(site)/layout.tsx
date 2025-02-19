@@ -38,7 +38,7 @@ export default async function Dashboard({ children }: ProtectedLayoutProps) {
     <SidebarProvider defaultOpen={defaultOpen}>
       <AppSidebar />
       <SidebarInset>
-        <MaxWidthWrapper className="flex flex-1 flex-col p-3">
+        <MaxWidthWrapper className="flex flex-1 flex-col p-3" large>
           <main className='top-0'>
             {children}
           </main>

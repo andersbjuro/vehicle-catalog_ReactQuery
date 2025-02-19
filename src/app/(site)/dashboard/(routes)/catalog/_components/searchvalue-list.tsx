@@ -5,7 +5,6 @@ import { Plus } from "lucide-react";
 import { Heading } from "@/components/heading";
 import { Button } from "@/components/ui/button"
 import { SearchValueCard } from "./searchvalue-card";
-//import { SearchValueSearch } from "./searchvalue-search";
 import useCatalogFilter from "@/hooks/use-catalog-filter";
 import { useCatalog } from "@/hooks/useCatalog";
 import { createSearchValueFilter } from "@/graphql/filters";
@@ -44,7 +43,7 @@ export default function SearchValueList() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3 mt-4">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 mt-4">
         {data?.searchValues && data?.searchValues.length > 0 ? (
           data?.searchValues.map((sv) => (
             <SearchValueCard key={sv.id}

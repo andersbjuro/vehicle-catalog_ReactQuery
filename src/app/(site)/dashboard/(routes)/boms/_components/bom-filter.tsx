@@ -31,7 +31,7 @@ export default function BomFilter() {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
-          variant="default"
+          variant="outline"
           size="default"
         >
           <ListFilter className="mr-2 size-4" />

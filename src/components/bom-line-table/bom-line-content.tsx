@@ -12,11 +12,11 @@ function BomLineContent({ bom }: Props) {
 
   bom?.lines.forEach((line => {
     if (line.oeItem.oeRefs.length === 0) {
-      flattenBomLines.push({ bomId: line.bomId, bomCountryCode: bom.countryCode, oeItemId: line.oeItemId, oeName: line.oeItem.oeName, itemId: '' })
+      flattenBomLines.push({ bomId: line.bomId, bomCountryCode: bom.countryCode, oeItemId: line.oeItemId, oeName: line.oeItem.oeName, itemId: '', itemName: '' })
     }
     else {
       line.oeItem.oeRefs.forEach((ref) => {
-        flattenBomLines.push({ bomId: line.bomId, bomCountryCode: bom.countryCode, oeItemId: line.oeItemId, oeName: line.oeItem.oeName, itemId: ref.itemId })
+        flattenBomLines.push({ bomId: line.bomId, bomCountryCode: bom.countryCode, oeItemId: line.oeItemId, oeName: line.oeItem.oeName, itemId: ref.itemId, itemName: ref.itemName})
       })
     }
   }))
