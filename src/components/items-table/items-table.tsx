@@ -12,12 +12,11 @@ import { DataTableToolbar } from "./toolbar";
 
 interface Props {
   items: FlattOeItem[] | undefined
-  itemsCount: string
-  id: string
-  countryCode: number,
+  itemsCount: string,
+   type: "bom" | "catalog" | "vehiclecatalog"
 }
 
-export function ItemsTable({ items, itemsCount, id, countryCode }: Props) {
+export function ItemsTable({ items, itemsCount,type }: Props) {
   const [rowSelection, setRowSelection] = useState({});
 
   const table = useReactTable({
@@ -38,7 +37,7 @@ export function ItemsTable({ items, itemsCount, id, countryCode }: Props) {
           <CardTitle>
             <Heading title="Artiklar" description={itemsCount.toString()} />
           </CardTitle>
-          <DataTableToolbar table={table} id={id} countryCode={countryCode} />
+          <DataTableToolbar table={table} type={type} />
         </CardHeader>
         <CardContent>
           <div className="flex h-[calc(100vh-350px)]">

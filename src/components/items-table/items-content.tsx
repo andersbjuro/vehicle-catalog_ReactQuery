@@ -1,17 +1,13 @@
 "use client"
 
-import { Bom } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { onGetItems } from "@/actions/item";
 import useSettingStore from "@/hooks/use-setting-store";
 import useItemsFilterStore from "@/hooks/use-itemsfilter-store";
 import { ItemsTable } from "./items-table";
+import useBomStore from "@/hooks/use-bom-store";
 
-interface Props {
-  bom: Bom,
-}
-
-export default function ItemsContent({ bom }: Props) {
+export default function ItemsContent({ type }: { type: "bom" | "catalog" | "vehiclecatalog" }) {
   const { filter} = useItemsFilterStore()
   const { setting: { countryCode } } = useSettingStore()
 
@@ -24,7 +20,7 @@ export default function ItemsContent({ bom }: Props) {
   return (
     <div>
       {data && data.flatteOeItems &&
-        <ItemsTable items={data.flatteOeItems} itemsCount={data.totalCount} id={bom.id.toString()} countryCode={bom.countryCode} />
+        <ItemsTable items={data.flatteOeItems} itemsCount={data.totalCount} type={type} />
       }
     </div>
   )

@@ -1,35 +1,16 @@
 "use client"
 
 import { useEffect } from "react";
-// import { catalogFilter, catalogSearchValue, searchValueAtom } from "@/atoms/catalogAtoms"
-// import { SearchValue } from "@/types"
 import SearchValueForm from "./searchvalue-form"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getSearchValueById } from "@/actions/catalog";
 import useCatalogStore from "@/hooks/use-catalog-store";
-import CatalogComponent from "@/components/catalog/catalog-component";
 import CatalogContent from "@/components/catalog/catalog-content";
-// import ItemsComponent from "@/components/items/items-component"
-// import BomsComponent from "@/components/boms/boms-component"
-// import CatalogComponent from "@/components/catalog/catalog-component"
-// import { useEffect } from "react"
-// import { countryCode } from "@/atoms/userAtoms"
+import ItemsContent from "@/components/items-table/items-content";
 
 export default function SearchValueContent() {
-
-  // const country = useAtomValue(countryCode) as number
-  // const setPostId = useSetAtom(searchValueAtom)
-  // const setSearch = useSetAtom(catalogFilter)
-  // const setCatalogSearchValue = useSetAtom(catalogSearchValue)
-
-  // useEffect(() => {
-  //setPostId(searchValue)
-  //setSearch({ searchValue: searchValue.value, valueType: searchValue.valueType, countryCode: country })
-  //setCatalogSearchValue({value: searchValue.value, valueType: searchValue.searchValueType.id, countryCode: searchValue.countryCode})
-  //}, [searchValue]);
-
   const params = useParams();
   const { id } = params;
   const { setFilter, setSearchValue } = useCatalogStore()
@@ -42,7 +23,7 @@ export default function SearchValueContent() {
 
   useEffect(() => {
     if (data) {
-      setSearchValue({value: data.value, valueType: data.valueType, countryCode: data.countryCode})
+      setSearchValue({searchValue: data.value, valueType: data.valueType, countryCode: data.countryCode})
       setFilter(filter)
     }
   }, [data]);
@@ -66,7 +47,7 @@ export default function SearchValueContent() {
               <TabsTrigger value="boms">Bomstrukturer</TabsTrigger>
             </TabsList>
             <TabsContent value="items">
-              {/* <ItemsComponent type="catalog" /> */}
+              <ItemsContent type="catalog" />
             </TabsContent>
             <TabsContent value="boms">
               {/* <BomsComponent type="catalog"/> */}

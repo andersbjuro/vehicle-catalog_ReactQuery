@@ -13,9 +13,9 @@ import { useState } from 'react';
 
 export default function ItemsFilterBar() {
   const [open, setOpen] = useState(false);
-  const { query, brandId, productGroupId, setQuery, setBrand, setProductGroup, resetFilter } = useItemsFilterStore()
+  const { query, brand, productGroup, setQuery, setBrand, setProductGroup, resetFilter } = useItemsFilterStore()
   const { data } = useBrands()
-  const pGroups: ProductGroup[] = data?.brands.filter((x: { id: any; }) => x.id == brandId)[0]?.productGroups
+  const pGroups: ProductGroup[] = data?.brands.filter((x: { id: any; }) => x.id == brand)[0]?.productGroups
 
   function handleSearch(formData: FormData) {
     const value = formData.get("query")?.toString()
@@ -62,7 +62,7 @@ export default function ItemsFilterBar() {
           </div>
           <div className="w-full">
             <Label className="text-muted-foreground">Varumärke</Label>
-            <Select onValueChange={handleBrandChange} defaultValue={brandId.toString()}>
+            <Select onValueChange={handleBrandChange} defaultValue={brand.toString()}>
               <SelectTrigger>
                 <SelectValue placeholder="varumärke" />
               </SelectTrigger>
@@ -77,7 +77,7 @@ export default function ItemsFilterBar() {
           </div>
           <div className="w-full">
             <Label className="text-muted-foreground">Produktgrupp</Label>
-            <Select onValueChange={handleProductGroupChange} defaultValue={productGroupId.toString()}>
+            <Select onValueChange={handleProductGroupChange} defaultValue={productGroup.toString()}>
               <SelectTrigger>
                 <SelectValue placeholder="produktgrupp" />
               </SelectTrigger>

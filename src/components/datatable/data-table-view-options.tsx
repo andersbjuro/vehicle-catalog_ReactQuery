@@ -28,7 +28,7 @@ export function DataTableViewOptions<TData>({
           size="default"
         >
           <Settings2 className="mr-2 size-4" />
-          View
+          Visa
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[150px]">

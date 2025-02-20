@@ -39,7 +39,7 @@ export default function BomContent() {
 
       <div className="grid grid-cols-2 gap-2 mt-2">
         <BomLineContent bom={data} />
-        <ItemsContent bom={data} />
+        <ItemsContent type="bom" />
       </div>
     </div>
   )

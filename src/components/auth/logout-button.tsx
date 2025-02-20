@@ -1,6 +1,7 @@
 "use client";
 
 import { logout } from "@/lib/actions/logout";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface LogoutButtonProps {
   children?: React.ReactNode;
@@ -9,7 +10,10 @@ interface LogoutButtonProps {
 export const LogoutButton = ({
   children
 }: LogoutButtonProps) => {
+  const queryClient = useQueryClient();
+
   const onClick = () => {
+    queryClient.clear();
     logout();
   };
 

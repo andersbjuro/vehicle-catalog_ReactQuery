@@ -36,7 +36,7 @@ export const getCatalog = async (variables: any) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  const data = await fetcher<SearchValue, any>(CATALOG_QUERY, variables, { Authorization: token, next: { revalidate: 300 } })
+  const data = await fetcher<SearchValue, any>(CATALOG_QUERY, variables, { Authorization: token, next: { revalidate: 300,tags: ['catalog'] } })
   const catalog = data?.catalogAdmin
   return catalog;
 };

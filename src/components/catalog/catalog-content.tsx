@@ -10,10 +10,10 @@ export default function CatalogContent() {
 
   const { setting: { countryCode } } = useSettingStore()
   const { searchValue } = useCatalogStore()
-  const filter = { searchValue: searchValue.value, valueType: searchValue.valueType, countryCode: countryCode }
+  const filter = { searchValue: searchValue.searchValue, valueType: searchValue.valueType, countryCode: countryCode }
 
   const { data, isFetched } = useQuery({
-    queryKey: ["catalog", filter],
+    queryKey: ["catalog", searchValue.searchValue],
     queryFn: async () => { return getCatalog(filter) },
   })
 

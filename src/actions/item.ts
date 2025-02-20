@@ -1,7 +1,7 @@
 "use server"
 
 import { auth } from "@/auth"
-import { ADDITEMSTOBOM_MUTATION, REMOVEITEMSFROMBOM_MUTATION } from "@/graphql/oeitem-mutations"
+import { ADDBOMITEMSTOCATALOG_MUTATION, ADDITEMSTOBOM_MUTATION, ADDITEMSTOCATALOG_MUTATION, REMOVEITEMSFROMBOM_MUTATION, REMOVEITEMSFROMCATALOG_MUTATION } from "@/graphql/oeitem-mutations"
 import { OEITEMS_QUERY,OEITEMBYID_QUERY, OEITEMLIST_QUERY } from "@/graphql/oeitem-queries"
 import { fetcher } from "@/lib/fetcher"
 import { updater } from "@/lib/updater"
@@ -75,3 +75,46 @@ export const removeItemsFromBom = async (items: any[], option: string) => {
   revalidateTag('bom')
   return response
 };
+
+export const addItemsToCatalog = async (searchId: string, valueType: number, countryCode: number, items: any[]) => {
+    const session = await auth();
+  const token = `Bearer ${session?.accessToken}`
+
+  let input: any[] = []
+  items.forEach(item => {
+    input.push({ searchId: searchId, valueType: valueType, bomId: 0, countryCode: countryCode, oeItemId: item.oeItemId })
+  });
+
+  const response = await updater<any>(ADDITEMSTOCATALOG_MUTATION, { input: input },{ Authorization: token});
+  revalidateTag('catalog')
+  return response
+};
+
+export const addBomItemsToCatalog = async (searchId: string, valueType: number, countryCode: number, boms: any[]) => {
+  const session = await auth();
+  const token = `Bearer ${session?.accessToken}`
+
+  let input: any[] = []
+  boms.forEach(item => {
+    input.push({ searchId: searchId, valueType: valueType, bomId: item.id, countryCode: countryCode })
+  });
+
+  const response = await updater<any>(ADDBOMITEMSTOCATALOG_MUTATION, { input: input },{ Authorization: token});
+  revalidateTag('catalog')
+  return response
+};
+
+
+export const removeItemsFromCatalog = async (searchId: string, valueType: number, items: any[]) => {
+   const session = await auth();
+  const token = `Bearer ${session?.accessToken}`
+
+  let input: any[] = []
+  items.forEach(item => {
+    input.push({ searchId: searchId, valueType: valueType, bomId: item.bomTableId, countryCode: 0, oeItemId: item.oeItemId })
+  });
+
+  const response = await updater<any>(REMOVEITEMSFROMCATALOG_MUTATION, { input: input },{ Authorization: token});
+  revalidateTag('catalog')
+  return response
+}
