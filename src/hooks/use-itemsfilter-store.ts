@@ -11,7 +11,6 @@ interface ItemsFilterStoreInterface {
     setBrand: (brandProp: number) => void
     setProductGroup: (productGroupProp: number) => void
     resetFilter: () => void
-    //setRowSelection: (rowSelectionProp: any) => void
 }
 
 const useItemsFilterStore = create<ItemsFilterStoreInterface>((set, get) => ({
@@ -32,9 +31,6 @@ const useItemsFilterStore = create<ItemsFilterStoreInterface>((set, get) => ({
     resetFilter: () => {
         set({ query: "", brand: 0, productGroup: 0, filter: createOeItemsFilter({ searchTerm: "", brandId: 0, productGroupId: 0 }) })
     },
-    // setRowSelection: (rowSelectionProp: any) => {
-    //     set({ rowSelection: rowSelectionProp })
-    // }
 }))
 
 export default useItemsFilterStore

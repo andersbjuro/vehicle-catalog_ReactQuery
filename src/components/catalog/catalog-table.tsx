@@ -34,12 +34,12 @@ export function CatalogTable({ catalog }: Props) {
       <Card className="mt-2">
         <CardHeader className="flex flex-col sm:flex-row items-start justify-between gap-2">
           <CardTitle>
-            <Heading title="Bomlista" description={catalog?.length.toString()} />
+            <Heading title="Katalog" description={catalog?.length.toString()} />
           </CardTitle>
           <DataTableToolbar table={table} />
         </CardHeader>
         <CardContent>
-          <div className="flex h-[calc(100vh-350px)]">
+          <div className="flex h-[calc(100vh-300px)]">
             <div className="flex  w-full">
               <ScrollArea type="scroll" className=" flex-1 overflow-y-auto">
                 <DataTable columns={columns} table={table} />

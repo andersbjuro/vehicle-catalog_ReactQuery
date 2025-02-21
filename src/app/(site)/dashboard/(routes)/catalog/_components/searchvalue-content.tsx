@@ -9,6 +9,7 @@ import { getSearchValueById } from "@/actions/catalog";
 import useCatalogStore from "@/hooks/use-catalog-store";
 import CatalogContent from "@/components/catalog/catalog-content";
 import ItemsContent from "@/components/items-table/items-content";
+import BomsContent from "@/components/boms-table/boms-content";
 
 export default function SearchValueContent() {
   const params = useParams();
@@ -50,7 +51,7 @@ export default function SearchValueContent() {
               <ItemsContent type="catalog" />
             </TabsContent>
             <TabsContent value="boms">
-              {/* <BomsComponent type="catalog"/> */}
+              <BomsContent type="catalog"/>
             </TabsContent>
           </Tabs>
         </div>

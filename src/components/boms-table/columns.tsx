@@ -1,12 +1,12 @@
 "use client"
 
-import {SortableHeader} from "@/components/datatable/sortable-header";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Catalog } from "@/types";
+import { Bom } from "@/types";
 import { ColumnDef } from "@tanstack/react-table"
+import {SortableHeader} from "@/components/datatable/sortable-header";
 import Link from "next/link";
 
-export const columns: ColumnDef<Catalog>[] = [
+export const columns: ColumnDef<Bom>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -30,31 +30,16 @@ export const columns: ColumnDef<Catalog>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "oeItemId",
-    header: ({ column }) => <SortableHeader column={column} title="OeItemId" />,
+    accessorKey: "bomId",
+    header: ({ column }) => <SortableHeader column={column} title="BomId" />,
     cell: ({ row }) => (
       <div className="ml-4 font-medium">
-      <Link href={`/dashboard/items/${row.original.oeItemId}/edit`}><span className="underline">{row.original.oeItemId}</span></Link>
-    </div>
-    ),
-  },
-  {
-    accessorKey: "itemId",
-    header: ({ column }) => <SortableHeader column={column} title="ItemId" />,
-  },
-
-  {
-    accessorKey: "oeName",
-    header: ({ column }) => <SortableHeader column={column} title="Name" />,
-  },
-
-  {
-    accessorKey: "bomTableId",
-    header: ({ column }) => <div style={{ textAlign: "right" }}><SortableHeader column={column} title="BomId" /></div>,
-    cell: ({ row }) => (
-      <div className="text-right mr-5">
-        {row.original.bomTableId}
+        <Link href={`/dashboard/boms/${row.original.id}/edit`}><span className="underline">{row.original.id}</span></Link>
       </div>
     ),
+  },
+  {
+    accessorKey: "name",
+    header: ({ column }) => <SortableHeader column={column} title="Name" />,
   },
 ];

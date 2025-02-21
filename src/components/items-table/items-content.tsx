@@ -5,7 +5,6 @@ import { onGetItems } from "@/actions/item";
 import useSettingStore from "@/hooks/use-setting-store";
 import useItemsFilterStore from "@/hooks/use-itemsfilter-store";
 import { ItemsTable } from "./items-table";
-import useBomStore from "@/hooks/use-bom-store";
 
 export default function ItemsContent({ type }: { type: "bom" | "catalog" | "vehiclecatalog" }) {
   const { filter} = useItemsFilterStore()

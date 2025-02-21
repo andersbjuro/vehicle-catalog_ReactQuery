@@ -2,7 +2,7 @@
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import {  addItemsToCatalog } from "@/actions/item";
+import { addBomItemsToCatalog } from "@/actions/item";
 import { BookPlus } from "lucide-react";
 import useRoleAccess from "@/hooks/useRoleAccess";
 import { useSession } from "next-auth/react";
@@ -21,7 +21,7 @@ export default function AddToCatalogButton({ rowIds, callbackAction }: Props) {
 
   const mutation = useMutation({
     mutationFn: () => {
-      return addItemsToCatalog(searchValue.searchValue, searchValue.valueType, searchValue.countryCode, rowIds)
+      return addBomItemsToCatalog(searchValue.searchValue, searchValue.valueType, searchValue.countryCode, rowIds)
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["catalog", searchValue.searchValue] })

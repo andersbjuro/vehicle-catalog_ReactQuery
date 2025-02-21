@@ -1,42 +1,20 @@
 "use client";
 
 import {
-  parseAsInteger,
   parseAsString,
   useQueryState,
 } from "nuqs";
 
-type FilterKeys =
-  | "query"
-  | "brand"
-  | "productGroup";
+type FilterKeys = "query"
 
-type FilterTypes = {
-  query: string
-  brand: number;
-  productGroup: number;
-};
-
-const useBomsFilter = () => {
+const useVehicleFilter = () => {
   const [query, setQuery] = useQueryState(
     "query",
     parseAsString.withDefault("")
   );
 
-  const [brand, setBrand] = useQueryState(
-    "brand",
-    parseAsInteger
-  );
-
-  const [productGroup, setProductGroup] = useQueryState(
-    "productGroup",
-    parseAsInteger
-  );
-
   const getFilters = () => ({
     query,
-    brand,
-    productGroup,
   });
 
   const updateFilter = (
@@ -46,12 +24,6 @@ const useBomsFilter = () => {
     switch (key) {
       case "query":
         return setQuery(typeof values === "string" ? values : null);
-
-      case "brand":
-        return setBrand(typeof values === "number" ? values : null);
-
-      case "productGroup":
-        return setProductGroup(typeof values === "number" ? values : null);
 
       default:
         throw new Error(`Invalid filter key: ${key}`);
@@ -66,8 +38,6 @@ const useBomsFilter = () => {
   const clearFilters = async () => {
     await Promise.all([
       setQuery(null),
-      setBrand(null),
-      setProductGroup(null),
     ]);
   };
   return {
@@ -78,4 +48,4 @@ const useBomsFilter = () => {
   };
 };
 
-export default useBomsFilter;
+export default useVehicleFilter;

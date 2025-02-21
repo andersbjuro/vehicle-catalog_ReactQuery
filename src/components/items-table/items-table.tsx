@@ -13,10 +13,10 @@ import { DataTableToolbar } from "./toolbar";
 interface Props {
   items: FlattOeItem[] | undefined
   itemsCount: string,
-   type: "bom" | "catalog" | "vehiclecatalog"
+  type: "bom" | "catalog" | "vehiclecatalog"
 }
 
-export function ItemsTable({ items, itemsCount,type }: Props) {
+export function ItemsTable({ items, itemsCount, type }: Props) {
   const [rowSelection, setRowSelection] = useState({});
 
   const table = useReactTable({
