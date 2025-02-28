@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import useItemsFilterStore from '@/hooks/use-itemsfilter-store'
-import { useBrands } from '@/hooks/useBrands';
+import { useBrandsProductGroup } from '@/hooks/useBrandsProductGroup';
 import { ProductGroup } from '@/types';
 import { ListFilter, Search } from 'lucide-react';
 import { useState } from 'react';
@@ -14,7 +14,8 @@ import { useState } from 'react';
 export default function ItemsFilterBar() {
   const [open, setOpen] = useState(false);
   const { query, brand, productGroup, setQuery, setBrand, setProductGroup, resetFilter } = useItemsFilterStore()
-  const { data } = useBrands()
+
+  const { data } = useBrandsProductGroup(1)
   const pGroups: ProductGroup[] = data?.brands.filter((x: { id: any; }) => x.id == brand)[0]?.productGroups
 
   function handleSearch(formData: FormData) {

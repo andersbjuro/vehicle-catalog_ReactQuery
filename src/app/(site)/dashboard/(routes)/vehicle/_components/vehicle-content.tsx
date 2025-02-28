@@ -6,11 +6,35 @@ import useVehicleFilter from '@/hooks/use-vehicle-filter';
 import { useVehicle } from '@/hooks/useVehicle';
 import useVehicleStore from '@/hooks/use-vehicle-store';
 import SearchInput from './search-input';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { VehicleData } from './vehicle-data';
+import VehicleCatalogContent from '@/components/vehicle-catalog/vehicle-catalog-content';
+import ItemsContent from '@/components/items-table/items-content';
+import BomsContent from '@/components/boms-table/boms-content';
+import useCatalogStore from '@/hooks/use-catalog-store';
+import useSettingStore from '@/hooks/use-setting-store';
 
 export default function VehicleContent() {
-  const { country } = useVehicleStore();
+  const router = useRouter()
+  const { setSearchValue } = useCatalogStore();
+  const { setting: { countryCode } } = useSettingStore()
+  const { country, setVehicle } = useVehicleStore();
   const { filters } = useVehicleFilter();
-  const { data, isLoading } = useVehicle(filters.query, country)
+  const { data, searchValue } = useVehicle(filters.query, country)
+
+  useEffect(() => {
+    if (searchValue)
+      router.replace(`/dashboard/catalog/${searchValue.id}/edit`)
+  }, [searchValue])
+
+  useEffect(() => {
+    if (data) {
+      setVehicle(data)
+      setSearchValue({ searchValue: data.eceTree.searchId, valueType: data.eceTree.valueType, countryCode: countryCode })
+    }
+  }, [data])
+
 
   return (
     <div className="flex flex-col w-full">
@@ -19,25 +43,24 @@ export default function VehicleContent() {
           <VehicleCountrySelector />
           <SearchInput placeholder="regNo..." />
         </div>
-        {data?.fb01}
-        {/* <VehicleData /> */}
+        <VehicleData />
       </div>
 
-      <div className="flex flex-row flex-1 gap-3 mt-2 ">
-        <div className="flex flex-col w-1/2">
-          {/* <VehicleCatalogComponent /> */}
+      <div className="grid grid-cols-2 gap-2 mt-2">
+        <div className="w-full">
+          <VehicleCatalogContent />
         </div>
-        <div className="flex flex-col w-1/2">
+        <div className="flex">
           <Tabs defaultValue="items" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="items">Artiklar</TabsTrigger>
               <TabsTrigger value="boms">Bomstrukturer</TabsTrigger>
             </TabsList>
             <TabsContent value="items">
-              {/* <ItemsComponent type="vehiclecatalog" /> */}
+              <ItemsContent type="vehiclecatalog" />
             </TabsContent>
             <TabsContent value="boms">
-              {/* <BomsComponent type="vehiclecatalog" /> */}
+              <BomsContent type="vehiclecatalog" />
             </TabsContent>
           </Tabs>
         </div>

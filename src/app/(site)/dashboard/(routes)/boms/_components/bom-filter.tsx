@@ -2,7 +2,7 @@
 
 import { ListFilter, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useBrands } from "@/hooks/useBrands";
+import { useBrandsProductGroup } from "@/hooks/useBrandsProductGroup";
 import useBomsFilter from "@/hooks/use-boms-filter";
 import FilterSelect from "@/components/filter-select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -12,7 +12,7 @@ import { useState } from "react";
 export default function BomFilter() {
   const [open, setOpen] = useState(false);
   const { filters, updateFilter, clearFilter, clearFilters } = useBomsFilter();
-  const { data } = useBrands()
+  const { data } = useBrandsProductGroup(0)
   const pGroups = data?.brands.filter((x: { id: any; }) => x.id == filters.brand)[0]?.productGroups.map(((x: any) => x.productGroup))
 
   const handleSearch = (formData: FormData) => {

@@ -9,7 +9,6 @@ export const getVehicle = async (regNo: string) => {
   const token = `Bearer ${session?.accessToken}`
 
   const res = await fetcher<any, any>(VEHICLE_SE_ECETREE_QUERY, { id: regNo }, { Authorization: token, next: { revalidate: 300 } })
-  console.log(res.vehicleById)
   return res.vehicleById || {}
 };
 

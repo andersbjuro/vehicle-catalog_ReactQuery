@@ -2,7 +2,7 @@
 
 import { ListFilter, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { useBrands } from "@/hooks/useBrands";
+import { useBrands } from "@/hooks/useBrandsProductGroup";
 import FilterSelect from "@/components/filter-select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";

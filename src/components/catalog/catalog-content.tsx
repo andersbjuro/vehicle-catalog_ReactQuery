@@ -15,6 +15,7 @@ export default function CatalogContent() {
   const { data, isFetched } = useQuery({
     queryKey: ["catalog", searchValue.searchValue],
     queryFn: async () => { return getCatalog(filter) },
+    enabled: searchValue.searchValue !== ""
   })
 
   if (!isFetched) return <div>Loading...</div>

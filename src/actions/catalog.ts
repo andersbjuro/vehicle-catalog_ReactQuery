@@ -24,6 +24,15 @@ export const onGetSearchValues = async (variables: any) => {
   return { searchValues, totalCount };
 };
 
+export const getSearchValue = async (variables: any) => {
+  const session = await auth();
+  const token = `Bearer ${session?.accessToken}`
+
+  const data = await fetcher<SearchValueType[], any>(SEARCHVALUE_QUERY, variables, { Authorization: token, next: { revalidate: 300 } })
+  const searchValue: SearchValue = data?.searchValue[0] || null
+  return searchValue;
+};
+
 export const getSearchValueById = async (variables: any) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
