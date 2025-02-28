@@ -18,7 +18,7 @@ export default function VehicleCatalogContent() {
     enabled: selectedNode !== "",
   })
 
-   if (!isFetched) return <h1 className="text-2xl font-bold">Ingen data</h1>
+  if (!isFetched) return <h1 className="text-sm">Ingen data</h1>
 
   return (
     <CatalogTable catalog={data} />

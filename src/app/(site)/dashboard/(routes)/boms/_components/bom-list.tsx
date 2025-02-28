@@ -53,7 +53,7 @@ export default function BomList() {
               />
             ))
           ) : (
-            <h1 className="text-2xl font-bold">Ingen data</h1>
+            <h1 className="text-sm">Ingen data</h1>
           )}
         </div>
 
