@@ -38,9 +38,6 @@ export default function OeItemList() {
         <Heading title="OE Artiklar" description={showTotal()} />
         <div className="flex gap-2">
           <ItemFilter />
-          <Button className="w-20" onClick={() => router.push(`/dashboard/items/create`)}>
-            <Plus className="mr-2 h-4 w-4" /> Ny
-          </Button>
         </div>
       </div>
       {!isLoading ? (

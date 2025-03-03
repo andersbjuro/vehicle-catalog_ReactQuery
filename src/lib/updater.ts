@@ -28,13 +28,6 @@ export const updater = async <TVariables>(
         next
     });
 
-    // const json = await res.json();
-
-    // if (json.errors) {
-    //     const { message } = json.errors[0];
-    //     throw new Error(message);
-    // }
-
     const data = await response.json();
     return data;
 };

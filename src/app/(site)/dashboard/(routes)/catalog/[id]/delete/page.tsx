@@ -1,9 +1,11 @@
+import DeleteSearchValueForm from "./searchvalue-form";
 
+type Params = Promise<{ id: string }>
 
-export default function DeleteSearchValuePage() {
+export default async function DeleteSearchValuePage({ params }: { params: Params }) {
+  const { id } = await params
+
   return (
-    <main className="flex w-full p-2">
-      <div>Delete catalog</div>
-    </main>
-  )
+    <DeleteSearchValueForm searchId={id} />
+  );
 }

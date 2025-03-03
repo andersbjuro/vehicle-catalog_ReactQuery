@@ -44,11 +44,6 @@ export const ItemCard = ({
                       Visa
                     </Link>
                   </DropdownMenuItem>
-                  {/* <DropdownMenuItem asChild>
-                    <Link href={`/dashboard/items/${item.oeItemId}/delete`}>
-                      Radera
-                    </Link>
-                  </DropdownMenuItem> */}
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>

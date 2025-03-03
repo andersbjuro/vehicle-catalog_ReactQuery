@@ -37,7 +37,7 @@ export default function SearchValueList() {
         <Heading title="Katalog sökvärden" description={showTotal().toString()} />
         <div className="flex gap-2">
           <SearchValueFilter />
-          <Button  className="w-20" onClick={() => router.push(`/dashboard/catalog/create`)}>
+          <Button size="default" className="w-20" onClick={() => router.push(`/dashboard/catalog/create`)}>
             <Plus className="mr-2 h-4 w-4" /> Ny
           </Button>
         </div>
@@ -52,7 +52,7 @@ export default function SearchValueList() {
             />
           ))
         ) : (
-          <h1 className="text-2xl font-bold">Ingen data</h1>
+          <h1 className="text-sm">Ingen data</h1>
         )}
       </div>
     </div>

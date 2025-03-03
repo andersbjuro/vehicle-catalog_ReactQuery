@@ -32,7 +32,6 @@ query ($filter: SearchValueFilterInput!) {
 `;
 
 
-
 export const SEARCHVALUEBYID_QUERY = gql`
 query ($id: Long!) {
   searchValueById(id: $id) {

@@ -38,7 +38,7 @@ export default function BomList() {
         <Heading title="Bomstrukturer" description={showTotal()} />
         <div className="flex gap-2">
           <BomFilter />
-          <Button className="w-20" onClick={() => router.push(`/dashboard/boms/create`)}>
+          <Button size="default" className="w-20" onClick={() => router.push(`/dashboard/boms/create`)}>
             <Plus className="mr-2 h-4 w-4" /> Ny
           </Button>
         </div>
