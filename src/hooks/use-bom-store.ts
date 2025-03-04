@@ -8,7 +8,6 @@ interface BomStoreInterface {
 
 const useBomStore = create<BomStoreInterface>((set) => ({
     filter: {id: 0, countryCode: 0},
-    rowSelection: {},
     setFilter: (filterProp: BomDetailFilter) => {
         set({ filter: filterProp })
     },

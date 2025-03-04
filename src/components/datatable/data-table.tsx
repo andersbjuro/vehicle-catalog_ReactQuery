@@ -12,7 +12,7 @@ interface DataTableProps<TData, TValue> {
 
 export function DataTable<TData, TValue>({ columns, table }: DataTableProps<TData, TValue>) {
   return (
-    <div className="rounded-md border">
+    <div className="rounded-md border w-full">
       <Table>
         <TableHeader table={table} />
         <TableBody>

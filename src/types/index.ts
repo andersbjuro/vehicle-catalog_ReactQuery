@@ -1,3 +1,4 @@
+
 import { Icons } from "@/components/icons";
 
 export type Country = {
@@ -46,6 +47,8 @@ export type FlattOeItem = {
   oeName: string
   itemId: string
   itemName: string
+  brand?: string,
+  productGroup?: string
 }
 
 export type OeItem = {

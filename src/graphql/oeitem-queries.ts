@@ -103,6 +103,11 @@ query ($filter: OeItemFilterInput!) {
         name
         id
       }
+      oeRefs {
+        itemId
+        itemName
+        countryCode
+      }
     }
   }
 }
