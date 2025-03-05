@@ -122,5 +122,6 @@ export type Catalog = {
   oeItemId: string
   oeName: string
   itemId: string
+  itemName: string
   bomTableId: number
 }

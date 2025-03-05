@@ -15,7 +15,7 @@ export const onGetSearchValuesTypes = async () => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  const data = await fetcher<SearchValueType[], any>(SEARCHVALUETYPES_QUERY,{}, { Authorization: token, next: { revalidate: 300 } })
+  const data = await fetcher<SearchValueType[], any>(SEARCHVALUETYPES_QUERY, {}, { Authorization: token, next: { revalidate: 300 } })
   return data
 };
 
@@ -43,14 +43,14 @@ export const getSearchValueById = async (variables: any) => {
   const token = `Bearer ${session?.accessToken}`
 
   const data = await fetcher<SearchValue, any>(SEARCHVALUEBYID_QUERY, variables, { Authorization: token, next: { revalidate: 300, tags: ['searchvalue'] } })
-  return  await data.searchValueById
+  return await data.searchValueById
 };
 
 export const getCatalog = async (variables: any) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  const data = await fetcher<SearchValue, any>(CATALOG_QUERY, variables, { Authorization: token, next: { revalidate: 300,tags: ['catalog'] } })
+  const data = await fetcher<SearchValue, any>(CATALOG_QUERY, variables, { Authorization: token, next: { revalidate: 300, tags: ['catalog'] } })
   const catalog = data?.catalogAdmin
   return catalog;
 };
@@ -65,9 +65,9 @@ export const createSearchValue = async (prevState: SearchValueActionResponse | n
     countryCode: Number(formData.get('countryCode'))
   }
 
-   const validatedData = createSearchValueSchema.safeParse(rawData)
+  const validatedData = createSearchValueSchema.safeParse(rawData)
 
-   if (!validatedData.success) {
+  if (!validatedData.success) {
     return {
       success: false,
       message: 'Please fix the errors in the form',

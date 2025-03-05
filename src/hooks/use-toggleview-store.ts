@@ -2,16 +2,16 @@ import { create } from 'zustand'
 
 export type CurrentViewOption = 'list' | 'grid'
 
-type ItemViewStore = {
+type ToggleViewStore = {
     currentView: CurrentViewOption
     updateCurrentView: (CurrentViewProp: CurrentViewOption) => void
 }
 
-const useItemViewStore = create<ItemViewStore>((set) => ({
+const useToggleViewStore = create<ToggleViewStore>((set) => ({
     currentView: "grid",
     updateCurrentView: (CurrentViewProp: CurrentViewOption) => {
         set({ currentView: CurrentViewProp })
     },
 }))
 
-export default useItemViewStore
+export default useToggleViewStore

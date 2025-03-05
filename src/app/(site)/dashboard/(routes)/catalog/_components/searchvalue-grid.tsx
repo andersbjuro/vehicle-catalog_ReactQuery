@@ -1,18 +1,18 @@
 "use client"
 
-import { FlattOeItem,  } from "@/types";
+import { SearchValue } from "@/types";
 import { getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { DataTable } from "@/components/datatable/data-table";
-import { columns } from "./items-columns";
+import { columns } from "./searchvalue-columns";
 
 interface Props {
-  items: FlattOeItem[] | undefined
+  serachValues: SearchValue[] | undefined
 }
 
-export function ItemsGrid({ items }: Props) {
+export function SearchValueGrid({ serachValues }: Props) {
 
   const table = useReactTable({
-    data: items || [],
+    data: serachValues || [],
     columns,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),

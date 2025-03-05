@@ -1,18 +1,18 @@
 "use client"
 
-import { FlattOeItem,  } from "@/types";
+import { Bom,  } from "@/types";
 import { getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { DataTable } from "@/components/datatable/data-table";
-import { columns } from "./items-columns";
+import { columns } from "./bom-columns";
 
 interface Props {
-  items: FlattOeItem[] | undefined
+  boms: Bom[] | undefined
 }
 
-export function ItemsGrid({ items }: Props) {
+export function BomsGrid({ boms }: Props) {
 
   const table = useReactTable({
-    data: items || [],
+    data: boms || [],
     columns,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),

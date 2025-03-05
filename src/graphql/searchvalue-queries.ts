@@ -71,6 +71,7 @@ export const CATALOG_QUERY = gql`
       oeItemId
       oeName
       itemId
+      itemName
       value
       valueType
       bomTableId

@@ -42,12 +42,14 @@ export const columns: ColumnDef<Catalog>[] = [
     accessorKey: "itemId",
     header: ({ column }) => <SortableHeader column={column} title="ItemId" />,
   },
-
   {
     accessorKey: "oeName",
-    header: ({ column }) => <SortableHeader column={column} title="Name" />,
+    header: ({ column }) => <SortableHeader column={column} title="OeName" />,
   },
-
+  {
+    accessorKey: "itemName",
+    header: ({ column }) => <SortableHeader column={column} title="ItemName" />,
+  },
   {
     accessorKey: "bomTableId",
     header: ({ column }) => <div style={{ textAlign: "right" }}><SortableHeader column={column} title="BomId" /></div>,

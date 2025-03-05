@@ -1,6 +1,6 @@
 "use client"
 
-import { Catalog, FlattBomLine } from "@/types";
+import { Catalog } from "@/types";
 import { getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { DataTable } from "../datatable/data-table";
 import { columns } from "./columns";
