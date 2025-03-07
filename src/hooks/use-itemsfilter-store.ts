@@ -17,19 +17,19 @@ const useItemsFilterStore = create<ItemsFilterStoreInterface>((set, get) => ({
     query: "",
     brand: 0,
     productGroup: 0,
-    filter: createOeItemsFilter({ searchTerm: "", brand: 0, productGroup: 0 }),
+    filter: createOeItemsFilter({ query: "", brand: 0, productGroup: 0 }),
     rowSelection: [],
     setQuery: (queryProp: string) => {
-        set({ query: queryProp, filter: createOeItemsFilter({ searchValue: queryProp, brandId: get().brand, productGroup: get().productGroup }) })
+        set({ query: queryProp, filter: createOeItemsFilter({ query: queryProp, brand: get().brand, productGroup: get().productGroup }) })
     },
     setBrand: (brandProp: number) => {
-        set({ brand: brandProp, filter: createOeItemsFilter({ searchValue: get().query, brand: brandProp, productGroup: get().productGroup }) })
+        set({ brand: brandProp, filter: createOeItemsFilter({ query: get().query, brand: brandProp, productGroup: get().productGroup }) })
     },
     setProductGroup: (productGroupProp: number) => {
-        set({ productGroup: productGroupProp, filter: createOeItemsFilter({ searchValue: get().query, brandId: get().brand, productGroupId: productGroupProp }) })
+        set({ productGroup: productGroupProp, filter: createOeItemsFilter({ query: get().query, brand: get().brand, productGroup: productGroupProp }) })
     },
     resetFilter: () => {
-        set({ query: "", brand: 0, productGroup: 0, filter: createOeItemsFilter({ searchTerm: "", brandId: 0, productGroupId: 0 }) })
+        set({ query: "", brand: 0, productGroup: 0, filter: createOeItemsFilter({ query: "", brand: 0, productGroup: 0 }) })
     },
 }))
 

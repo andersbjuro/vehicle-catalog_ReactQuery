@@ -25,7 +25,8 @@ export default function RemoveFromCatalogButton({ rowIds, callbackAction }: Prop
       return removeItemsFromCatalog(searchValue.searchValue, searchValue.valueType, rowIds)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["catalog", searchValue.searchValue] })
+      //queryClient.invalidateQueries({ queryKey: ["catalog", searchValue.searchValue] })
+      queryClient.invalidateQueries()
       toast.success("Artiklar borttagna ur katalogen")
     },
   })

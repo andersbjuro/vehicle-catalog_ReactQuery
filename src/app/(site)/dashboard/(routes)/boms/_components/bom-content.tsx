@@ -20,7 +20,7 @@ export default function BomContent() {
   var filter: BomDetailFilter = { id: Number(id), countryCode: countryCode }
 
   const { data, isFetched } = useQuery({
-    queryKey: ["bom", id],
+    queryKey: ["bom", filter.id.toString()],
     queryFn: async () => { return onGetBom(filter) },
   })
 

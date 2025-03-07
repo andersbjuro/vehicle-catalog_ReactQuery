@@ -24,7 +24,8 @@ export default function AddToCatalogButton({ rowIds, callbackAction }: Props) {
       return addBomItemsToCatalog(searchValue.searchValue, searchValue.valueType, searchValue.countryCode, rowIds)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["catalog", searchValue.searchValue] })
+      //queryClient.invalidateQueries({ queryKey: ["catalog", searchValue.searchValue] })
+      queryClient.invalidateQueries()
       toast.success("Artiklar tillaggda till katalogen")
     },
   })

@@ -96,14 +96,13 @@ export const removeItemsFromBom = async (items: any[], option: string) => {
 
   const response = await updater<any>(REMOVEITEMSFROMBOM_MUTATION, { input: input }, { Authorization: token });
   revalidateTag('bom')
-  return response
+  //return response
 };
 
 export const addItemsToCatalog = async (searchId: string, valueType: number, countryCode: number, items: any[]) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  console.log('searchValue', searchId, valueType, countryCode)
   let input: any[] = []
   items.forEach(item => {
     input.push({ searchId: searchId, valueType: valueType, bomId: 0, countryCode: countryCode, oeItemId: item.oeItemId })

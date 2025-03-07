@@ -42,7 +42,7 @@ export const getSearchValueById = async (variables: any) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  const data = await fetcher<SearchValue, any>(SEARCHVALUEBYID_QUERY, variables, { Authorization: token, next: { revalidate: 300, tags: ['searchvalue'] } })
+  const data = await fetcher<SearchValue, any>(SEARCHVALUEBYID_QUERY, variables, { Authorization: token })
   return await data.searchValueById
 };
 
@@ -50,7 +50,7 @@ export const getCatalog = async (variables: any) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  const data = await fetcher<SearchValue, any>(CATALOG_QUERY, variables, { Authorization: token, next: { revalidate: 300, tags: ['catalog'] } })
+  const data = await fetcher<SearchValue, any>(CATALOG_QUERY, variables, { Authorization: token})
   const catalog = data?.catalogAdmin
   return catalog;
 };

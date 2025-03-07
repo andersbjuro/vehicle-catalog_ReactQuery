@@ -29,7 +29,8 @@ export default function AddToBomDialog({ rowIds, callbackAction }: Props) {
       return addItemsToBom(filter.id, rowIds, option)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["bom", filter.id.toString()] })
+      queryClient.invalidateQueries()
+      //queryClient.invalidateQueries({ queryKey: ["bom", filter.id.toString()] })
       toast.success("Artiklar tillaggda till bomlistan")
     },
   })

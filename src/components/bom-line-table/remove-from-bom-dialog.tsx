@@ -29,7 +29,8 @@ export default function RemoveFromBomDialog({ rowIds, callbackAction }: Props) {
       return removeItemsFromBom(rowIds, option)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["bom", filter.id.toString()] })
+      //queryClient.invalidateQueries({ queryKey: ['bom'] })
+      queryClient.invalidateQueries()
       toast.success("Artiklar borttagna till bomlistan")
     },
   })

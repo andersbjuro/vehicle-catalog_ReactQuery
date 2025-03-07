@@ -21,7 +21,8 @@ export const onGetBoms = async (variables: any) => {
 export const onGetBom = async (variables: any) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
-  const res = await fetcher<Bom, any>(BOMBYID_QUERY, variables, { Authorization: token, next: { revalidate: 60, tags: ['bom'] } })
+  //const res = await fetcher<Bom, any>(BOMBYID_QUERY, variables, { Authorization: token, next: { revalidate: 60, tags: ['bom'] } })
+  const res = await fetcher<Bom, any>(BOMBYID_QUERY, variables, { Authorization: token })
   return await res.bomById
 }
 
