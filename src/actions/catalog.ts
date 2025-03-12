@@ -10,6 +10,7 @@ import { createSearchValueSchema } from "@/schemas/zod-schemas";
 import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 import { CREATESEARCHVALUE_MUTATION, DELTESEARCHVALUE_MUTATION } from "@/graphql/searchvalue-mutations";
+import { routes } from "@/config/routes";
 
 export const onGetSearchValuesTypes = async () => {
   const session = await auth();
@@ -83,7 +84,7 @@ export const createSearchValue = async (prevState: SearchValueActionResponse | n
 
   const response = await updater<any>(CREATESEARCHVALUE_MUTATION, { input: sv }, { Authorization: token });
   revalidateTag('catalog')
-  redirect(`/dashboard/catalog/${response.data.createSearchValue.searchValue.id}/edit`);
+  redirect(routes.editCatalog(response.data.createSearchValue.searchValue.id));
 };
 
 export const deleteSearchValue = async (id: string) => {

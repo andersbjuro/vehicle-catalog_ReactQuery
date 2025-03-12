@@ -1,6 +1,6 @@
 "use client"
 
-import useSettingStore from "@/hooks/use-setting-store";
+import useSettingStore from "@/store/use-setting-store";
 
 export default function Home() {
   const { setting: { availableCountries, countryCode, pageSize } } = useSettingStore()

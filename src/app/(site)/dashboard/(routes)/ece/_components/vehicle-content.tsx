@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import VehicleCountrySelector from './vehicle-country-selector'
 import useVehicleFilter from '@/hooks/use-vehicle-filter';
 import { useVehicle } from '@/hooks/useVehicle';
-import useVehicleStore from '@/hooks/use-vehicle-store';
+import useVehicleStore from '@/store/use-vehicle-store';
 import SearchInput from './search-input';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -12,8 +12,9 @@ import { VehicleData } from './vehicle-data';
 import VehicleCatalogContent from '@/components/vehicle-catalog/vehicle-catalog-content';
 import ItemsContent from '@/components/items-table/items-content';
 import BomsContent from '@/components/boms-table/boms-content';
-import useCatalogStore from '@/hooks/use-catalog-store';
-import useSettingStore from '@/hooks/use-setting-store';
+import useCatalogStore from '@/store/use-catalog-store';
+import useSettingStore from '@/store/use-setting-store';
+import { routes } from '@/config/routes';
 
 export default function VehicleContent() {
   const router = useRouter()
@@ -21,19 +22,19 @@ export default function VehicleContent() {
   const { setting: { countryCode } } = useSettingStore()
   const { country, setVehicle } = useVehicleStore();
   const { filters } = useVehicleFilter();
-  const { data, searchValue } = useVehicle(filters.query, country)
+  const { vehicle, searchValue } = useVehicle(filters.query, country)
 
   useEffect(() => {
     if (searchValue)
-      router.replace(`/dashboard/catalog/${searchValue.id}/edit`)
+      router.replace(routes.editCatalog(searchValue.id))
   }, [searchValue])
 
   useEffect(() => {
-    if (data) {
-      setVehicle(data)
-      setSearchValue({ searchValue: data.eceTree.searchId, valueType: data.eceTree.valueType, countryCode: countryCode })
+    if (vehicle) {
+      setVehicle(vehicle)
+      setSearchValue({ searchValue: vehicle.eceTree.searchId, valueType: vehicle.eceTree.valueType, countryCode: countryCode })
     }
-  }, [data])
+  }, [vehicle])
 
 
   return (

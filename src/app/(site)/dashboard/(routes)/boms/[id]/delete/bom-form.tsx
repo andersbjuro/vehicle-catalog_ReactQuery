@@ -3,6 +3,7 @@
 import { deleteBom } from "@/actions/bom";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { routes } from "@/config/routes";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
@@ -17,7 +18,7 @@ export default function DeleteBomForm({ bomId }: { bomId: string }) {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["boms"] })
-      router.push('/dashboard/boms')
+      router.push(routes.boms)
     },
   })
 
@@ -37,7 +38,7 @@ export default function DeleteBomForm({ bomId }: { bomId: string }) {
         </CardHeader>
         <CardFooter className="w-full flex justify-between">
           <Button variant="secondary" asChild>
-            <Link href="/dashboard/boms">Avbryt</Link>
+            <Link href={routes.boms}>Avbryt</Link>
           </Button>
 
           {mutation.isPending ? (

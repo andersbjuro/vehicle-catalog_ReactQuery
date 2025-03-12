@@ -10,9 +10,10 @@ import { BomCard } from "./bom-card";
 import { Bom } from "@/types";
 import { useBoms } from "@/hooks/useBoms";
 import useBomsFilter from "@/hooks/use-boms-filter";
-import useToggleViewStore from "@/hooks/use-toggleview-store";
+import useToggleViewStore from "@/store/use-toggleview-store";
 import ToggleViewIcon from "@/components/toggle-view-icon";
 import { BomsGrid } from "./boms-grid";
+import { routes } from "@/config/routes";
 
 export default function BomList() {
   const { currentView } = useToggleViewStore()
@@ -43,7 +44,7 @@ export default function BomList() {
         <div className="flex gap-3 items-center">
           <ToggleViewIcon />
           <BomFilter />
-          <Button size="default" className="w-20" onClick={() => router.push(`/dashboard/boms/create`)}>
+          <Button size="default" className="w-20" onClick={() => router.push(routes.createBom())}>
             <Plus className="mr-2 h-4 w-4" /> Ny
           </Button>
         </div>
@@ -60,7 +61,7 @@ export default function BomList() {
             data.boms.nodes.map((bom: Bom) => (
               <BomCard key={bom.id}
                 bom={bom}
-                handleClick={() => router.push(`/dashboard/boms/${bom.id}/edit`)}
+                handleClick={() => router.push( routes.editBom(bom.id))}
               />
             ))
           ) : (

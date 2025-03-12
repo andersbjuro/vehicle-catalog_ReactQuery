@@ -3,9 +3,9 @@
 import { Table } from "@tanstack/react-table"
 import { DataTableViewOptions } from "../datatable/data-table-view-options"
 import RemoveFromCatalogButton from "./remove-from-catalog-button"
-import useVehicleStore from "@/hooks/use-vehicle-store"
+import useVehicleStore from "@/store/use-vehicle-store"
 import FilterSelect from "../filter-select"
-import useCatalogStore from "@/hooks/use-catalog-store"
+import useCatalogStore from "@/store/use-catalog-store"
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>

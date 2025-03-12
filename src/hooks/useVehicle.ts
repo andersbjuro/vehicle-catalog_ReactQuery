@@ -11,11 +11,11 @@ export function useVehicle(regNo: string, country: string) {
     queryFn: async () => { return getSearchValue(v) },
   })
 
-  const { data } = useQuery({
+  const { data: vehicle } = useQuery({
     queryKey: ['vehicle', regNo],
     enabled: searchValue === null ? true : false,
     queryFn: async () => { return country === 'Sverige' ? getVehicle(regNo) : getVehicleNo(regNo) },
   })
 
-  return { searchValue, data }
+  return { searchValue, vehicle }
 }

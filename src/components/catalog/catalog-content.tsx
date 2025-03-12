@@ -3,8 +3,8 @@
 import { CatalogTable } from "./catalog-table";
 import { useQuery } from "@tanstack/react-query";
 import { getCatalog } from "@/actions/catalog";
-import useCatalogStore from "@/hooks/use-catalog-store";
-import useSettingStore from "@/hooks/use-setting-store";
+import useCatalogStore from "@/store/use-catalog-store";
+import useSettingStore from "@/store/use-setting-store";
 
 export default function CatalogContent() {
 

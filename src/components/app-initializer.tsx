@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import useSettingStore from '@/hooks/use-setting-store'
+import useSettingStore from '@/store/use-setting-store'
 import { ClientSetting } from '@/types'
 
 export default function AppInitializer({

@@ -1,7 +1,7 @@
 "use client"
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import useVehicleStore from "@/hooks/use-vehicle-store"
+import useVehicleStore from "@/store/use-vehicle-store"
 import { ChevronsLeftRight, Globe2 } from "lucide-react"
 
 export default function VehicleCountrySelector() {

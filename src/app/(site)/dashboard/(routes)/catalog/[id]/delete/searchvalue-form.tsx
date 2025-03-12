@@ -3,6 +3,7 @@
 import { deleteSearchValue } from "@/actions/catalog";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { routes } from "@/config/routes";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
@@ -17,7 +18,7 @@ export default function DeleteSearchValueForm({ searchId }: { searchId: string }
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["catalog"] })
-      router.push('/dashboard/catalog')
+      router.push(routes.catalog)
     },
   })
 
@@ -36,7 +37,7 @@ export default function DeleteSearchValueForm({ searchId }: { searchId: string }
         </CardHeader>
         <CardFooter className="w-full flex justify-between">
           <Button variant="secondary" asChild>
-            <Link href="/dashboard/catalog">Avbryt</Link>
+            <Link href={routes.catalog}>Avbryt</Link>
           </Button>
 
           {mutation.isPending ? (

@@ -4,6 +4,7 @@ import { FlattOeItem } from "@/types";
 import { ColumnDef } from "@tanstack/react-table"
 import {SortableHeader} from "@/components/datatable/sortable-header";
 import Link from "next/link";
+import { routes } from "@/config/routes";
 
 export const columns: ColumnDef<FlattOeItem>[] = [
   {
@@ -11,7 +12,7 @@ export const columns: ColumnDef<FlattOeItem>[] = [
     header: ({ column }) => <SortableHeader column={column} title="OeItemId" className="font-medium w-[80px]" />,
     cell: ({ row }) => (
       <div className="ml-3 font-medium w-[80px]">
-        <Link href={`/dashboard/items/${row.original.oeItemId}/edit`}><span className="underline">{row.original.oeItemId}</span></Link>
+        <Link href={routes.editItem(row.original.oeItemId)}><span className="underline">{row.original.oeItemId}</span></Link>
       </div>
     ),
   },

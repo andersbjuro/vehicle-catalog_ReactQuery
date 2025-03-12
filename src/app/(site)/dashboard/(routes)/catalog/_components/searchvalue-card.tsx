@@ -4,6 +4,7 @@ import { MoreHorizontal } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { routes } from "@/config/routes";
 
 interface CardProps {
   searchValue: SearchValue;
@@ -38,12 +39,12 @@ export const SearchValueCard = ({
                   <DropdownMenuLabel>Kommandon</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link href={`/dashboard/catalog/${searchValue.id}/edit`}>
+                    <Link href={routes.editCatalog(searchValue.id)}>
                       Visa
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href={`/dashboard/catalog/${searchValue.id}/delete`}>
+                    <Link href={routes.deleteCatalog(searchValue.id)}>
                       Radera
                     </Link>
                   </DropdownMenuItem>

@@ -6,7 +6,7 @@ import {  addItemsToCatalog } from "@/actions/item";
 import { BookPlus } from "lucide-react";
 import useRoleAccess from "@/hooks/useRoleAccess";
 import { useSession } from "next-auth/react";
-import useCatalogStore from "@/hooks/use-catalog-store";
+import useCatalogStore from "@/store/use-catalog-store";
 
 interface Props {
   rowIds: any,
@@ -35,7 +35,7 @@ export default function AddToCatalogButton({ rowIds, callbackAction }: Props) {
   }
 
   return (
-    <Button size="default" variant='destructive' disabled={!access} onClick={() => removeItems()}>
+    <Button size="default" variant='default' disabled={!access} onClick={() => removeItems()}>
       <BookPlus className="size-4" />
     </Button>
   );

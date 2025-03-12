@@ -1,7 +1,7 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card";
-import useVehicleStore from "@/hooks/use-vehicle-store";
+import useVehicleStore from "@/store/use-vehicle-store";
 
 export const VehicleData = () => {
 

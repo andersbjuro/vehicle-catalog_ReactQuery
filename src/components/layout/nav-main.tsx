@@ -1,6 +1,6 @@
 "use client"
 
-import { Link, type LucideIcon } from "lucide-react"
+import { type LucideIcon } from "lucide-react"
 import {
   SidebarGroup,
   SidebarGroupContent,

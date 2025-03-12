@@ -7,7 +7,7 @@ import { removeItemsFromCatalog } from "@/actions/item";
 import { Trash2 } from "lucide-react";
 import useRoleAccess from "@/hooks/useRoleAccess";
 import { useSession } from "next-auth/react";
-import useCatalogStore from "@/hooks/use-catalog-store";
+import useCatalogStore from "@/store/use-catalog-store";
 
 interface Props {
   rowIds: any,

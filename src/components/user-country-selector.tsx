@@ -1,7 +1,7 @@
 "use client"
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import useSettingStore from '@/hooks/use-setting-store'
+import useSettingStore from '@/store/use-setting-store'
 import { setCountryOnServer } from '@/actions/settings'
 import { ChevronsLeftRight, Globe2 } from "lucide-react"
 

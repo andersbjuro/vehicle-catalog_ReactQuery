@@ -6,7 +6,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getSearchValueById } from "@/actions/catalog";
-import useCatalogStore from "@/hooks/use-catalog-store";
+import useCatalogStore from "@/store/use-catalog-store";
 import CatalogContent from "@/components/catalog/catalog-content";
 import ItemsContent from "@/components/items-table/items-content";
 import BomsContent from "@/components/boms-table/boms-content";

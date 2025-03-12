@@ -11,7 +11,8 @@ import { useItems } from "@/hooks/useItems";
 import { LoaderCircle } from "lucide-react";
 import { ItemsGrid } from "./items-grid";
 import ToggleViewIcon from "@/components/toggle-view-icon";
-import useToggleViewStore from "@/hooks/use-toggleview-store";
+import useToggleViewStore from "@/store/use-toggleview-store";
+import { routes } from "@/config/routes";
 
 export default function OeItemList() {
   const { filters } = useItemsFilter();
@@ -68,7 +69,7 @@ export default function OeItemList() {
             data.items.map((item: OeItem) => (
               <ItemCard key={item.oeItemId}
                 item={item}
-                handleClick={() => router.push(`/dashboard/items/${item.oeItemId}/edit`)}
+                handleClick={() => router.push(routes.editItem(item.oeItemId))}
               />
             ))
           ) : (

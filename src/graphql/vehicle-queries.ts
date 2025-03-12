@@ -71,3 +71,20 @@ query vehicleNoById($id: String!) {
   }
 }
 `;
+
+export const NEWVEHICLE_ITEMS_QUERY = gql`
+query {
+  newVehicleItems(order: { created: ASC }) {
+    brand
+    country
+    created
+    rowId
+    sourceCountry
+    sourceRegNo
+    sourceVIN
+    typeApprovalNumber
+    variant
+    version
+  }
+}
+`;

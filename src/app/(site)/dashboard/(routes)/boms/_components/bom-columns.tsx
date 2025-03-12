@@ -4,6 +4,7 @@ import { Bom } from "@/types";
 import { ColumnDef } from "@tanstack/react-table"
 import {SortableHeader} from "@/components/datatable/sortable-header";
 import Link from "next/link";
+import { routes } from "@/config/routes";
 
 export const columns: ColumnDef<Bom>[] = [
   {
@@ -11,7 +12,7 @@ export const columns: ColumnDef<Bom>[] = [
     header: ({ column }) => <SortableHeader column={column} title="Id" className="font-medium w-[80px]" />,
     cell: ({ row }) => (
       <div className="ml-3 font-medium w-[80px]">
-        <Link href={`/dashboard/boms/${row.original.id}/edit`}><span className="underline">{row.original.id}</span></Link>
+        <Link href={routes.editBom(row.original.id)}><span className="underline">{row.original.id}</span></Link>
       </div>
     ),
   },
@@ -35,7 +36,7 @@ export const columns: ColumnDef<Bom>[] = [
   },
   {
     accessorKey: "productGroup",
-    header: ({ column }) => <SortableHeader column={column} title="Produkrgrupp" />,
+    header: ({ column }) => <SortableHeader column={column} title="Produktgrupp" />,
     cell: ({ row }) => (
       <div className="ml-3">
         {row.original.productGroup.name}

@@ -5,6 +5,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
+import { routes } from "@/config/routes";
 
 interface CardProps {
   bom: Bom;
@@ -18,7 +19,6 @@ export const BomCard = ({
 
   return (
     <section
-      // onClick={handleClick}
       className="flex min-h-[100px] w-full flex-col justify-between bg-muted hover:bg-accent rounded-[14px] px-5 py-2 max-w-[500px]">
       <article>
         <div className="flex flex-col gap-1">
@@ -41,12 +41,12 @@ export const BomCard = ({
                   <DropdownMenuLabel>Kommandon</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link href={`/dashboard/boms/${bom.id}/edit`}>
+                    <Link href={routes.editBom(bom.id)}>
                       Visa
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href={`/dashboard/boms/${bom.id}/delete`}>
+                    <Link href={routes.deleteBom(bom.id) }>
                       Radera
                     </Link>
                   </DropdownMenuItem>

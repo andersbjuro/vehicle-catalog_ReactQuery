@@ -10,6 +10,7 @@ import { revalidateTag } from "next/cache"
 import { updater } from "@/lib/updater"
 import { redirect } from "next/navigation"
 import { BomActionResponse, BomFormData } from "@/types/bom"
+import { routes } from "@/config/routes"
 
 export const onGetBoms = async (variables: any) => {
   const session = await auth();
@@ -56,7 +57,7 @@ export const createBom = async (prevState: BomActionResponse | null, formData: F
 
   const response = await updater<any>(CREATEBOM_MUTATION, { input: bom }, { Authorization: token });
   revalidateTag('boms')
-  redirect(`/dashboard/boms/${response.data.createBom.bom.id}/edit`);
+  redirect(routes.editBom(response.data.createBom.bom.id));
 };
 
 export const deleteBom = async (id: string) => {

@@ -10,6 +10,7 @@ import { useTheme } from "next-themes";
 import { DropdownMenuSub } from "@radix-ui/react-dropdown-menu";
 import { SidebarMenuButton } from "../ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { routes } from "@/config/routes";
 
 
 export function UserAccountNav() {
@@ -74,7 +75,7 @@ export function UserAccountNav() {
 
         <DropdownMenuItem asChild>
           <Link
-            href="/dashboard/settings"
+            href={routes.settings}
             className="flex w-full items-center gap-3 px-2.5 py-2"
           >
             <Settings className="size-4" />

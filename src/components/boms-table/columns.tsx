@@ -5,6 +5,7 @@ import { Bom } from "@/types";
 import { ColumnDef } from "@tanstack/react-table"
 import {SortableHeader} from "@/components/datatable/sortable-header";
 import Link from "next/link";
+import { routes } from "@/config/routes";
 
 export const columns: ColumnDef<Bom>[] = [
   {
@@ -34,7 +35,7 @@ export const columns: ColumnDef<Bom>[] = [
     header: ({ column }) => <SortableHeader column={column} title="BomId" />,
     cell: ({ row }) => (
       <div className="ml-4 font-medium">
-        <Link href={`/dashboard/boms/${row.original.id}/edit`}><span className="underline">{row.original.id}</span></Link>
+        <Link href={routes.editBom( row.original.id)}><span className="underline">{row.original.id}</span></Link>
       </div>
     ),
   },

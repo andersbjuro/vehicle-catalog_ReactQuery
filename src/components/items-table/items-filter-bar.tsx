@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import useItemsFilterStore from '@/hooks/use-itemsfilter-store'
+import useItemsFilterStore from '@/store/use-itemsfilter-store'
 import { useBrandsProductGroup } from '@/hooks/useBrandsProductGroup';
 import { ProductGroup } from '@/types';
 import { ListFilter, Search } from 'lucide-react';

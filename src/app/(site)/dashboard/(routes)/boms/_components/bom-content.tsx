@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 import BomForm from './bom-form';
 import BomLineContent from '@/components/bom-line-table/bom-line-content';
 import ItemsContent from '@/components/items-table/items-content';
-import useSettingStore from '@/hooks/use-setting-store';
+import useSettingStore from '@/store/use-setting-store';
 import useBomStore from '@/hooks/use-bom-store';
 import { BomDetailFilter } from "@/types";
 

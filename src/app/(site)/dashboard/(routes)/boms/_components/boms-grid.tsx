@@ -1,6 +1,6 @@
 "use client"
 
-import { Bom,  } from "@/types";
+import { Bom } from "@/types";
 import { getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { DataTable } from "@/components/datatable/data-table";
 import { columns } from "./bom-columns";

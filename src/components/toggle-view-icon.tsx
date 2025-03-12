@@ -1,6 +1,6 @@
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import useItemViewStore, { CurrentViewOption } from "@/hooks/use-toggleview-store";
+import useItemViewStore, { CurrentViewOption } from "@/store/use-toggleview-store";
 import { LayoutGridIcon, List } from "lucide-react";
 
 export default function IconToggle() {
