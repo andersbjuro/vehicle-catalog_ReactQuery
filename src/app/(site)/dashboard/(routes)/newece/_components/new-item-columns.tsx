@@ -3,9 +3,9 @@
 import { ColumnDef } from "@tanstack/react-table"
 import { Checkbox } from "@/components/ui/checkbox";
 import {SortableHeader} from "@/components/datatable/sortable-header";
-import { NewVehicleItem } from "@/types/ece";
+import { NewEceItem } from "@/types/ece";
 
-export const columns: ColumnDef<NewVehicleItem>[] = [
+export const columns: ColumnDef<NewEceItem>[] = [
   {
     id: "select",
     header: ({ table }) => (

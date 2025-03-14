@@ -5,13 +5,13 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heading } from "@/components/heading";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { NewVehicleItem } from "@/types/ece";
+import { NewEceItem } from "@/types/ece";
 import { columns } from "./new-item-columns";
 import { DataTable } from "@/components/datatable/data-table";
 import { NewItemToolbar } from "./new-item-toolbar";
 
 interface Props {
-  newItems: NewVehicleItem[];
+  newItems: NewEceItem[];
 }
 
 export function NewItemsTable({ newItems }: Props) {
