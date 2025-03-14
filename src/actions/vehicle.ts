@@ -3,9 +3,10 @@
 import { fetcher } from "@/lib/fetcher"
 import { updater } from "@/lib/updater";
 import { auth } from "@/auth"
-import { VEHICLE_SE_ECETREE_QUERY, VEHICLE_NO_ECETREE_QUERY, NEWVEHICLE_ITEMS_QUERY } from "@/graphql/vehicle-queries"
-import { NewVehicleItem } from "@/types/ece";
-import { CREATECACATALOGSEARCH_MUTATION } from "@/graphql/ece-mutations";
+import { VEHICLE_SE_ECETREE_QUERY, VEHICLE_NO_ECETREE_QUERY, NEWVECE_ITEMS_QUERY } from "@/graphql/vehicle-queries"
+import { NewEceItem } from "@/types/ece";
+import { COPYCACATALOGSEARCH_MUTATION, CREATECACATALOGSEARCH_MUTATION } from "@/graphql/ece-mutations";
+import { revalidateTag } from "next/cache";
 
 export const getVehicle = async (regNo: string) => {
   const session = await auth();
@@ -23,11 +24,11 @@ export const getVehicleNo = async (variables: any) => {
   return res.vehicleNoById || {};
 };
 
-export const onGetNewVehicleItems = async () => {
+export const onGetNewEceItems = async () => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  const res = await fetcher<NewVehicleItem[], any>(NEWVEHICLE_ITEMS_QUERY, { }, { Authorization: token })
+  const res = await fetcher<NewEceItem[], any>(NEWVECE_ITEMS_QUERY, {}, { Authorization: token })
   return res.newVehicleItems || []
 };
 
@@ -35,6 +36,16 @@ export const createCatalogSearch = async (rowId: number) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  const response = await updater<any>(CREATECACATALOGSEARCH_MUTATION, { input: {rowId: rowId} }, { Authorization: token });
+  const response = await updater<any>(CREATECACATALOGSEARCH_MUTATION, { input: { rowId: rowId } }, { Authorization: token });
+  return response
+};
+
+export const copyCatalogSearch = async (searchId: string, newSearchId: string) => {
+  const session = await auth();
+  const token = `Bearer ${session?.accessToken}`
+
+  const response = await updater<any>(COPYCACATALOGSEARCH_MUTATION, { input: { searchId: searchId, newSearchId: newSearchId } }, { Authorization: token });
+ console.log(response)
+  revalidateTag('neweceitems')
   return response
 };

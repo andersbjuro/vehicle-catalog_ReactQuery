@@ -3,12 +3,12 @@
 import { Heading } from "@/components/heading"
 import { NewItemsTable } from "./new-item-table"
 import { CopyFromTable } from "./copy-from-table"
-import { useNewVehicleItems } from "@/hooks/useNewVehicleItems"
+import { useNewEceItems } from "@/hooks/useNewEceItems"
 import { LoaderCircle } from "lucide-react"
 
 export default function VehicleContent() {
 
-  const { data, isLoading } = useNewVehicleItems()
+  const { data, isLoading } = useNewEceItems()
 
   {
     isLoading && <div className="flex items-center mt-20 mx-auto">

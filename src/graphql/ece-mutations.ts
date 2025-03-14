@@ -12,7 +12,14 @@ mutation createCatalogSearch($input: CreateCatalogSearchInput!) {
       typeApprovalNumber
       variant
       version
+      level
     }
   }
+}
+`;
+
+export const COPYCACATALOGSEARCH_MUTATION  = gql`
+mutation copyCatalogSearch($input: CopyCatalogSearchInput!) {
+  copyCatalogSearch(input: $input)
 }
 `;

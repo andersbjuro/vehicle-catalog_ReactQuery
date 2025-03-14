@@ -72,7 +72,7 @@ query vehicleNoById($id: String!) {
 }
 `;
 
-export const NEWVEHICLE_ITEMS_QUERY = gql`
+export const NEWVECE_ITEMS_QUERY = gql`
 query {
   newVehicleItems(order: { created: ASC }) {
     brand

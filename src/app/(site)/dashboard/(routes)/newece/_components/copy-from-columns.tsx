@@ -82,4 +82,13 @@ export const columns: ColumnDef<NewCatalogSearch>[] = [
       </div>
     ),
   },
+  {
+    accessorKey: "level",
+    header: ({ column }) => <SortableHeader column={column} title="Nivå" />,
+    cell: ({ row }) => (
+      <div className="ml-3">
+        {row.original.level}
+      </div>
+    ),
+  },
 ];

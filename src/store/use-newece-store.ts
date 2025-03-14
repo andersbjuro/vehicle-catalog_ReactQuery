@@ -5,6 +5,7 @@ interface NewEceStoreInterface {
     catalogSearch: CatalogSearchPayload,
 
     setCatalogSearch: (catalogProp: any) => void,
+    resetCatalogSearch: () => void
 }
 
 const useNewEceStore = create<NewEceStoreInterface>((set) => ({
@@ -12,6 +13,13 @@ const useNewEceStore = create<NewEceStoreInterface>((set) => ({
 
     setCatalogSearch: (catalogProp: CatalogSearchPayload) => {
         set({ catalogSearch: catalogProp })
+    },
+    resetCatalogSearch: () => {
+        set({
+            catalogSearch: {
+                newCatalogSearchViews: []
+            }
+        })
     }
 }))
 

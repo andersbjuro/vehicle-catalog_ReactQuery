@@ -1,5 +1,5 @@
 
-export type NewVehicleItem = {
+export type NewEceItem = {
   rowId: number
   typeApprovalNumber: string
   variant: string
@@ -20,6 +20,7 @@ export type NewCatalogSearch = {
   version: string
   count: number
   newSearchId: string
+  level: number
 }
 
 export type CatalogSearchPayload = {
