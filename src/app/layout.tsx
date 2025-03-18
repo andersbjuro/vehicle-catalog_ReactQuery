@@ -1,3 +1,5 @@
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -27,12 +29,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   const setting = data.setting
   const countryCodeCookie = (await cookies()).get('user-country-code')
   const contryCode = countryCodeCookie ? countryCodeCookie.value : '752'
 
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang={locale} className="dark" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased remove-scrollbar",
@@ -40,9 +43,11 @@ export default async function RootLayout({
           geistMono.variable,
         )}
       >
-        <ClientProviders setting={{ ...setting, countryCode: Number(contryCode) }}>
-          {children}
-        </ClientProviders>
+        <NextIntlClientProvider>
+          <ClientProviders setting={{ ...setting, countryCode: Number(contryCode) }}>
+            {children}
+          </ClientProviders>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

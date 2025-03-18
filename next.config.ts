@@ -1,8 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // experimental: {
-  //   dynamicIO: true,
-  // },
+import {NextConfig} from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const nextConfig: NextConfig = {
   output: 'standalone',
   env: {
     npm_package_name: process.env.npm_package_name,
@@ -10,5 +9,5 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
-
+const withNextIntl = createNextIntlPlugin();
+export default withNextIntl(nextConfig);

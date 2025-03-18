@@ -88,3 +88,21 @@ query {
   }
 }
 `;
+
+export const CATALOGSEARCHTOCOPY_QUERY  = gql`
+query catalogSearchToCopy($searchId: String!) {
+  catalogSearchToCopy(searchId: $searchId) {
+    message
+    newCatalogSearchViews {
+      count
+      extension
+      newSearchId
+      searchId
+      typeApprovalNumber
+      variant
+      version
+      level
+    }
+  }
+}
+`;

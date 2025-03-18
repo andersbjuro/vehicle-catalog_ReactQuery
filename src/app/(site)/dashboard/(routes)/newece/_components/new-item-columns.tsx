@@ -4,6 +4,8 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Checkbox } from "@/components/ui/checkbox";
 import {SortableHeader} from "@/components/datatable/sortable-header";
 import { NewEceItem } from "@/types/ece";
+import Link from "next/link";
+import { routes } from "@/config/routes";
 
 export const columns: ColumnDef<NewEceItem>[] = [
   {
@@ -41,8 +43,8 @@ export const columns: ColumnDef<NewEceItem>[] = [
     accessorKey: "sourceRegNo",
     header: ({ column }) => <SortableHeader column={column} title="RegNo" className="w-10"/>,
     cell: ({ row }) => (
-      <div className="ml-3">
-        {row.original.sourceRegNo}
+      <div className="ml-3 font-medium">
+        <Link href={routes.queryEce(row.original.sourceRegNo)}><span className="underline">{row.original.sourceRegNo}</span></Link>
       </div>
     ),
   },

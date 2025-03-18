@@ -16,5 +16,6 @@ export const routes = {
 
   settings: "/dashboard/settings",
   ece: "/dashboard/ece",
+  queryEce: (id: string) => `/dashboard/ece/?query=${id}`,
   newece: "/dashboard/newece",
 };

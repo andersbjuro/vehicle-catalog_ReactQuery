@@ -11,9 +11,8 @@ import { DataTable } from "@/components/datatable/data-table";
 import { CopyFromToolbar } from "./copy-from-toolbar";
 
 export function CopyFromTable() {
-  const { catalogSearch, setCatalogSearch } = useNewEceStore()
+  const { catalogSearch } = useNewEceStore()
   const [rowSelection, setRowSelection] = useState({});
-
 
   const table = useReactTable({
     data: catalogSearch?.newCatalogSearchViews || [],

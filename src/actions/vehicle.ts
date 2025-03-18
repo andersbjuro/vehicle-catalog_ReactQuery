@@ -3,9 +3,9 @@
 import { fetcher } from "@/lib/fetcher"
 import { updater } from "@/lib/updater";
 import { auth } from "@/auth"
-import { VEHICLE_SE_ECETREE_QUERY, VEHICLE_NO_ECETREE_QUERY, NEWVECE_ITEMS_QUERY } from "@/graphql/vehicle-queries"
-import { NewEceItem } from "@/types/ece";
-import { COPYCACATALOGSEARCH_MUTATION, CREATECACATALOGSEARCH_MUTATION } from "@/graphql/ece-mutations";
+import { VEHICLE_SE_ECETREE_QUERY, VEHICLE_NO_ECETREE_QUERY, NEWVECE_ITEMS_QUERY, CATALOGSEARCHTOCOPY_QUERY } from "@/graphql/vehicle-queries"
+import { CatalogSearchPayload, NewEceItem } from "@/types/ece";
+import { CREATECATALOGSEARCH_MUTATION, COPYCATALOGSEARCH_MUTATION } from "@/graphql/ece-mutations";
 import { revalidateTag } from "next/cache";
 
 export const getVehicle = async (regNo: string) => {
@@ -32,11 +32,19 @@ export const onGetNewEceItems = async () => {
   return res.newVehicleItems || []
 };
 
+export const onGetCatalogSearchToCopy = async (searchId: string) => {
+  const session = await auth();
+  const token = `Bearer ${session?.accessToken}`
+
+  const res = await fetcher<CatalogSearchPayload, any>(CATALOGSEARCHTOCOPY_QUERY, {searchId: searchId}, { Authorization: token })
+  return res.catalogSearchToCopy || {}
+};
+
 export const createCatalogSearch = async (rowId: number) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  const response = await updater<any>(CREATECACATALOGSEARCH_MUTATION, { input: { rowId: rowId } }, { Authorization: token });
+  const response = await updater<any>(CREATECATALOGSEARCH_MUTATION, { input: { rowId: rowId } }, { Authorization: token });
   return response
 };
 
@@ -44,7 +52,7 @@ export const copyCatalogSearch = async (searchId: string, newSearchId: string) =
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  const response = await updater<any>(COPYCACATALOGSEARCH_MUTATION, { input: { searchId: searchId, newSearchId: newSearchId } }, { Authorization: token });
+  const response = await updater<any>(COPYCATALOGSEARCH_MUTATION, { input: { searchId: searchId, newSearchId: newSearchId } }, { Authorization: token });
  console.log(response)
   revalidateTag('neweceitems')
   return response

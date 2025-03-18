@@ -11,9 +11,14 @@ import { DropdownMenuSub } from "@radix-ui/react-dropdown-menu";
 import { SidebarMenuButton } from "../ui/sidebar";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { routes } from "@/config/routes";
+import { useLocale } from "next-intl";
+import { startTransition } from "react";
+import { setUserLocale } from "@/i18n/locale";
+import {Locale} from '@/i18n/config';
 
 
 export function UserAccountNav() {
+  const locale = useLocale();
   const { data: session, status } = useSession();
 
   const { theme, setTheme } = useTheme();
@@ -24,12 +29,18 @@ export function UserAccountNav() {
       <div className="size-8 animate-pulse rounded-full border bg-muted" />
     );
 
+    function onLanguageChange(value: string) {
+        const locale = value as Locale;
+        startTransition(() => {
+          setUserLocale(locale);
+        });
+      }
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <SidebarMenuButton
           size="lg"
-          className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+          className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
         >
           <Avatar className="h-8 w-8 rounded-lg">
             <AvatarImage
@@ -82,6 +93,26 @@ export function UserAccountNav() {
             <p className="text-sm">Inställningar</p>
           </Link>
         </DropdownMenuItem>
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger>
+            <Monitor className="mr-2 size-4" />
+            Språk
+          </DropdownMenuSubTrigger>
+          <DropdownMenuPortal>
+            <DropdownMenuSubContent>
+              <DropdownMenuItem onClick={() => onLanguageChange("se")}>
+                <Monitor className="mr-2 size-4" />
+                Svenska
+                {locale === "se" && <Check className="ms-2 size-4" />}
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => onLanguageChange("en")}>
+                <Sun className="mr-2 size-4" />
+                English
+                {locale === "en" && <Check className="ms-2 size-4" />}
+              </DropdownMenuItem>
+            </DropdownMenuSubContent>
+          </DropdownMenuPortal>
+        </DropdownMenuSub>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <Monitor className="mr-2 size-4" />

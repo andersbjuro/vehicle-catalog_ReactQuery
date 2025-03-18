@@ -1,0 +1,21 @@
+{
+  "HomePage": {
+    "title": "Welcome"
+  },
+  "Sidebar": {
+    "bom": "Bom Lists",
+    "items": "OE Items",
+    "catalog": "Catalog",
+    "ece": "Ece",
+    "newece": "New Ece"
+  },
+  "BomPage": {
+    "title": "Boms",
+    "addnew": "Add"
+  },
+  "LocaleSwitcher": {
+    "se": "Svenska",
+    "en": "English",
+    "label": "Språk"
+  }
+}

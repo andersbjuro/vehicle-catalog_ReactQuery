@@ -15,6 +15,8 @@ import BomsContent from '@/components/boms-table/boms-content';
 import useCatalogStore from '@/store/use-catalog-store';
 import useSettingStore from '@/store/use-setting-store';
 import { routes } from '@/config/routes';
+import CopySearchvalueContent from './copy-searchvalue-content';
+import useNewEceStore from '@/store/use-newece-store';
 
 export default function VehicleContent() {
   const router = useRouter()
@@ -23,6 +25,7 @@ export default function VehicleContent() {
   const { country, setVehicle } = useVehicleStore();
   const { filters } = useVehicleFilter();
   const { vehicle, searchValue } = useVehicle(filters.query, country)
+  const { resetCatalogSearch } = useNewEceStore()
 
   useEffect(() => {
     if (searchValue)
@@ -33,6 +36,7 @@ export default function VehicleContent() {
     if (vehicle) {
       setVehicle(vehicle)
       setSearchValue({ searchValue: vehicle.eceTree.searchId, valueType: vehicle.eceTree.valueType, countryCode: countryCode })
+      resetCatalogSearch()
     }
   }, [vehicle])
 
@@ -53,15 +57,19 @@ export default function VehicleContent() {
         </div>
         <div className="flex">
           <Tabs defaultValue="items" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="items">Artiklar</TabsTrigger>
               <TabsTrigger value="boms">Bomstrukturer</TabsTrigger>
+              <TabsTrigger value="copy">Kopiera sökvärde</TabsTrigger>
             </TabsList>
             <TabsContent value="items">
               <ItemsContent type="vehiclecatalog" />
             </TabsContent>
             <TabsContent value="boms">
               <BomsContent type="vehiclecatalog" />
+            </TabsContent>
+            <TabsContent value="copy">
+              <CopySearchvalueContent />
             </TabsContent>
           </Tabs>
         </div>

@@ -1,6 +1,6 @@
 import { gql } from "graphql-request";
 
-export const CREATECACATALOGSEARCH_MUTATION  = gql`
+export const CREATECATALOGSEARCH_MUTATION  = gql`
 mutation createCatalogSearch($input: CreateCatalogSearchInput!) {
   createCatalogSearch(input: $input) {
     message
@@ -18,7 +18,7 @@ mutation createCatalogSearch($input: CreateCatalogSearchInput!) {
 }
 `;
 
-export const COPYCACATALOGSEARCH_MUTATION  = gql`
+export const COPYCATALOGSEARCH_MUTATION  = gql`
 mutation copyCatalogSearch($input: CopyCatalogSearchInput!) {
   copyCatalogSearch(input: $input)
 }

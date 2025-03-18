@@ -114,8 +114,9 @@ export default {
 
     async jwt({ token, account, user, profile }) {
       if (account && user && profile)  {
-        token.accessToken =  account.access_token;
-        token.expires_at = Math.floor(Date.now() / 1000 + account.expires_in!)
+        token.accessToken =  account.access_token
+        //token.expires_at = Math.floor(Date.now() / 1000 + account.expires_in!)
+        token.expires_at =  account.expires_in!
         token.refreshToken = account.refresh_token
         token.id_token = account.id_token
         token.role = user.role;
@@ -125,7 +126,7 @@ export default {
       }
 
       // Return previous token if the access token has not expired yet
-      if (Date.now() < (token.expires_at! * 1000)-5000) {
+      if (Date.now() < (token.expires_at! * 1000)) {
         return token
       }
 

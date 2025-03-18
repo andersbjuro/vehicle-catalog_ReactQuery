@@ -3,6 +3,7 @@ import { Label } from "@/components/ui/label";
 import UserCountrySelector from "@/components/user-country-selector";
 import { Heading } from "@/components/heading";
 import { useCurrentSession } from "@/hooks/use-current-session";
+import LocaleSwitcher from "@/components/next-intl/LocaleSwitcher";
 
 export default  function SettingsPage() {
   const {user, userId} = useCurrentSession()
@@ -11,7 +12,11 @@ export default  function SettingsPage() {
     <div className="flex flex-col w-full gap-2">
       <Heading title="Inställningar" description="" />
       <div className="flex flex-col gap-2 mt-4">
-        <Label>Land</Label>
+        <Label>Programspråk</Label>
+        <LocaleSwitcher />
+      </div>
+      <div className="flex flex-col gap-2 mt-4">
+        <Label>Kod för artikel koppling</Label>
         <UserCountrySelector />
       </div>
 

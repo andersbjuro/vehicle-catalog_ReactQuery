@@ -1,0 +1,21 @@
+{
+  "HomePage": {
+    "title": "Välkommen"
+  },
+  "Sidebar": {
+    "bom": "Bomlistor",
+    "items": "OE Artiklar",
+    "catalog": "Katalog",
+    "ece": "Ece",
+    "newece": "Nya Ece"
+  },
+  "BomPage": {
+    "title": "Bommar",
+    "addnew": "Ny"
+  },
+  "LocaleSwitcher": {
+    "se": "Svenska",
+    "en": "English",
+    "label": "Språk"
+  }
+}

@@ -7,36 +7,38 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, Sid
 import { UserAccountNav } from "./user-account-nav"
 import { useCurrentSession } from "@/hooks/use-current-session"
 import { routes } from "@/config/routes";
+import { useTranslations } from "next-intl"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const t = useTranslations('Sidebar');
   const { user } = useCurrentSession()
   const items = [
     {
-      title: 'Bomstrukturer',
+      title: t('bom'),
       url: routes.boms,
       icon: FolderKanban,
       roles: ['Administrators', 'CatalogManager', 'CatalogUser']
     },
     {
-      title: 'OE Artiklar',
+      title: t('items'),
       url: routes.items,
       icon: FileStackIcon,
       roles: ['Administrators', 'CatalogManager', 'CatalogUser']
     },
     {
-      title: 'Katalog',
+      title: t('catalog'),
       url: routes.catalog,
       icon: Package,
       roles: ['Administrators', 'CatalogManager', 'CatalogUser']
     },
     {
-      title: 'Ece',
+      title: t('ece'),
       url: routes.ece,
       icon: Car,
       roles: ['Administrators', 'CatalogManager', 'CatalogUser']
     },
     {
-      title: 'Nya Ece',
+      title: t('newece'),
       url: routes.newece,
       icon: CarFront,
       roles: ['Administrators', 'CatalogManager']

@@ -14,8 +14,10 @@ import useToggleViewStore from "@/store/use-toggleview-store";
 import ToggleViewIcon from "@/components/toggle-view-icon";
 import { BomsGrid } from "./boms-grid";
 import { routes } from "@/config/routes";
+import { useTranslations } from "next-intl";
 
 export default function BomList() {
+  const t = useTranslations('BomPage');
   const { currentView } = useToggleViewStore()
   const { filters } = useBomsFilter();
   const router = useRouter();
@@ -40,12 +42,12 @@ export default function BomList() {
   return (
     <div className="flex flex-col w-full">
       <div className="flex justify-between">
-        <Heading title="Bomstrukturer" description={showTotal()} />
+        <Heading title={t('title')} description={showTotal()} />
         <div className="flex gap-3 items-center">
           <ToggleViewIcon />
           <BomFilter />
           <Button size="default" className="w-20" onClick={() => router.push(routes.createBom())}>
-            <Plus className="mr-2 h-4 w-4" /> Ny
+            <Plus className="mr-2 h-4 w-4" /> {t('addnew')}
           </Button>
         </div>
       </div>
