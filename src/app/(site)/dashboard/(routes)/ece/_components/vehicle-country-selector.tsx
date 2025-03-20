@@ -1,11 +1,17 @@
 "use client"
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import useVehicleFilter from "@/hooks/use-vehicle-filter";
 import useVehicleStore from "@/store/use-vehicle-store"
 import { ChevronsLeftRight, Globe2 } from "lucide-react"
 
 export default function VehicleCountrySelector() {
-  const { country, setCountry } = useVehicleStore()
+  const { filters, updateFilter } = useVehicleFilter();
+ // const { country, setCountry } = useVehicleStore()
+
+  const handleCountryChange = (value: any) => {
+    updateFilter("country", Number(value))
+  }
 
   return (
       <DropdownMenu>
@@ -13,15 +19,15 @@ export default function VehicleCountrySelector() {
           <div role="button" className="flex items-center justify-between text-sm p-3 w-48 hover:bg-primary/5 rounded">
             <div className=" gap-x-2 flex items-center max-w-[150px]">
               <Globe2 className="h-5 w-5" />
-              <span className=" text-start font-medium line-clamp-1">{country}</span>
+              <span className=" text-start font-medium line-clamp-1">{filters.country === 752 ? 'Sverige' : 'Norge'}</span>
             </div>
             <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="start" alignOffset={11} forceMount>
-          <DropdownMenuRadioGroup value={country} onValueChange={setCountry} defaultValue={country}>
-            <DropdownMenuRadioItem value="Sverige">Sverige</DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="Norge">Norge</DropdownMenuRadioItem>
+          <DropdownMenuRadioGroup value={filters.country.toString()} onValueChange={handleCountryChange} defaultValue={filters.country.toString()}>
+            <DropdownMenuRadioItem value="752">Sverige</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="578">Norge</DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuContent>
       </DropdownMenu>

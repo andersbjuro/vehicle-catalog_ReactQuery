@@ -7,9 +7,9 @@ import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getSearchValueById } from "@/actions/catalog";
 import useCatalogStore from "@/store/use-catalog-store";
-import CatalogContent from "@/components/catalog/catalog-content";
 import ItemsContent from "@/components/items-table/items-content";
 import BomsContent from "@/components/boms-table/boms-content";
+import { CatalogTable } from "@/components/catalog/catalog-table";
 
 export default function SearchValueContent() {
   const params = useParams();
@@ -17,19 +17,17 @@ export default function SearchValueContent() {
   const { setFilter, setSearchValue } = useCatalogStore()
   const filter = { id: Number(id) }
 
-  const { data, isFetched } = useQuery({
+  const { data } = useQuery({
     queryKey: ["searchvalue", id],
     queryFn: async () => { return getSearchValueById(filter) },
   })
 
   useEffect(() => {
     if (data) {
-      setSearchValue({searchValue: data.value, valueType: data.valueType, countryCode: data.countryCode})
+      setSearchValue({ searchValue: data.value, valueType: data.valueType, countryCode: data.countryCode })
       setFilter(filter)
     }
   }, [data]);
-
-  if (!isFetched) return <div>Loading...</div>
 
   return (
     <div className="flex flex-col w-full">
@@ -39,7 +37,7 @@ export default function SearchValueContent() {
 
       <div className="grid grid-cols-2 gap-2 mt-2">
         <div className="w-full">
-          <CatalogContent  />
+          <CatalogTable />
         </div>
         <div className="flex ">
           <Tabs defaultValue="items" className="w-full">
@@ -51,7 +49,7 @@ export default function SearchValueContent() {
               <ItemsContent type="catalog" />
             </TabsContent>
             <TabsContent value="boms">
-              <BomsContent type="catalog"/>
+              <BomsContent type="catalog" />
             </TabsContent>
           </Tabs>
         </div>

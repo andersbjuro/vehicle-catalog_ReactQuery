@@ -9,14 +9,18 @@ import { useEffect } from "react";
 function CopySearchvalueContent() {
   const { searchValue } = useCatalogStore();
   const { setCatalogSearch } = useNewEceStore()
-  const { data } = useCopyCatalogSearchQuery(searchValue.searchValue)
+  const { data, isFetched } = useCopyCatalogSearchQuery(searchValue.searchValue)
 
   useEffect(() => {
-      setCatalogSearch(data)
-  }, [searchValue,data])
+    setCatalogSearch(data)
+  }, [searchValue, data])
 
   return (
-    <CopyFromTable />
+    <div>
+      {isFetched &&
+        <CopyFromTable />
+      }
+    </div>
   )
 }
 

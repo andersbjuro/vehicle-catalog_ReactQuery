@@ -16,11 +16,11 @@ export const getVehicle = async (regNo: string) => {
   return res.vehicleById || {}
 };
 
-export const getVehicleNo = async (variables: any) => {
+export const getVehicleNo = async (regNo: string) => {
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 
-  const res = await fetcher<any, any>(VEHICLE_NO_ECETREE_QUERY, { variables }, { Authorization: token })
+  const res = await fetcher<any, any>(VEHICLE_NO_ECETREE_QUERY, { id: regNo }, { Authorization: token })
   return res.vehicleNoById || {};
 };
 

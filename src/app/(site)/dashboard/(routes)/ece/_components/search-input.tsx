@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input"
 import useVehicleFilter from '@/hooks/use-vehicle-filter';
 
 export default function SearchInput({ placeholder }: { placeholder: string }) {
-  const { filters, updateFilter, clearFilter } = useVehicleFilter();
+  const { filters, updateFilter } = useVehicleFilter();
 
   const handleSearch = (formData: FormData) => {
     const term = formData.get("query")?.toString() as string

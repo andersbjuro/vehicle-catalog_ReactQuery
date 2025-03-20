@@ -1,24 +1,26 @@
 "use client"
 
-import { Catalog } from "@/types";
 import { getCoreRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
 import { DataTable } from "../datatable/data-table";
 import { columns } from "./columns";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Heading } from "@/components/heading";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { DataTableToolbar } from "./toolbar";
+import useSettingStore from "@/store/use-setting-store";
+import useCatalogStore from "@/store/use-catalog-store";
+import { useCatalog } from "@/hooks/useCatalog";
 
-interface Props {
-  catalog: Catalog[];
-}
-
-export function CatalogTable({ catalog }: Props) {
+export function CatalogTable() {
   const [rowSelection, setRowSelection] = useState({});
+  const { setting: { countryCode } } = useSettingStore()
+  const { searchValue } = useCatalogStore()
+  const filter = { searchValue: searchValue.searchValue, valueType: searchValue.valueType, countryCode: countryCode }
+  const { data, isFetched } = useCatalog(filter)
 
   const table = useReactTable({
-    data: catalog,
+    data: data || [],
     columns,
     enableRowSelection: true,
     getCoreRowModel: getCoreRowModel(),
@@ -34,19 +36,21 @@ export function CatalogTable({ catalog }: Props) {
       <Card className="mt-2">
         <CardHeader className="flex flex-col sm:flex-row items-start justify-between gap-2">
           <CardTitle>
-            <Heading title="Katalog" description={catalog?.length.toString()} />
+            <Heading title="Katalog" description={data?.length.toString()} />
           </CardTitle>
           <DataTableToolbar table={table} />
         </CardHeader>
-        <CardContent>
-          <div className="flex h-[calc(100vh-300px)]">
-            <div className="flex  w-full">
-              <ScrollArea type="scroll" className=" flex-1 overflow-y-auto">
-                <DataTable columns={columns} table={table} />
-              </ScrollArea>
+        <Suspense>
+          <CardContent>
+            <div className="flex h-[calc(100vh-300px)]">
+              <div className="flex  w-full">
+                <ScrollArea type="scroll" className=" flex-1 overflow-y-auto">
+                  <DataTable columns={columns} table={table} />
+                </ScrollArea>
+              </div>
             </div>
-          </div>
-        </CardContent>
+          </CardContent>
+        </Suspense>
       </Card>
     </section>
   )

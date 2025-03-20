@@ -6,13 +6,14 @@ import { Heading } from "@/components/heading";
 import { Button } from "@/components/ui/button"
 import { SearchValueCard } from "./searchvalue-card";
 import useCatalogFilter from "@/hooks/use-catalog-filter";
-import { useCatalog } from "@/hooks/useCatalog";
+import { useSerachValues } from "@/hooks/useSerachValues";
 import { createSearchValueFilter } from "@/graphql/filters";
 import SearchValueFilter from "./searchvalue-filter";
 import useToggleViewStore from "@/store/use-toggleview-store";
 import ToggleViewIcon from "@/components/toggle-view-icon";
 import { SearchValueGrid } from "./searchvalue-grid";
 import { routes } from "@/config/routes";
+import { Suspense } from "react";
 
 export default function SearchValueList() {
   const { currentView } = useToggleViewStore()
@@ -23,7 +24,7 @@ export default function SearchValueList() {
     filter: createSearchValueFilter({ query: filters.query, valueType: filters.valueType })
   }
 
-  const { data, isLoading } = useCatalog(filter)
+  const { data, isLoading } = useSerachValues(filter)
 
   const showTotal = () => {
     let total = ' '
@@ -48,34 +49,35 @@ export default function SearchValueList() {
           </Button>
         </div>
       </div>
-
-      {isLoading && <div className="flex items-center mt-20 mx-auto">
-        <LoaderCircle className="size-14 animate-spin" />
-      </div>
-      }
-
-      {!isLoading && currentView === 'grid' &&
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 mt-4">
-          {data && data.searchValues ? (
-            data.searchValues.map((sv) => (
-              <SearchValueCard key={sv.id}
-                searchValue={sv}
-                handleClick={() => router.push(routes.editCatalog(sv.id))}
-              />
-            ))
-          ) : (
-            <div></div>
-          )}
+      <Suspense>
+        {isLoading && <div className="flex items-center mt-20 mx-auto">
+          <LoaderCircle className="size-14 animate-spin" />
         </div>
-      }
+        }
 
-      {!isLoading && currentView === 'list' &&
-        <div className="grid grid-cols-1">
-          {data && data.searchValues &&
-            <SearchValueGrid serachValues={data.searchValues} />
-          }
-        </div>
-      }
+        {!isLoading && currentView === 'grid' &&
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 mt-4">
+            {data && data.searchValues ? (
+              data.searchValues.map((sv) => (
+                <SearchValueCard key={sv.id}
+                  searchValue={sv}
+                  handleClick={() => router.push(routes.editCatalog(sv.id))}
+                />
+              ))
+            ) : (
+              <div></div>
+            )}
+          </div>
+        }
+
+        {!isLoading && currentView === 'list' &&
+          <div className="grid grid-cols-1">
+            {data && data.searchValues &&
+              <SearchValueGrid serachValues={data.searchValues} />
+            }
+          </div>
+        }
+      </Suspense>
     </div>
   )
 }

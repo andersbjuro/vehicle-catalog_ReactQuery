@@ -9,7 +9,6 @@ import SearchInput from './search-input';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { VehicleData } from './vehicle-data';
-import VehicleCatalogContent from '@/components/vehicle-catalog/vehicle-catalog-content';
 import ItemsContent from '@/components/items-table/items-content';
 import BomsContent from '@/components/boms-table/boms-content';
 import useCatalogStore from '@/store/use-catalog-store';
@@ -17,6 +16,7 @@ import useSettingStore from '@/store/use-setting-store';
 import { routes } from '@/config/routes';
 import CopySearchvalueContent from './copy-searchvalue-content';
 import useNewEceStore from '@/store/use-newece-store';
+import { CatalogTable } from '@/components/vehicle-catalog/catalog-table';
 
 export default function VehicleContent() {
   const router = useRouter()
@@ -24,7 +24,7 @@ export default function VehicleContent() {
   const { setting: { countryCode } } = useSettingStore()
   const { country, setVehicle } = useVehicleStore();
   const { filters } = useVehicleFilter();
-  const { vehicle, searchValue } = useVehicle(filters.query, country)
+  const { vehicle, searchValue } = useVehicle(filters)
   const { resetCatalogSearch } = useNewEceStore()
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function VehicleContent() {
 
       <div className="grid grid-cols-2 gap-2 mt-2">
         <div className="w-full">
-          <VehicleCatalogContent />
+          <CatalogTable />
         </div>
         <div className="flex">
           <Tabs defaultValue="items" className="w-full">

@@ -1,34 +1,16 @@
 "use client";
-import {
-  parseAsInteger,
-  parseAsString,
-  useQueryState,
-} from "nuqs";
 
-type FilterKeys =
-  | "query"
-  | "valueType"
+import { parseAsInteger, parseAsString, useQueryState } from "nuqs";
 
-type FilterTypes = {
-  query: string
-  valueType: number;
-};
+type FilterKeys = "query" | "valueType"
 
 const useCatalogFilter = () => {
-  const [query, setQuery] = useQueryState(
-    "query",
-    parseAsString.withDefault("")
-  );
-
-  const [valueType, setValueType] = useQueryState(
-    "valueType",
-    parseAsInteger
-  );
+  const [query, setQuery] = useQueryState("query", parseAsString.withDefault(""));
+  const [valueType, setValueType] = useQueryState("valueType", parseAsInteger);
 
   const getFilters = () => ({
     query,
     valueType,
-
   });
 
   const updateFilter = (
