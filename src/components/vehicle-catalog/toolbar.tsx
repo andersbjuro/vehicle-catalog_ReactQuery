@@ -28,7 +28,6 @@ export function DataTableToolbar<TData>({
   }, [vehicle])
 
   const handleSelectedNode = (id: string) => {
-    console.log(id)
     setSelectedNode(id)
     setSearchValue({ searchValue: id, valueType: searchValue.valueType, countryCode: searchValue.countryCode })
   }

@@ -9,7 +9,7 @@ import { Trash2 } from "lucide-react";
 import useRoleAccess from "@/hooks/useRoleAccess";
 import { useSession } from "next-auth/react";
 import useCatalogStore from "@/store/use-catalog-store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface Props<TData> {
   table: Table<TData>,
@@ -17,10 +17,9 @@ interface Props<TData> {
 }
 
 export default function RemoveFromCatalogButton<TData>({ table, callbackAction }: Props<TData>) {
-
+const [access, setAccess] = useState(false)
   const session = useSession()
   const { searchValue } = useCatalogStore()
-  let access = useRoleAccess(session, searchValue.countryCode, 'CatalogManager').hasAccess //&& table.getSelectedRowModel().rows.length !== 0
   const queryClient = useQueryClient()
 
   const mutation = useMutation({
@@ -39,8 +38,8 @@ export default function RemoveFromCatalogButton<TData>({ table, callbackAction }
   }
 
   useEffect(() => {
-    console.log(table.getSelectedRowModel())
-    }, [])
+    setAccess(useRoleAccess(session, searchValue.countryCode, 'CatalogManager').hasAccess && table?.getSelectedRowModel()?.rows?.length !== 0)
+  }, [table.getState().rowSelection])
 
   return (
     <Button size="default" variant='destructive' disabled={!access} onClick={() => removeItems()}>

@@ -45,7 +45,9 @@ export function CatalogTable() {
             <div className="flex h-[calc(100vh-300px)]">
               <div className="flex  w-full">
                 <ScrollArea type="scroll" className=" flex-1 overflow-y-auto">
-                  <DataTable columns={columns} table={table} />
+                  {isFetched &&
+                    <DataTable columns={columns} table={table} />
+                  }
                 </ScrollArea>
               </div>
             </div>
