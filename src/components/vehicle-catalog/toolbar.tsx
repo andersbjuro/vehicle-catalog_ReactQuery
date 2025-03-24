@@ -7,6 +7,7 @@ import useVehicleStore from "@/store/use-vehicle-store"
 import FilterSelect from "../filter-select"
 import useCatalogStore from "@/store/use-catalog-store"
 import { useEffect, useState } from "react"
+import FilterTreeToggle from "./filter-tree-toggle"
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
@@ -34,7 +35,8 @@ export function DataTableToolbar<TData>({
 
   return (
     <div className="flex items-center justify-between w-full gap-2">
-      <FilterSelect placeholder="" options={options} value={selectedNode || ""} onChange={(id) => { handleSelectedNode(id) }} defaultValue={selectedNode} />
+      <FilterTreeToggle options={vehicle?.eceTree?.treeList} value={selectedNode || ""} onChange={(id) => { handleSelectedNode(id) }} defaultValue={selectedNode} />
+      {/* <FilterSelect placeholder="" options={options} value={selectedNode || ""} onChange={(id) => { handleSelectedNode(id) }} defaultValue={selectedNode} /> */}
       <DataTableViewOptions table={table} />
       <RemoveFromCatalogButton  callbackAction={() => table.resetRowSelection()} table={table} />
     </div>

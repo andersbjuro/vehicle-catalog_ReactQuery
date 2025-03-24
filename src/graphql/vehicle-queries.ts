@@ -33,6 +33,7 @@ query vehicleById($id: String!) {
           nodeId
           nodeName
           parentId
+          noOfItems
         }
       }
     }
@@ -66,6 +67,7 @@ query vehicleNoById($id: String!) {
         nodeId
         nodeName
         parentId
+        noOfItems
       }
     }
   }
