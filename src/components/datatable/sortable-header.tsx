@@ -10,20 +10,30 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useTranslations } from "next-intl";
 
 interface SortableHeaderProps<TData, TValue>
   extends React.HTMLAttributes<HTMLDivElement> {
   column: Column<TData, TValue>;
   title: string;
+  translation?: string;
 }
 
 export function SortableHeader<TData, TValue>({
   column,
   title,
   className,
+  translation
 }: SortableHeaderProps<TData, TValue>) {
+
+  let tTitle = title;
+  if (translation) {
+    const t = useTranslations(translation);
+    tTitle = t(title);
+  }
+
   if (!column.getCanSort()) {
-    return <div className={cn(className)}>{title}</div>;
+    return <div className={cn(className)}>{tTitle}</div>;
   }
 
   return (
@@ -33,12 +43,8 @@ export function SortableHeader<TData, TValue>({
           <Button
             variant="ghost"
             size="sm"
-            // className={cn(
-            //   "-ml-3 h-full data-[state=open]:bg-primary/10 uppercase text-xs",
-            //   column.getIsSorted() && "bg-primary/10"
-            // )}
           >
-            <span>{title}</span>
+            <span>{tTitle}</span>
             {column.getIsSorted() === "desc" && <ArrowDown />}
             {column.getIsSorted() === "asc" && <ArrowUp />}
             {!column.getIsSorted() && <ChevronsUpDown className="h-1 w-1" />}

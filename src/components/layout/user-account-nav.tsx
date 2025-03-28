@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { Check, ChevronsUpDown, Monitor, Moon, Settings, Sun } from "lucide-react";
+import { Check, ChevronsUpDown, Globe, Monitor, Moon, Settings, Sun } from "lucide-react";
 import { LogoutButton } from '@/components/auth/logout-button';
 import { LogOut } from "lucide-react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuPortal, DropdownMenuSeparator, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -15,10 +15,13 @@ import { useLocale } from "next-intl";
 import { startTransition } from "react";
 import { setUserLocale } from "@/i18n/locale";
 import {Locale} from '@/i18n/config';
+import { useTranslations } from "next-intl";
+import { translation } from "@/config/translation";
 
 
 export function UserAccountNav() {
   const locale = useLocale();
+  const t = useTranslations(translation.useraccountnav);
   const { data: session, status } = useSession();
 
   const { theme, setTheme } = useTheme();
@@ -90,13 +93,13 @@ export function UserAccountNav() {
             className="flex w-full items-center gap-3 px-2.5 py-2"
           >
             <Settings className="size-4" />
-            <p className="text-sm">Inställningar</p>
+            <p className="text-sm">{t('settings')}</p>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
-            <Monitor className="mr-2 size-4" />
-            Språk
+            <Globe className="mr-2 size-4" />
+            {t('language')}
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
@@ -116,7 +119,7 @@ export function UserAccountNav() {
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <Monitor className="mr-2 size-4" />
-            Tema
+            {t('theme')}
           </DropdownMenuSubTrigger>
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
@@ -127,12 +130,12 @@ export function UserAccountNav() {
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("light")}>
                 <Sun className="mr-2 size-4" />
-                Ljust
+                {t('light')}
                 {theme === "light" && <Check className="ms-2 size-4" />}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setTheme("dark")}>
                 <Moon className="mr-2 size-4" />
-                Mörkt
+                {t('dark')}
                 {theme === "dark" && <Check className="ms-2 size-4" />}
               </DropdownMenuItem>
             </DropdownMenuSubContent>
@@ -143,7 +146,7 @@ export function UserAccountNav() {
           <DropdownMenuItem asChild>
             <LogoutButton>
               <LogOut className="size-4 ml-1" />
-              <p className="text-sm">Logga ut</p>
+              <p className="text-sm">{t('logout')}</p>
             </LogoutButton>
           </DropdownMenuItem>
         </DropdownMenuItem>

@@ -11,11 +11,53 @@
   },
   "BomPage": {
     "title": "Bommar",
-    "addnew": "Ny"
+    "addnew": "Ny",
+    "created": "Skapad",
+    "updated": "Ändrad",
+    "actions": "Kommandon",
+    "show": "Visa",
+    "delete": "Radera",
+    "of": "100 av "
   },
+  "BomGrid": {
+    "id": "Id",
+    "name": "Namn",
+    "brand": "Varumärke",
+    "productGroup": "Produktgrupp",
+    "noOfItems": "Rader"
+  },
+
+  "OEPage": {
+    "title": "OE Artiklar",
+    "addnew": "Ny",
+    "created": "Skapad",
+    "updated": "Ändrad",
+    "actions": "Kommandon",
+    "show": "Visa",
+    "delete": "Radera",
+    "of": "100 av "
+  },
+  "OEGrid": {
+    "oeItemId": "OeItemId",
+    "oeName": "OeName",
+    "brand": "Varumärken",
+    "productGroup": "Produktgroup",
+    "itemId": "ItemId",
+    "itemName": "ItemName"
+  },
+
   "LocaleSwitcher": {
     "se": "Svenska",
     "en": "English",
     "label": "Språk"
+  },
+
+  "UserAccountNav": {
+    "language": "Språk",
+    "theme": "Tema",
+    "light": "Ljust",
+    "dark": "Mörkt",
+    "settings": "Inställningar",
+    "logout": "Logga ut"
   }
 }

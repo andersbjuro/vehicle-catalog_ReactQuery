@@ -1,16 +1,12 @@
 "use client"
 
 import { type LucideIcon } from "lucide-react"
-import {
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar"
+import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, } from "@/components/ui/sidebar"
 import { usePathname } from "next/navigation"
-export function NavMain({
+import { memo } from "react"
+import Link from "next/link"
+
+const NavMain = ({
   items,
 }: {
   items: {
@@ -18,7 +14,7 @@ export function NavMain({
     url: string
     icon: LucideIcon
   }[]
-}) {
+}) =>{
 
   const path = usePathname();
 
@@ -30,10 +26,10 @@ export function NavMain({
           {items.map(item => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild isActive={path.includes(`${item.url}/`) || path === item.url}>
-                <a href={item.url}>
+                <Link href={item.url}>
                   <item.icon />
                   <span>{item.title}</span>
-                </a>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
@@ -42,3 +38,5 @@ export function NavMain({
     </SidebarGroup>
   )
 }
+
+export default memo(NavMain);

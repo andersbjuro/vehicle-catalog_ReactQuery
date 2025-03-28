@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 import { routes } from "@/config/routes";
+import { useTranslations } from "next-intl";
+import { translation } from "@/config/translation";
 
 interface CardProps {
   bom: Bom;
@@ -16,7 +18,7 @@ export const BomCard = ({
   bom,
   handleClick,
 }: CardProps) => {
-
+  const t = useTranslations(translation.bompage);
   return (
     <section
       className="flex min-h-[100px] w-full flex-col justify-between bg-muted hover:bg-accent rounded-[14px] px-5 py-2 max-w-[500px]">
@@ -29,7 +31,7 @@ export const BomCard = ({
           <p className="text-xs text-muted-foreground">{bom.id}</p>
           <p className="text-xs text-muted-foreground">{bom.brand.name} - {bom.productGroup.name} - Land {bom.countryCode}</p>
           <div className="flex items-center justify-between">
-            <p className="text-xs text-muted-foreground">Skapad: {formatDate(bom.created)} Ändrad {formatDate(bom.modified)}</p>
+            <p className="text-xs text-muted-foreground">{t('created')} {formatDate(bom.created)} {t('updated')} {formatDate(bom.modified)}</p>
             <div className="ml-5">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -38,16 +40,16 @@ export const BomCard = ({
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Kommandon</DropdownMenuLabel>
+                  <DropdownMenuLabel>{t('actions')}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link href={routes.editBom(bom.id)}>
-                      Visa
+                      {t('show')}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
-                    <Link href={routes.deleteBom(bom.id) }>
-                      Radera
+                    <Link href={routes.deleteBom(bom.id)}>
+                      {t('delete')}
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>

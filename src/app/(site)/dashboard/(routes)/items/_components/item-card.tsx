@@ -6,6 +6,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { routes } from "@/config/routes";
+import { useTranslations } from "next-intl";
 
 interface CardProps {
   item: OeItem;
@@ -16,10 +17,10 @@ export const ItemCard = ({
   item,
   handleClick,
 }: CardProps) => {
-
+  const t = useTranslations('OEPage');
   return (
     <section
-     // onClick={handleClick}
+      // onClick={handleClick}
       className="flex min-h-[100px] w-full flex-col justify-between bg-muted hover:bg-accent rounded-[14px] px-5 py-2 max-w-[500px]">
       <article>
         <div className="flex flex-col gap-1">
@@ -29,7 +30,7 @@ export const ItemCard = ({
           <p className="text-xs text-muted-foreground">{item.oeItemId}</p>
           <p className="text-xs text-muted-foreground">{item.brand.name} - {item.productGroup.name} - Land {item.countryCode}</p>
           <div className="flex items-center justify-between">
-            <p className="text-xs text-muted-foreground">Skapad: {formatDate(item.created)} Ändrad {formatDate(item.modified)}</p>
+            <p className="text-xs text-muted-foreground">{t('created')} {formatDate(item.created)} {t('updated')} {formatDate(item.modified)}</p>
             <div className="ml-5">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -38,11 +39,11 @@ export const ItemCard = ({
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Kommandon</DropdownMenuLabel>
+                  <DropdownMenuLabel>{t('actions')}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link href={routes.editItem(item.oeItemId)}>
-                      Visa
+                      {t('show')}
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>

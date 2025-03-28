@@ -5,11 +5,12 @@ import { ColumnDef } from "@tanstack/react-table"
 import {SortableHeader} from "@/components/datatable/sortable-header";
 import Link from "next/link";
 import { routes } from "@/config/routes";
+import { translation } from "@/config/translation";
 
 export const columns: ColumnDef<FlattOeItem>[] = [
   {
     accessorKey: "oeItemId",
-    header: ({ column }) => <SortableHeader column={column} title="OeItemId" className="font-medium w-[80px]" />,
+    header: ({ column }) => <SortableHeader column={column} title="oeItemId" className="font-medium w-[80px]" translation={translation.oegrid}/>,
     cell: ({ row }) => (
       <div className="ml-3 font-medium w-[80px]">
         <Link href={routes.editItem(row.original.oeItemId)}><span className="underline">{row.original.oeItemId}</span></Link>
@@ -18,7 +19,7 @@ export const columns: ColumnDef<FlattOeItem>[] = [
   },
   {
     accessorKey: "oeName",
-    header: ({ column }) => <SortableHeader column={column} title="OeName" className="w-[250px]"/>,
+    header: ({ column }) => <SortableHeader column={column} title="oeName" className="w-[250px]" translation={translation.oegrid}/>,
     cell: ({ row }) => (
       <div className="ml-3 w-[250px]">
         {row.original.oeName}
@@ -27,7 +28,7 @@ export const columns: ColumnDef<FlattOeItem>[] = [
   },
   {
     accessorKey: "brand",
-    header: ({ column }) => <SortableHeader column={column} title="Varumärke" />,
+    header: ({ column }) => <SortableHeader column={column} title="brand" translation={translation.oegrid}/>,
     cell: ({ row }) => (
       <div className="ml-3">
         {row.original.brand}
@@ -36,7 +37,7 @@ export const columns: ColumnDef<FlattOeItem>[] = [
   },
   {
     accessorKey: "productGroup",
-    header: ({ column }) => <SortableHeader column={column} title="Produkrgrupp" />,
+    header: ({ column }) => <SortableHeader column={column} title="productGroup" translation={translation.oegrid}/>,
     cell: ({ row }) => (
       <div className="ml-3">
         {row.original.productGroup}
@@ -45,7 +46,7 @@ export const columns: ColumnDef<FlattOeItem>[] = [
   },
   {
     accessorKey: "itemId",
-    header: ({ column }) => <SortableHeader column={column} title="ItemId" />,
+    header: ({ column }) => <SortableHeader column={column} title="itemId" translation={translation.oegrid}/>,
     cell: ({ row }) => (
       <div className="ml-3">
         {row.original.itemId}
@@ -55,7 +56,7 @@ export const columns: ColumnDef<FlattOeItem>[] = [
 
   {
     accessorKey: "itemName",
-    header: ({ column }) => <SortableHeader column={column} title="ItemName" />,
+    header: ({ column }) => <SortableHeader column={column} title="itemName" translation={translation.oegrid}/>,
     cell: ({ row }) => (
       <div className="ml-4 ">
         {row.original.itemName}

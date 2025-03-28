@@ -11,11 +11,54 @@
   },
   "BomPage": {
     "title": "Boms",
-    "addnew": "Add"
+    "addnew": "Add",
+    "created": "Created",
+    "updated": "Updated",
+    "actions": "Actions",
+    "show": "Edit",
+    "delete": "Delete",
+    "of": "100 of "
   },
+  "BomGrid": {
+    "id": "Id",
+    "name": "Name",
+    "brand": "Brand",
+    "productGroup": "Product Group",
+    "noOfItems": "Rows"
+  },
+
+  "OEPage": {
+    "title": "OE Items",
+    "addnew": "Add",
+    "created": "Created",
+    "updated": "Updated",
+    "actions": "Actions",
+    "show": "Edit",
+    "delete": "Delete",
+    "of": "100 of "
+  },
+  "OEGrid": {
+    "oeItemId": "OeItemId",
+    "oeName": "OeName",
+    "brand": "Brand",
+    "productGroup": "Product Group",
+    "itemId": "ItemId",
+    "itemName": "ItemName"
+  },
+
   "LocaleSwitcher": {
     "se": "Svenska",
     "en": "English",
     "label": "Språk"
+  },
+
+  "UserAccountNav": {
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "settings": "Settings",
+    "logout": "Log out"
   }
+
 }

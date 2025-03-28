@@ -13,8 +13,10 @@ import { ItemsGrid } from "./items-grid";
 import ToggleViewIcon from "@/components/toggle-view-icon";
 import useToggleViewStore from "@/store/use-toggleview-store";
 import { routes } from "@/config/routes";
+import { useTranslations } from "next-intl";
 
 export default function OeItemList() {
+  const t = useTranslations('OEPage');
   const { filters } = useItemsFilter();
   const { currentView } = useToggleViewStore()
   const router = useRouter();
@@ -26,14 +28,8 @@ export default function OeItemList() {
   const { data, isLoading } = useItems(filter)
 
   const showTotal = () => {
-    let total = ' '
-    const t = data?.totalCount || '';
-    if (t <= 100) {
-      total = "visar " + t;
-    } else {
-      total = "visar " + 100 + " av " + t;
-    }
-    return total.toString()
+    const tot = data?.totalCount || '';
+    return tot <= 100 ? tot.toString() : t('of') + tot.toString();
   }
 
   const flatteOeItems: FlattOeItem[] = []
@@ -51,7 +47,7 @@ export default function OeItemList() {
   return (
     <div className="flex flex-col w-full">
       <div className="flex justify-between">
-        <Heading title="OE Artiklar" description={showTotal()} />
+        <Heading title={t('title')} description={showTotal()} />
         <div className="flex gap-3 items-center">
           <ToggleViewIcon />
           <ItemFilter />

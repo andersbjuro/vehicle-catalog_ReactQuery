@@ -15,9 +15,10 @@ import ToggleViewIcon from "@/components/toggle-view-icon";
 import { BomsGrid } from "./boms-grid";
 import { routes } from "@/config/routes";
 import { useTranslations } from "next-intl";
+import {translation} from "@/config/translation";
 
 export default function BomList() {
-  const t = useTranslations('BomPage');
+  const t = useTranslations(translation.bompage);
   const { currentView } = useToggleViewStore()
   const { filters } = useBomsFilter();
   const router = useRouter();
@@ -29,14 +30,8 @@ export default function BomList() {
   const { data, isLoading } = useBoms(filter)
 
   const showTotal = () => {
-    let total = ' '
-    const t = data?.boms.totalCount || '';
-    if (t <= 100) {
-      total = "visar " + t;
-    } else {
-      total = "visar " + 100 + " av " + t;
-    }
-    return total.toString()
+    const tot = data?.boms.totalCount || '';
+    return tot <= 100 ? tot.toString() : t('of') + tot.toString();
   }
 
   return (

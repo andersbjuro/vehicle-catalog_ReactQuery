@@ -1,15 +1,16 @@
 "use client"
 
 import { Car, FolderKanban, GalleryVerticalEnd, Package, FileStackIcon, CarFront } from "lucide-react"
-import { NavMain } from "@/components/layout/nav-main"
+import NavMain from "@/components/layout/nav-main"
 import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarRail, } from "@/components/ui/sidebar"
 
 import { UserAccountNav } from "./user-account-nav"
 import { useCurrentSession } from "@/hooks/use-current-session"
 import { routes } from "@/config/routes";
 import { useTranslations } from "next-intl"
+import { memo } from "react"
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   const t = useTranslations('Sidebar');
   const { user } = useCurrentSession()
   const items = [
@@ -85,3 +86,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     </Sidebar>
   )
 }
+
+export default memo(AppSidebar);
