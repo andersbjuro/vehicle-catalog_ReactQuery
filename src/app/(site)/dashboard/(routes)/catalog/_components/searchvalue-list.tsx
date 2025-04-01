@@ -14,8 +14,11 @@ import ToggleViewIcon from "@/components/toggle-view-icon";
 import { SearchValueGrid } from "./searchvalue-grid";
 import { routes } from "@/config/routes";
 import { Suspense } from "react";
+import { useTranslations } from "next-intl";
+import { translation } from "@/config/translation";
 
 export default function SearchValueList() {
+  const t = useTranslations(translation.catalogPage);
   const { currentView } = useToggleViewStore()
   const { filters } = useCatalogFilter();
   const router = useRouter();
@@ -25,27 +28,20 @@ export default function SearchValueList() {
   }
 
   const { data, isLoading } = useSerachValues(filter)
-
   const showTotal = () => {
-    let total = ' '
-    const t = data?.totalCount || '';
-    if (t <= 100) {
-      total = "visar " + t;
-    } else {
-      total = "visar " + 100 + " av " + t;
-    }
-    return total.toString()
+    const tot = data?.totalCount || '';
+    return tot <= 100 ? tot.toString() : t('of') + tot.toString();
   }
 
   return (
     <div className="flex flex-col w-full">
       <div className="flex justify-between ">
-        <Heading title="Katalog sökvärden" description={showTotal().toString()} />
+        <Heading title={t('title')} description={showTotal().toString()} />
         <div className="flex gap-3 items-center">
           <ToggleViewIcon />
           <SearchValueFilter />
           <Button size="default" className="w-20" onClick={() => router.push(routes.createCatalog())}>
-            <Plus className="mr-2 h-4 w-4" /> Ny
+            <Plus className="mr-2 h-4 w-4" /> {t('addnew')}
           </Button>
         </div>
       </div>

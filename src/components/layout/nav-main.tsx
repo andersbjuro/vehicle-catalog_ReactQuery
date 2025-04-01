@@ -5,6 +5,8 @@ import { SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, Side
 import { usePathname } from "next/navigation"
 import { memo } from "react"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
+import { translation } from "@/config/translation"
 
 const NavMain = ({
   items,
@@ -15,12 +17,12 @@ const NavMain = ({
     icon: LucideIcon
   }[]
 }) =>{
-
+  const t = useTranslations(translation.sideBar);
   const path = usePathname();
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Applikationer</SidebarGroupLabel>
+      <SidebarGroupLabel>{t('title')}</SidebarGroupLabel>
       <SidebarGroupContent>
         <SidebarMenu>
           {items.map(item => (

@@ -1,56 +1,67 @@
-import {
-  AlertTriangle,
-  ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  Check,
-  ChevronLeft,
-  ChevronRight,
-  Copy,
-  Car,
-  File,
-  FileText,
-  Flame,
-  FolderKanban,
-  HelpCircle,
-  Home,
-  Image,
-  Laptop,
-  LayoutPanelLeft,
-  LineChart,
-  Loader2,
-  LucideIcon,
-  LucideProps,
-  MessagesSquare,
-  Moon,
-  MoreVertical,
-  Package,
-  Plus,
-  Search,
-  Settings,
-  SunMedium,
-  Trash,
-  User,
-  Users,
-  X,
-} from "lucide-react";
+import { LucideIcon, LucideProps, } from "lucide-react";
 
 export type Icon = LucideIcon;
 
 export const Icons = {
-  add: Plus,
-  arrowRight: ArrowRight,
-  arrowUpRight: ArrowUpRight,
-  chevronLeft: ChevronLeft,
-  chevronRight: ChevronRight,
-  bookOpen: BookOpen,
-  check: Check,
-  car: Car,
-  close: X,
-  copy: Copy,
-  dashboard: LayoutPanelLeft,
-  ellipsis: MoreVertical,
-  folderKanban: FolderKanban,
+  seFlag: ({ ...props }: LucideProps) => (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 480"
+      {...props}
+    >
+      <path fill="#005293" d="M0 0h640v480H0z" />
+      <path fill="#fecb00" d="M176 0v192H0v96h176v192h96V288h368v-96H272V0z" />
+    </svg>
+  ),
+  gbFlag: ({ ...props }: LucideProps) => (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 480"
+      {...props}
+    >
+      <path fill="#012169" d="M0 0h640v480H0z" />
+      <path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z" />
+      <path fill="#C8102E" d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z" />
+      <path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z" />
+      <path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z" />
+    </svg>
+  ),
+  noFlag: ({ ...props }: LucideProps) => (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 480"
+      {...props}
+    >
+      <path fill="#ed2939" d="M0 0h640v480H0z" />
+      <path fill="#fff" d="M180 0h120v480H180z" />
+      <path fill="#fff" d="M0 180h640v120H0z" />
+      <path fill="#002664" d="M210 0h60v480h-60z" />
+      <path fill="#002664" d="M0 210h640v60H0z" />
+    </svg>
+  ),
+  dkFlag: ({ ...props }: LucideProps) => (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 640 480"
+      {...props}
+    >
+      <path fill="#c8102e" d="M0 0h640.1v480H0z" />
+      <path fill="#fff" d="M205.7 0h68.6v480h-68.6z" />
+      <path fill="#fff" d="M0 205.7h640.1v68.6H0z" />
+    </svg>
+  ),
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
@@ -84,41 +95,5 @@ export const Icons = {
         fill="currentColor"
       />
     </svg>
-  ),
-  help: HelpCircle,
-  home: Home,
-  laptop: Laptop,
-  lineChart: LineChart,
-  logo: Flame,
-  media: Image,
-  messages: MessagesSquare,
-  moon: Moon,
-  page: File,
-  package: Package,
-  post: FileText,
-  search: Search,
-  settings: Settings,
-  spinner: Loader2,
-  sun: SunMedium,
-  trash: Trash,
-  twitter: ({ ...props }: LucideProps) => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      focusable="false"
-      data-prefix="fab"
-      data-icon="twitter"
-      role="img"
-      {...props}
-    >
-      <path
-        d="M14.258 10.152L23.176 0h-2.113l-7.747 8.813L7.133 0H0l9.352 13.328L0 23.973h2.113l8.176-9.309 6.531 9.309h7.133zm-2.895 3.293l-.949-1.328L2.875 1.56h3.246l6.086 8.523.945 1.328 7.91 11.078h-3.246zm0 0"
-        fill="currentColor"
-      />
-    </svg>
-  ),
-  user: User,
-  users: Users,
-  warning: AlertTriangle,
+  )
 };

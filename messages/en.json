@@ -2,7 +2,8 @@
   "HomePage": {
     "title": "Welcome"
   },
-  "Sidebar": {
+  "SideBar": {
+    "title": "Applications",
     "bom": "Bom Lists",
     "items": "OE Items",
     "catalog": "Catalog",
@@ -26,7 +27,6 @@
     "productGroup": "Product Group",
     "noOfItems": "Rows"
   },
-
   "OEPage": {
     "title": "OE Items",
     "addnew": "Add",
@@ -45,13 +45,29 @@
     "itemId": "ItemId",
     "itemName": "ItemName"
   },
-
+  "CatalogPage": {
+    "title": "Catalog",
+    "valueType": "Value Type",
+    "addnew": "Add",
+    "created": "Created",
+    "updated": "Updated",
+    "actions": "Actions",
+    "show": "Edit",
+    "delete": "Delete",
+    "of": "100 of ",
+    "tab1": "Items",
+    "tab2": "Boms"
+  },
+  "CatalogGrid": {
+    "value": "Value",
+    "valueType": "Value Type",
+    "noOfItems": "Rows"
+  },
   "LocaleSwitcher": {
     "se": "Svenska",
     "en": "English",
     "label": "Språk"
   },
-
   "UserAccountNav": {
     "language": "Language",
     "theme": "Theme",
@@ -59,6 +75,56 @@
     "dark": "Dark",
     "settings": "Settings",
     "logout": "Log out"
+  },
+  "SettingsPage": {
+    "title": "Settings",
+    "itemCode": "Code for item mapping",
+    "user": "User",
+    "role": "Roles",
+    "countryCodes": "Country Codes"
+  },
+  "ItemsTable": {
+    "title": "Items",
+    "oeItemId": "OeItemId",
+    "itemId": "ItemId",
+    "oeName": "OeName",
+    "itemName": "ItemName"
+  },
+  "BomsTable": {
+    "title": "Boms",
+    "bomId": "BomId",
+    "name": "Name"
+  },
+  "CatalogTable": {
+    "title": "Catalog",
+    "oeItemId": "OeItemId",
+    "itemId": "ItemId",
+    "oeName": "OeName",
+    "itemName": "ItemName",
+    "bomId": "BomId"
+  },
+  "BomLinesTable": {
+    "title": "Bom Lines",
+    "oeItemId": "OeItemId",
+    "itemId": "ItemId",
+    "oeName": "OeName",
+    "itemName": "ItemName"
+  },
+  "DataTable": {
+    "view": "Show",
+    "choose": "Choose Columns"
+  },
+  "ECEPage": {
+    "tab1": "Items",
+    "tab2": "Boms",
+    "tab3": "Copy Value"
+  },
+  "EceCatalogTable": {
+    "title": "Catalog",
+    "id": "Id",
+    "name": "Name",
+    "brand": "Brand",
+    "productGroup": "Product Group",
+    "noOfItems": "Rows"
   }
-
 }

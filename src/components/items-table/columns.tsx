@@ -6,6 +6,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import {SortableHeader} from "@/components/datatable/sortable-header";
 import Link from "next/link";
 import { routes } from "@/config/routes";
+import { translation } from "@/config/translation";
 
 export const columns: ColumnDef<FlattOeItem>[] = [
   {
@@ -32,7 +33,7 @@ export const columns: ColumnDef<FlattOeItem>[] = [
   },
   {
     accessorKey: "oeItemId",
-    header: ({ column }) => <SortableHeader column={column} title="OeItemId" />,
+    header: ({ column }) => <SortableHeader column={column} title="oeItemId" translation={translation.itemsTable}/>,
     cell: ({ row }) => (
       <div className="ml-4 font-medium">
         <Link href={routes.editItem(row.original.oeItemId)}><span className="underline">{row.original.oeItemId}</span></Link>
@@ -41,14 +42,14 @@ export const columns: ColumnDef<FlattOeItem>[] = [
   },
   {
     accessorKey: "itemId",
-    header: ({ column }) => <SortableHeader column={column} title="ItemId" />,
+    header: ({ column }) => <SortableHeader column={column} title="itemId" translation={translation.itemsTable}/>,
   },
   {
     accessorKey: "oeName",
-    header: ({ column }) => <SortableHeader column={column} title="OeName" />,
+    header: ({ column }) => <SortableHeader column={column} title="oeName" translation={translation.itemsTable}/>,
   },
   {
     accessorKey: "itemName",
-    header: ({ column }) => <SortableHeader column={column} title="ItemName" />,
+    header: ({ column }) => <SortableHeader column={column} title="itemName" translation={translation.itemsTable}/>,
   },
 ];

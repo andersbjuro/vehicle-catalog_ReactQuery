@@ -14,9 +14,10 @@ import ToggleViewIcon from "@/components/toggle-view-icon";
 import useToggleViewStore from "@/store/use-toggleview-store";
 import { routes } from "@/config/routes";
 import { useTranslations } from "next-intl";
+import { translation } from "@/config/translation";
 
 export default function OeItemList() {
-  const t = useTranslations('OEPage');
+  const t = useTranslations(translation.oePage);
   const { filters } = useItemsFilter();
   const { currentView } = useToggleViewStore()
   const router = useRouter();

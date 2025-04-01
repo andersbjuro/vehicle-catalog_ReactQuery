@@ -2,12 +2,10 @@
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import useVehicleFilter from "@/hooks/use-vehicle-filter";
-import useVehicleStore from "@/store/use-vehicle-store"
 import { ChevronsLeftRight, Globe2 } from "lucide-react"
 
 export default function VehicleCountrySelector() {
   const { filters, updateFilter } = useVehicleFilter();
- // const { country, setCountry } = useVehicleStore()
 
   const handleCountryChange = (value: any) => {
     updateFilter("country", Number(value))

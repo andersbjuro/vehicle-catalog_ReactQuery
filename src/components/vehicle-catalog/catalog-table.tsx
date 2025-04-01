@@ -11,8 +11,11 @@ import { DataTableToolbar } from "./toolbar";
 import { useCatalog } from "@/hooks/useCatalog";
 import useSettingStore from "@/store/use-setting-store";
 import useVehicleStore from "@/store/use-vehicle-store";
+import { useTranslations } from "next-intl";
+import { translation } from "@/config/translation";
 
 export function CatalogTable() {
+  const t = useTranslations(translation.catalogTable);
   const [rowSelection, setRowSelection] = useState({});
   const { setting: { countryCode } } = useSettingStore()
   const { vehicle, selectedNode } = useVehicleStore()
@@ -36,7 +39,7 @@ export function CatalogTable() {
       <Card className="mt-2">
         <CardHeader className="flex flex-col sm:flex-row items-start justify-between gap-2">
           <CardTitle>
-            <Heading title="Katalog" description={data?.length.toString()} />
+            <Heading title={t('title')} description={data?.length.toString()} />
           </CardTitle>
           <DataTableToolbar table={table} />
         </CardHeader>

@@ -17,12 +17,15 @@ import { routes } from '@/config/routes';
 import CopySearchvalueContent from './copy-searchvalue-content';
 import useNewEceStore from '@/store/use-newece-store';
 import { CatalogTable } from '@/components/vehicle-catalog/catalog-table';
+import { useTranslations } from 'next-intl';
+import { translation } from '@/config/translation';
 
 export default function VehicleContent() {
+  const t = useTranslations(translation.ecePage);
   const router = useRouter()
   const { setSearchValue } = useCatalogStore();
   const { setting: { countryCode } } = useSettingStore()
-  const { country, setVehicle } = useVehicleStore();
+  const { setVehicle } = useVehicleStore();
   const { filters } = useVehicleFilter();
   const { vehicle, searchValue } = useVehicle(filters)
   const { resetCatalogSearch } = useNewEceStore()
@@ -39,7 +42,6 @@ export default function VehicleContent() {
       resetCatalogSearch()
     }
   }, [vehicle])
-
 
   return (
     <div className="flex flex-col w-full">
@@ -58,9 +60,9 @@ export default function VehicleContent() {
         <div className="flex">
           <Tabs defaultValue="items" className="w-full">
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="items">Artiklar</TabsTrigger>
-              <TabsTrigger value="boms">Bomstrukturer</TabsTrigger>
-              <TabsTrigger value="copy">Kopiera sökvärde</TabsTrigger>
+              <TabsTrigger value="items">{t('tab1')}</TabsTrigger>
+              <TabsTrigger value="boms">{t('tab2')}</TabsTrigger>
+              <TabsTrigger value="copy">{t('tab3')}</TabsTrigger>
             </TabsList>
             <TabsContent value="items">
               <ItemsContent type="vehiclecatalog" />

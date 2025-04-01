@@ -10,7 +10,7 @@ interface ItemFormProps {
   item: OeItem
 }
 const ItemForm = ({ item }: ItemFormProps) => {
-  const t = useTranslations(translation.oepage);
+  const t = useTranslations(translation.oePage);
   return (
     <div>
       <Card>

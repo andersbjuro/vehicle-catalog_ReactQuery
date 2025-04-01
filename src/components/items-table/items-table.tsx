@@ -9,6 +9,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Heading } from "@/components/heading";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { DataTableToolbar } from "./toolbar";
+import { useTranslations } from "next-intl";
+import { translation } from "@/config/translation";
 
 interface Props {
   items: FlattOeItem[] | undefined
@@ -17,6 +19,7 @@ interface Props {
 }
 
 export function ItemsTable({ items, itemsCount, type }: Props) {
+  const t = useTranslations(translation.itemsTable);
   const [rowSelection, setRowSelection] = useState({});
 
   const table = useReactTable({
@@ -35,7 +38,7 @@ export function ItemsTable({ items, itemsCount, type }: Props) {
       <Card className="mt-2">
         <CardHeader className="flex flex-col sm:flex-row items-start justify-between gap-2">
           <CardTitle>
-            <Heading title="Artiklar" description={itemsCount.toString()} />
+            <Heading title={t('title')} description={itemsCount.toString()} />
           </CardTitle>
           <DataTableToolbar table={table} type={type} />
         </CardHeader>

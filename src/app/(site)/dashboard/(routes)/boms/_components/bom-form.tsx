@@ -11,7 +11,7 @@ interface Props {
 }
 
 const BomForm = ({bom}: Props) => {
-  const t = useTranslations(translation.bompage);
+  const t = useTranslations(translation.bomPage);
   return (
     <div>
       <Card>

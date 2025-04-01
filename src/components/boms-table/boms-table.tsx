@@ -9,6 +9,8 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Heading } from '../heading';
 import { DataTableToolbar } from './toolbar';
+import { useTranslations } from 'next-intl';
+import { translation } from '@/config/translation';
 
 interface Props {
   boms: Bom[] | undefined
@@ -17,7 +19,7 @@ interface Props {
 }
 
 export const BomsTable = ({ boms, bomsCount, type }: Props) => {
-
+  const t = useTranslations(translation.bomsTable);
   const [rowSelection, setRowSelection] = useState({});
 
     const table = useReactTable({
@@ -36,7 +38,7 @@ export const BomsTable = ({ boms, bomsCount, type }: Props) => {
     <Card className="mt-2">
       <CardHeader className="flex flex-col sm:flex-row items-start justify-between gap-2">
         <CardTitle>
-          <Heading title="Bomstrukturer" description={bomsCount.toString()} />
+          <Heading title={t('title')} description={bomsCount.toString()} />
         </CardTitle>
         <DataTableToolbar table={table} type={type} />
       </CardHeader>

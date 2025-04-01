@@ -5,6 +5,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { routes } from "@/config/routes";
+import { useTranslations } from "next-intl";
+import { translation } from "@/config/translation";
 
 interface CardProps {
   searchValue: SearchValue;
@@ -15,7 +17,7 @@ export const SearchValueCard = ({
   searchValue,
   handleClick,
 }: CardProps) => {
-
+  const t = useTranslations(translation.catalogPage);
   return (
     <section
       className="flex min-h-[100px] w-full flex-col justify-between bg-muted hover:bg-accent rounded-[14px] px-5 py-2 max-w-[500px]">
@@ -26,8 +28,8 @@ export const SearchValueCard = ({
             <span className="ml-5 whitespace-nowrap text-xs text-muted-foreground">{searchValue.noOfItems}</span>
           </div>
           <p className="text-xs text-muted-foreground mt-2"> {searchValue?.searchValueType?.id} - {searchValue!.searchValueType!.name} - Land {searchValue?.countryCode}</p>
-          <div  className="flex items-center justify-between">
-            <p className="text-xs text-muted-foreground">Skapad: {formatDate(searchValue.created!)} Ändrad {formatDate(searchValue.modified!)}</p>
+          <div className="flex items-center justify-between">
+            <p className="text-xs text-muted-foreground">{t('created')} {formatDate(searchValue.created!)} {t('updated')} {formatDate(searchValue.modified!)}</p>
             <div className="ml-5">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -36,16 +38,16 @@ export const SearchValueCard = ({
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Kommandon</DropdownMenuLabel>
+                  <DropdownMenuLabel>{t('actions')}</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link href={routes.editCatalog(searchValue.id)}>
-                      Visa
+                      {t('show')}
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link href={routes.deleteCatalog(searchValue.id)}>
-                      Radera
+                      {t('delete')}
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>

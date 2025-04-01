@@ -18,7 +18,7 @@ export const BomCard = ({
   bom,
   handleClick,
 }: CardProps) => {
-  const t = useTranslations(translation.bompage);
+  const t = useTranslations(translation.bomPage);
   return (
     <section
       className="flex min-h-[100px] w-full flex-col justify-between bg-muted hover:bg-accent rounded-[14px] px-5 py-2 max-w-[500px]">

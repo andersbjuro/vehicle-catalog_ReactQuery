@@ -2,9 +2,10 @@
   "HomePage": {
     "title": "Välkommen"
   },
+
   "SideBar": {
-    "title": "Applikationer",
-    "bom": "Bomlistor",
+    "title": "Applikasjoner",
+    "bom": "Stykliste",
     "items": "OE Artiklar",
     "catalog": "Katalog",
     "ece": "Ece",
@@ -16,7 +17,7 @@
     "created": "Skapad",
     "updated": "Ändrad",
     "actions": "Kommandon",
-    "show": "Visa",
+    "show": "Vis",
     "delete": "Radera",
     "of": "100 av "
   },
@@ -33,7 +34,7 @@
     "created": "Skapad",
     "updated": "Ändrad",
     "actions": "Kommandon",
-    "show": "Visa",
+    "show": "Vis",
     "delete": "Radera",
     "of": "100 av "
   },
@@ -46,13 +47,13 @@
     "itemName": "ItemName"
   },
   "CatalogPage": {
-    "title": "Katalog",
+    "title": "Katalogsøkeverdier",
     "valueType": "Värde Typ",
     "addnew": "Ny",
     "created": "Skapad",
     "updated": "Ändrad",
     "actions": "Kommandon",
-    "show": "Visa",
+    "show": "Vis",
     "delete": "Radera",
     "of": "100 av ",
     "tab1": "Artiklar",
@@ -111,7 +112,7 @@
     "itemName": "ItemName"
   },
   "DataTable": {
-    "view": "Visa",
+    "view": "Vis",
     "choose": "Välj Kolummer"
   },
   "ECEPage": {

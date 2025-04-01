@@ -12,6 +12,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu"
+import { useTranslations } from "next-intl"
+import { translation } from "@/config/translation"
 
 interface DataTableViewOptionsProps<TData> {
   table: Table<TData>
@@ -20,6 +22,7 @@ interface DataTableViewOptionsProps<TData> {
 export function DataTableViewOptions<TData>({
   table,
 }: DataTableViewOptionsProps<TData>) {
+  const t = useTranslations(translation.dataTable);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -28,11 +31,11 @@ export function DataTableViewOptions<TData>({
           size="default"
         >
           <Settings2 className="mr-2 size-4" />
-          Visa
+          {t('view')}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[150px]">
-        <DropdownMenuLabel>Välj kolummer</DropdownMenuLabel>
+        <DropdownMenuLabel>{t('choose')}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {table
           .getAllColumns()

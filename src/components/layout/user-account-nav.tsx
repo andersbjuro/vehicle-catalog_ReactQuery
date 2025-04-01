@@ -14,12 +14,16 @@ import { routes } from "@/config/routes";
 import { useLocale } from "next-intl";
 import { startTransition } from "react";
 import { setUserLocale } from "@/i18n/locale";
-import {Locale} from '@/i18n/config';
+import { Locale } from '@/i18n/config';
 import { useTranslations } from "next-intl";
 import { translation } from "@/config/translation";
-
+import { Icons } from "@/components/icons";
 
 export function UserAccountNav() {
+  const SEIcon = Icons["seFlag"];
+  const GBIcon = Icons["gbFlag"];
+  const NOIcon = Icons["noFlag"];
+  const DKIcon = Icons["dkFlag"];
   const locale = useLocale();
   const t = useTranslations(translation.useraccountnav);
   const { data: session, status } = useSession();
@@ -32,12 +36,13 @@ export function UserAccountNav() {
       <div className="size-8 animate-pulse rounded-full border bg-muted" />
     );
 
-    function onLanguageChange(value: string) {
-        const locale = value as Locale;
-        startTransition(() => {
-          setUserLocale(locale);
-        });
-      }
+  function onLanguageChange(value: string) {
+    const locale = value as Locale;
+    startTransition(() => {
+      setUserLocale(locale);
+    });
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -50,7 +55,7 @@ export function UserAccountNav() {
               src={user.image}
               alt={user.name}
             />
-            <AvatarFallback className="rounded-lg"> {user.name.substring(0,2).toUpperCase()}</AvatarFallback>
+            <AvatarFallback className="rounded-lg"> {user.name.substring(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
           <div className="grid flex-1 text-left text-sm leading-tight">
             <span className="truncate font-semibold">
@@ -74,7 +79,7 @@ export function UserAccountNav() {
                 alt={user.name}
               />
               <AvatarFallback className="rounded-lg">
-                {user.name.substring(0,2).toUpperCase()}
+                {user.name.substring(0, 2).toUpperCase()}
               </AvatarFallback>
             </Avatar>
             <div className="grid flex-1 text-left text-sm leading-tight">
@@ -104,12 +109,22 @@ export function UserAccountNav() {
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
               <DropdownMenuItem onClick={() => onLanguageChange("se")}>
-                <Monitor className="mr-2 size-4" />
+                <SEIcon className="h-5 w-5" />
                 Svenska
                 {locale === "se" && <Check className="ms-2 size-4" />}
               </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => onLanguageChange("no")}>
+                <NOIcon className="h-5 w-5" />
+                Norsk
+                {locale === "no" && <Check className="ms-2 size-4" />}
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => onLanguageChange("dk")}>
+                <DKIcon className="h-5 w-5" />
+                Dansk
+                {locale === "dk" && <Check className="ms-2 size-4" />}
+              </DropdownMenuItem>
               <DropdownMenuItem onClick={() => onLanguageChange("en")}>
-                <Sun className="mr-2 size-4" />
+                <GBIcon className="h-5 w-5" />
                 English
                 {locale === "en" && <Check className="ms-2 size-4" />}
               </DropdownMenuItem>

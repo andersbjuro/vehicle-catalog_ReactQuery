@@ -18,7 +18,7 @@ import { useTranslations } from "next-intl";
 import {translation} from "@/config/translation";
 
 export default function BomList() {
-  const t = useTranslations(translation.bompage);
+  const t = useTranslations(translation.bomPage);
   const { currentView } = useToggleViewStore()
   const { filters } = useBomsFilter();
   const router = useRouter();

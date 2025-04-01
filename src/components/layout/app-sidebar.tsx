@@ -9,9 +9,10 @@ import { useCurrentSession } from "@/hooks/use-current-session"
 import { routes } from "@/config/routes";
 import { useTranslations } from "next-intl"
 import { memo } from "react"
+import { translation } from "@/config/translation"
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
-  const t = useTranslations('Sidebar');
+  const t = useTranslations(translation.sideBar);
   const { user } = useCurrentSession()
   const items = [
     {
