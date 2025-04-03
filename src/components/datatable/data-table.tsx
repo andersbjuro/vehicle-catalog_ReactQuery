@@ -1,7 +1,6 @@
 "use client"
 
-import { Table, TableBody, TableCell, TableHead, TableRow } from "@/components/ui/table";
-import { FlattBomLine } from "@/types";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { ColumnDef, flexRender, Table as ReactTable } from "@tanstack/react-table";
 import TableHeader from "@/components/datatable/table-header";
 

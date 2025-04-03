@@ -12,6 +12,8 @@ query vehicleById($id: String!) {
       fo04
       fo06
       fo10
+      fo12dat
+      fo13
       fo14
       td10
       td11
@@ -43,8 +45,12 @@ query vehicleById($id: String!) {
 export const VEHICLE_NO_ECETREE_QUERY = gql`
 query vehicleNoById($id: String!) {
   vehicleNoById(id: $id) {
-    rn01
+   rn01
     fb01
+    fb05: fo01
+    fo06
+    fo12dat
+    fo13
     fo14
     td10
     td11

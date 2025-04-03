@@ -117,6 +117,10 @@
   "ECEPage": {
     "tab1": "Artiklar",
     "tab2": "Bomlistor",
-    "tab3": "Kopiera Värde"
+    "tab3": "Kopiera Värde",
+    "moreInfo": "Mer Info",
+    "moreInfoTitle": "Fordons detaljer",
+    "moreInfoCloseButton": "Stäng",
+    "title": "Fordons detaljer"
   }
 }
