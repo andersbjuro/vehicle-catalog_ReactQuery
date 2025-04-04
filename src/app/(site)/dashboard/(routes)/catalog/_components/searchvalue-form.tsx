@@ -5,13 +5,14 @@ import { CardHeader, CardTitle, CardContent, Card } from "@/components/ui/card";
 import { SearchValue } from "@/types";
 import { useTranslations } from "next-intl";
 import { translation } from "@/config/translation";
+import VehicleInfoDialog from "./vehicle-info-dialog";
 
 interface Props {
   searchValue: SearchValue
 }
 
-const SearchValueForm = ({searchValue}: Props) => {
- const t = useTranslations(translation.catalogPage);
+const SearchValueForm = ({ searchValue }: Props) => {
+  const t = useTranslations(translation.catalogPage);
   return (
 
     <div>
@@ -22,10 +23,15 @@ const SearchValueForm = ({searchValue}: Props) => {
           </div>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col gap-2">
-            <p className="text-xs text-muted-foreground">{t('valueType')} {searchValue?.searchValueType.name} - Land {searchValue?.countryCode}</p>
-            <p className="text-xs text-muted-foreground">{t('created')} {searchValue ? formatDate(searchValue?.created) : ''} {t('updated')} {searchValue ? formatDate(searchValue?.modified) : ''}</p>
-          </div>
+          {searchValue &&
+            <div className="flex items-center justify-b mb-2 gap-2">
+              <div className="flex flex-col text-sm w-full">
+                <p className="text-xs text-muted-foreground">{t('valueType')} {searchValue?.searchValueType.name} - Land {searchValue?.countryCode}</p>
+                <p className="text-xs text-muted-foreground">{t('created')} {searchValue ? formatDate(searchValue?.created) : ''} {t('updated')} {searchValue ? formatDate(searchValue?.modified) : ''}</p>
+              </div>
+              {(searchValue?.searchValueType.id === 1 || searchValue?.searchValueType.id === 5) && <VehicleInfoDialog searchValue={searchValue} />}
+            </div>
+          }
         </CardContent>
       </Card>
     </div>

@@ -37,71 +37,71 @@ export default function VehicleInfoDialog({ vehicle }: Props) {
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell>RN01</TableCell>
+                  <TableCell>{t('rn01')}</TableCell>
                   <TableCell>{vehicle?.rn01}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>FO06</TableCell>
+                  <TableCell>{t('fo06')}</TableCell>
                   <TableCell>{vehicle?.fo06}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>FO13</TableCell>
+                  <TableCell>{t('fo13')}</TableCell>
                   <TableCell>{vehicle?.fo13}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>FB07</TableCell>
+                  <TableCell>{t('fb07')}</TableCell>
                   <TableCell>{vehicle?.fb07}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>FB01</TableCell>
+                  <TableCell>{t('fb01')}</TableCell>
                   <TableCell>{vehicle?.fb01}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>FO14</TableCell>
+                  <TableCell>{t('fo14')}</TableCell>
                   <TableCell>{vehicle?.fo14}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>FO04</TableCell>
+                  <TableCell>{t('fo04')}</TableCell>
                   <TableCell>{vehicle?.fo04}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>FO12dat</TableCell>
+                  <TableCell>{t('fo12dat')}</TableCell>
                   <TableCell>{formatDate(vehicle?.fo12dat)}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>FB05</TableCell>
+                  <TableCell>{t('fb05')}</TableCell>
                   <TableCell>{vehicle?.fb05}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>TD11</TableCell>
+                  <TableCell>{t('td11')}</TableCell>
                   <TableCell>{vehicle?.td11}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>TD20</TableCell>
+                  <TableCell>{t('td20')}</TableCell>
                   <TableCell>{vehicle?.td20}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>TD21</TableCell>
+                  <TableCell>{t('td21')}</TableCell>
                   <TableCell>{vehicle?.td21}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>TD49</TableCell>
+                  <TableCell>{t('td49')}</TableCell>
                   <TableCell>{vehicle?.td49}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>TD25</TableCell>
+                  <TableCell>{t('td25')}</TableCell>
                   <TableCell>{vehicle?.td25}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>TD29</TableCell>
+                  <TableCell>{t('td29')}</TableCell>
                   <TableCell>{vehicle?.td29}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>TD42</TableCell>
+                  <TableCell>{t('td42')}</TableCell>
                   <TableCell>{vehicle?.td42}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>BE02dat</TableCell>
+                  <TableCell>{t('be02dat')}</TableCell>
                   <TableCell>{vehicle?.be02dat ? formatDate(vehicle?.be02dat) : ''}</TableCell>
                 </TableRow>
               </TableBody>

@@ -122,6 +122,23 @@
     "moreInfo": "Mer Info",
     "moreInfoTitle": "Fordons detaljer",
     "moreInfoCloseButton": "Stäng",
-    "title": "Fordons detaljer"
+    "title": "Fordons detaljer",
+    "rn01": "Reg.No",
+    "fo06": "VIN",
+    "fo13": "Karegori",
+    "fb07": "Typ",
+    "fb01": "Fabrikat",
+    "fo14": "Modell",
+    "fo04": "Fordonsår",
+    "fo12dat": "Reg.Datum",
+    "fb05": "Karosseri",
+    "td11": "Totalvekt",
+    "td20": "Bredde",
+    "td21": "Längde",
+    "td49": "Høyde",
+    "td25": "Antall aksler",
+    "td29": "Dekkdim.",
+    "td42": "Felg",
+    "be02dat": "Neste besiktning"
   }
 }

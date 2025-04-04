@@ -40,7 +40,7 @@ export default function SearchValueContent() {
 
       <div className="grid grid-cols-2 gap-2 mt-2">
         <div className="w-full">
-          <CatalogTable />
+          {data && <CatalogTable />}
         </div>
         <div className="flex ">
           <Tabs defaultValue="items" className="w-full">

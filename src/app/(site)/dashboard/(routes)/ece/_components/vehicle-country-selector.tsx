@@ -5,9 +5,10 @@ import useVehicleFilter from "@/hooks/use-vehicle-filter";
 import { ChevronsLeftRight, Globe2 } from "lucide-react"
 
 export default function VehicleCountrySelector() {
-  const { filters, updateFilter } = useVehicleFilter();
+  const { filters, updateFilter, clearFilters} = useVehicleFilter();
 
   const handleCountryChange = (value: any) => {
+    clearFilters()
     updateFilter("country", Number(value))
   }
 
