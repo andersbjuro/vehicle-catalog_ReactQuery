@@ -57,6 +57,7 @@ export const getCatalog = async (variables: any) => {
 };
 
 export const createSearchValue = async (prevState: SearchValueActionResponse | null, formData: FormData) => {
+
   const session = await auth();
   const token = `Bearer ${session?.accessToken}`
 

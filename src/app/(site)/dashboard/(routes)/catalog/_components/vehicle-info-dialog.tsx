@@ -7,10 +7,9 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { formatDate } from "@/lib/utils";
 import { useVehicleSearchValue } from "@/hooks/useVehicleSearchValue";
-import { SearchValue } from "@/types";
 
 interface Props {
-  searchValue: SearchValue,
+  searchValue: any,
 }
 
 export default function VehicleInfoDialog({ searchValue }: Props) {
@@ -21,7 +20,7 @@ export default function VehicleInfoDialog({ searchValue }: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button size='default' variant='default' disabled={searchValue === undefined}>
+        <Button size='default' variant='default' disabled={searchValue.value === ''}>
           <span>{t('moreInfo')}</span>
         </Button>
       </DialogTrigger>

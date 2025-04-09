@@ -29,7 +29,7 @@ const SearchValueForm = ({ searchValue }: Props) => {
                 <p className="text-xs text-muted-foreground">{t('valueType')} {searchValue?.searchValueType.name} - Land {searchValue?.countryCode}</p>
                 <p className="text-xs text-muted-foreground">{t('created')} {searchValue ? formatDate(searchValue?.created) : ''} {t('updated')} {searchValue ? formatDate(searchValue?.modified) : ''}</p>
               </div>
-              {(searchValue?.searchValueType.id === 1 || searchValue?.searchValueType.id === 5) && <VehicleInfoDialog searchValue={searchValue} />}
+              {(searchValue?.valueType === 1 || searchValue?.valueType === 5) && <VehicleInfoDialog searchValue={{value: searchValue.value, valueType: searchValue.valueType}} />}
             </div>
           }
         </CardContent>

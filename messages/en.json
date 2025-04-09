@@ -56,7 +56,14 @@
     "delete": "Delete",
     "of": "100 of ",
     "tab1": "Items",
-    "tab2": "Boms"
+    "tab2": "Boms",
+    "createTitle": "Search Value",
+    "createDescription": "Here you can create e new search value for the catalog",
+    "createSubmitIsPending": "Creating...",
+    "createSubmit": "Create",
+    "createSearchValueLabel": "Value",
+    "createTypeLabel": "Value Type",
+    "createSearchRegNoButton": "Verify Reg.No"
   },
   "CatalogGrid": {
     "value": "Value",

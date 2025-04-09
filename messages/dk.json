@@ -56,7 +56,14 @@
     "delete": "Radera",
     "of": "100 av ",
     "tab1": "Artiklar",
-    "tab2": "Bomlistor"
+    "tab2": "Bomlistor",
+    "createTitle": "Sökvärde",
+    "createDescription": "Här kan du skapa ett nytt sökvärde för katallogen",
+    "createSubmitIsPending": "Skapar...",
+    "createSubmit": "Skapa",
+    "createSearchValueLabel": "Värde",
+    "createTypeLabel": "Värdetyp",
+    "createSearchRegNoButton": "Verifiera Reg.Nr"
   },
   "CatalogGrid": {
     "value": "Värde",
