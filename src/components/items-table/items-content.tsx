@@ -11,10 +11,12 @@ export default function ItemsContent({ type }: { type: "bom" | "catalog" | "vehi
   const { setting: { countryCode } } = useSettingStore()
 
   const parameter = { filter: filter, countryCode: countryCode }
-  const { data } = useQuery({
-    queryKey: ['items', parameter],
+  const { data, isFetched } = useQuery({
+    queryKey: ['items', parameter, type],
     queryFn: async () => { return onGetItems(parameter) }
   })
+
+  if (!isFetched) return <div>Loading...</div>
 
   return (
     <div>

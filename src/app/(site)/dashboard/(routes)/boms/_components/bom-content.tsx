@@ -31,6 +31,7 @@ export default function BomContent() {
   }, [data]);
 
   if (!isFetched) return <div>Loading...</div>
+
   return (
     <div className="flex flex-col w-full">
       <div className="w-1/2">

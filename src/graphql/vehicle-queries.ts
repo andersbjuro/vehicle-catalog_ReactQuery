@@ -15,6 +15,9 @@ query vehicleById($id: String!) {
       fo12dat
       fo13
       fo14
+      td01
+      td02
+      td05
       td10
       td11
       td20
@@ -52,6 +55,9 @@ query vehicleNoById($id: String!) {
     fo12dat
     fo13
     fo14
+    td01
+    td02
+    td05
     td10
     td11
     td20
@@ -95,6 +101,9 @@ query vehicleById($id: String!) {
       fo12dat
       fo13
       fo14
+      td01
+      td02
+      td05
       td10
       td11
       td20
@@ -126,6 +135,9 @@ query vehicleNoById($id: String!) {
       fo12dat
       fo13
       fo14
+      td01
+      td02
+      td05
       td10
       td11
       td20

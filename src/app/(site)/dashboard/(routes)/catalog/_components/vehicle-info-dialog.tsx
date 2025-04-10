@@ -29,7 +29,7 @@ export default function VehicleInfoDialog({ searchValue }: Props) {
           <DialogTitle>{t('moreInfoTitle')}</DialogTitle>
         </DialogHeader>
         {vehicle &&
-          <div className="w-full h-[600px] flex flex-col mt-3">
+          <div className="w-full h-[500px] flex flex-col mt-3">
             <div className="rounded-md border flex overflow-hidden text-sm">
               <Table >
                 <TableHeader className="sticky top-0 z-10 bg-muted">
@@ -76,9 +76,22 @@ export default function VehicleInfoDialog({ searchValue }: Props) {
                     <TableCell>{vehicle?.fb05}</TableCell>
                   </TableRow>
                   <TableRow>
+                    <TableCell>{t('td05')}</TableCell>
+                    <TableCell>{vehicle?.td05}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>{t('td01')}</TableCell>
+                    <TableCell>{vehicle?.td01}</TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell>{t('td02')}</TableCell>
+                    <TableCell>{vehicle?.td02}</TableCell>
+                  </TableRow>
+                  <TableRow>
                     <TableCell>{t('td11')}</TableCell>
                     <TableCell>{vehicle?.td11}</TableCell>
                   </TableRow>
+
                   <TableRow>
                     <TableCell>{t('td20')}</TableCell>
                     <TableCell>{vehicle?.td20}</TableCell>

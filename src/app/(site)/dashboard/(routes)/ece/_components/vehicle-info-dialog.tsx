@@ -73,6 +73,18 @@ export default function VehicleInfoDialog({ vehicle }: Props) {
                   <TableCell>{vehicle?.fb05}</TableCell>
                 </TableRow>
                 <TableRow>
+                  <TableCell>{t('td05')}</TableCell>
+                  <TableCell>{vehicle?.td05}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>{t('td01')}</TableCell>
+                  <TableCell>{vehicle?.td01}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>{t('td02')}</TableCell>
+                  <TableCell>{vehicle?.td02}</TableCell>
+                </TableRow>
+                <TableRow>
                   <TableCell>{t('td11')}</TableCell>
                   <TableCell>{vehicle?.td11}</TableCell>
                 </TableRow>

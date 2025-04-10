@@ -9,7 +9,9 @@ export default function BomsContent({ type }: { type: "catalog" | "vehiclecatalo
   const { filter } = useBomsFilterStore()
 
   const parameter = { filter: filter }
-  const { data } = useBoms(parameter)
+  const { data, isFetched } = useBoms(parameter)
+
+  if (!isFetched) return <div>Loading...</div>
 
   return (
     <div>
